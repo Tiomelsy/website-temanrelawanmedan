@@ -430,3 +430,92 @@ footer {
         font-size: 16px;
     }
 }
+
+/* LAPTOP */
+@media screen and (min-width: 1001px) {
+    .visi-misi {
+        max-width: 1100px;
+        margin: 65px auto 40px;
+    }
+
+    .visi-misi-container {
+        grid-template-columns: 0.85fr 1.5fr;
+        gap: 25px;
+    }
+
+    .vm-box {
+        padding: 30px;
+    }
+
+    .vm-box p {
+        font-size: 18px;
+    }
+
+    .vm-box li {
+        font-size: 17px;
+    }
+}
+
+/* HP ANDROID DAN IPHONE */
+@media screen and (max-width: 600px) {
+    .visi-misi {
+        margin: 45px auto 25px;
+    }
+
+    .visi-misi > h2 {
+        font-size: 25px;
+    }
+
+    .visi-misi-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .vm-box {
+        padding: 22px;
+    }
+
+    .vm-icon {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .vm-box h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .vm-box p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .vm-box li {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
+
+/* HP LAYAR KECIL */
+@media screen and (max-width: 380px) {
+    .visi-misi > h2 {
+        font-size: 23px;
+    }
+
+    .vm-box {
+        padding: 17px;
+    }
+
+    .vm-icon {
+        font-size: 35px;
+    }
+
+    .vm-box h3 {
+        font-size: 20px;
+    }
+
+    .vm-box p,
+    .vm-box li {
+        font-size: 14px;
+    }
+} 
