@@ -615,3 +615,266 @@ main {
     }
 
 }
+
+
+/* BAGIAN VISI DAN MISI */
+
+.visi-misi {
+    width: 100%;
+    max-width: 1100px;
+    margin: 65px auto 45px;
+    padding: 0 10px;
+}
+
+/* JUDUL */
+
+.judul-visi-misi {
+    text-align: center;
+    margin-bottom: 35px;
+    animation: judulMasuk 1s ease;
+}
+
+.tag-vm {
+    display: inline-block;
+    padding: 8px 22px;
+    background: rgba(19, 207, 182, 0.15);
+    border: 1px solid #13cfb6;
+    border-radius: 30px;
+    color: #13cfb6;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.judul-visi-misi h2 {
+    color: white;
+    font-size: 35px;
+    margin: 15px 0;
+}
+
+.judul-visi-misi p {
+    color: #dce5ff;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* TABEL */
+
+.tabel-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 15px;
+    animation: tabelMasuk 1.2s ease;
+}
+
+.tabel-vm {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.tabel-vm tr {
+    background: rgba(5, 20, 90, 0.8);
+    transition: all 0.4s ease;
+}
+
+.tabel-vm th {
+    width: 25%;
+    padding: 30px 20px;
+    background: rgba(19, 207, 182, 0.12);
+    border-left: 4px solid #13cfb6;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabel-vm th h3 {
+    color: #13cfb6;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+.emoji-vm {
+    font-size: 45px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+.tabel-vm td {
+    padding: 30px;
+    color: #e0eaff;
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: justify;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* DAFTAR MISI */
+
+.tabel-vm ol {
+    padding-left: 25px;
+    margin: 0;
+}
+
+.tabel-vm li {
+    padding-left: 8px;
+    margin-bottom: 15px;
+}
+
+.tabel-vm li:last-child {
+    margin-bottom: 0;
+}
+
+.tabel-vm li::marker {
+    color: #13cfb6;
+    font-weight: bold;
+}
+
+/* HOVER DAN TRANSISI */
+
+.tabel-vm tr:hover {
+    background: rgba(16, 46, 145, 0.95);
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.tabel-vm tr:hover .emoji-vm {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+.tabel-vm th,
+.tabel-vm td {
+    transition: all 0.4s ease;
+}
+
+.tabel-vm tr:hover th {
+    background: rgba(19, 207, 182, 0.22);
+}
+
+/* ANIMASI */
+
+@keyframes judulMasuk {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tabelMasuk {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+
+@media screen and (max-width: 900px) {
+    .visi-misi {
+        margin: 50px auto 35px;
+    }
+
+    .tabel-vm th {
+        width: 30%;
+        padding: 23px 15px;
+    }
+
+    .tabel-vm td {
+        padding: 23px;
+        font-size: 16px;
+    }
+}
+
+/* HP ANDROID DAN IPHONE */
+
+@media screen and (max-width: 600px) {
+    .visi-misi {
+        margin: 40px auto 25px;
+        padding: 0 5px;
+    }
+
+    .judul-visi-misi h2 {
+        font-size: 27px;
+    }
+
+    .judul-visi-misi p {
+        font-size: 15px;
+    }
+
+    .tabel-vm,
+    .tabel-vm tbody,
+    .tabel-vm tr,
+    .tabel-vm th,
+    .tabel-vm td {
+        display: block;
+        width: 100%;
+    }
+
+    .tabel-vm {
+        border-spacing: 0;
+    }
+
+    .tabel-vm tr {
+        margin-bottom: 22px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .tabel-vm th {
+        padding: 20px;
+        border-left: none;
+        border-top: 4px solid #13cfb6;
+    }
+
+    .tabel-vm th h3 {
+        font-size: 22px;
+    }
+
+    .emoji-vm {
+        font-size: 38px;
+    }
+
+    .tabel-vm td {
+        padding: 22px;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .tabel-vm li {
+        margin-bottom: 13px;
+    }
+
+    .tabel-vm tr:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* HP LAYAR KECIL */
+
+@media screen and (max-width: 380px) {
+    .judul-visi-misi h2 {
+        font-size: 24px;
+    }
+
+    .judul-visi-misi p {
+        font-size: 14px;
+    }
+
+    .tabel-vm th {
+        padding: 17px;
+    }
+
+    .tabel-vm td {
+        padding: 17px;
+        font-size: 14px;
+    }
+}
