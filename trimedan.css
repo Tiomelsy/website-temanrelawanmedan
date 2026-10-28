@@ -519,3 +519,127 @@ footer {
         font-size: 14px;
     }
 } 
+
+/* TOMBOL VISI MISI */
+
+.menu-tambahan {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* TABEL VISI MISI */
+
+.visi-misi-home {
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+    animation: vmMuncul 1s ease;
+    scroll-margin-top: 40px;
+}
+
+.judul-vm-home {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.judul-vm-home h2 {
+    color: white;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.tabel-vm-home {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.tabel-vm-home tr {
+    background: rgba(5, 20, 90, 0.8);
+    animation: barisMuncul 1s ease both;
+    transition: all 0.4s ease;
+}
+
+.tabel-vm-home tr:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.tabel-vm-home td {
+    height: 110px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-left: 4px solid #13cfb6;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+}
+
+/* HOVER */
+
+.tabel-vm-home tr:hover {
+    background: #102e91;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ANIMASI */
+
+@keyframes vmMuncul {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes barisMuncul {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* LAPTOP */
+
+@media screen and (min-width: 1001px) {
+    .visi-misi-home {
+        max-width: 1000px;
+    }
+}
+
+/* ANDROID DAN IPHONE */
+
+@media screen and (max-width: 600px) {
+    .visi-misi-home {
+        margin: 40px auto;
+        padding: 10px 5px;
+    }
+
+    .judul-vm-home h2 {
+        font-size: 25px;
+    }
+
+    .tabel-vm-home td {
+        height: 90px;
+    }
+}
+
+/* HP LAYAR KECIL */
+
+@media screen and (max-width: 380px) {
+    .judul-vm-home h2 {
+        font-size: 22px;
+    }
+
+    .tabel-vm-home td {
+        height: 75px;
+    }
+}
