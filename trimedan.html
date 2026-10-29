@@ -7,36 +7,43 @@
     <meta name="theme-color" content="#0e35a9">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <title>TEMAN RELAWAN INDONESIA</title>
-    <link rel="stylesheet" href="trimedan.css">
+
+    <link rel="stylesheet" href="trimedan.js">
+
+    <!-- JavaScript terpisah -->
+    <script src="trimedan.js" defer></script>
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- BACKGROUND -->
+        <!-- BACKGROUND LOGO -->
         <img class="image-tri" src="TRI (LOGO).png" alt="Logo TRI">
-        <div class="layer-blur"></div>
 
         <!-- HEADER -->
         <header>
 
             <h1 class="logo">TEMAN RELAWAN INDONESIA</h1>
 
-            <!-- Tombol menu (hanya muncul di HP) -->
             <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false"
                 aria-controls="menuNav">
-                <span></span><span></span><span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+
             </button>
 
             <nav id="menuNav">
                 <a href="trimedan.html">HOME</a>
-                <a href="bph.html">BPH</a>
-                <a href="kaderisasi.html">KADERISASI</a>
-                <a href="sosial.html">SOSIAL</a>
-                <a href="medinfo.html">MEDINFO</a>
-                <a href="partnership.html">PARTNERSHIP</a>
+                <a href="BPH/bphnyatrimedan.html">BPH</a>
+                <a href="KADERISASI/kader.html">KADERISASI</a>
+                <a href="SOSIAL/sosial.html">SOSIAL</a>
+                <a href="MEDINFO/medinfo.html">MEDINFO</a>
+                <a href="PATNERSHIP/patner.html">PARTNERSHIP</a>
             </nav>
 
             <a href="JOIN US/joinus.html" class="btn-signing">JOIN US</a>
@@ -49,15 +56,24 @@
             <div class="content">
 
                 <div class="tag-wrap anim" style="--d:.15s">
+
                     <div class="tag-box">
-                        <a href="TENTANG TRI/tentangtri.html" class="tag">TENTANG TRI &gt;</a>
+                        <a href="TENTANG TRI/tentangtri.html" class="tag">
+                            TENTANG TRI &gt;
+                        </a>
                     </div>
+
                     <div class="tag-box">
-                        <a href="#visi-misi-home" class="tag">VISI &amp; MISI &gt;</a>
+                        <a href="VISI & MISI/vmtrimedan.html" class="tag">
+                            VISI &amp; MISI &gt;
+                        </a>
                     </div>
+
                 </div>
 
-                <h2 class="anim" style="--d:.35s">#MENGABDI DENGAN HATI, MEMBANGUN NEGERI</h2>
+                <h2 class="anim" style="--d:.35s">
+                    #MENGABDI DENGAN HATI, MEMBANGUN NEGERI
+                </h2>
 
                 <p class="description anim" style="--d:.55s">
                     Setiap langkah kecil memiliki arti.
@@ -68,72 +84,30 @@
                 </p>
 
                 <div class="button anim" style="--d:.75s">
+
                     <a href="https://www.instagram.com/temanrelawanid/" target="_blank" rel="noopener noreferrer"
-                        class="btn-documentation">Instagram TRI Pusat ↗</a>
+                        class="btn-documentation">
+                        Instagram TRI Pusat ↗️
+                    </a>
+
                     <a href="https://www.instagram.com/temanrelawan.medan/" target="_blank" rel="noopener noreferrer"
-                        class="btn-get-started">Instagram TRI Medan ↗</a>
+                        class="btn-get-started">
+                        Instagram TRI Medan ↗️
+                    </a>
+
                 </div>
 
             </div>
 
         </main>
 
-        <!-- VISI & MISI -->
-        <section class="visi-misi-home reveal" id="visi-misi-home">
-
-            <div class="judul-vm-home">
-                <h2>VISI &amp; MISI TRI</h2>
-            </div>
-
-            <table class="tabel-vm-home">
-                <tr>
-                    <td class="vm-label">VISI</td>
-                    <td class="vm-isi">Isi visi TRI di sini.</td>
-                </tr>
-                <tr>
-                    <td class="vm-label">MISI</td>
-                    <td class="vm-isi">Isi misi TRI di sini.</td>
-                </tr>
-            </table>
-
-        </section>
+        <!-- FOOTER -->
+        <footer>
+            <p>Teman Relawan Indonesia | Mengabdi dengan Hati, Membangun Negeri</p>
+            <p>© 2026 Teman Relawan Medan</p>
+        </footer>
 
     </div>
-
-    <footer>
-        <p>© 2026 Teman Relawan Indonesia</p>
-    </footer>
-
-    <script>
-        document.documentElement.classList.add('js');
-
-        // Menu hamburger (HP)
-        const toggle = document.getElementById('menuToggle');
-        const menu = document.getElementById('menuNav');
-        toggle.addEventListener('click', () => {
-            const buka = menu.classList.toggle('buka');
-            toggle.classList.toggle('aktif', buka);
-            toggle.setAttribute('aria-expanded', buka);
-        });
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            menu.classList.remove('buka');
-            toggle.classList.remove('aktif');
-            toggle.setAttribute('aria-expanded', 'false');
-        }));
-
-        // Animasi muncul saat di-scroll
-        const items = document.querySelectorAll('.reveal');
-        if ('IntersectionObserver' in window) {
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('tampil'); obs.unobserve(e.target); }
-                });
-            }, { threshold: 0.2 });
-            items.forEach(i => obs.observe(i));
-        } else {
-            items.forEach(i => i.classList.add('tampil'));
-        }
-    </script>
 
 </body>
 

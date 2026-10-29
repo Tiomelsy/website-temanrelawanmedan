@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN US | TRI Medan</title>
+    <link rel="stylesheet" href="joinus.css">
+</head>
+
+<body>
+
+    <a href="../trimedan.html" class="back-home">← HOME</a>
+
+    <main class="container">
+
+        <section class="welcome-section">
+            <img src="../TRI (LOGO).png" alt="Logo TRI" class="logo">
+
+            <h1>BE PART OF US</h1>
+            <p class="subtitle">Teman Relawan Indonesia</p>
+
+            <div class="welcome-text">
+                <h2>Let's Make a Difference!</h2>
+                <p>
+                    Bersama Teman Relawan Indonesia, mari bergerak,
+                    berbagi, dan menciptakan perubahan positif
+                    bagi sesama.
+                </p>
+            </div>
+
+            <div class="decoration"></div>
+        </section>
+
+        <section class="form-section">
+
+            <div class="form-card" id="formCard">
+
+                <!-- LOGIN -->
+                <div class="form-face login-face">
+
+                    <h2>Welcome Back!</h2>
+                    <p class="form-description">
+                        Login untuk melanjutkan perjalananmu bersama TRI.
+                    </p>
+
+                    <form id="loginForm">
+
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Masukkan email" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="Masukkan password" required>
+                        </div>
+
+                        <div class="forgot">
+                            <a href="#" id="forgotPassword">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            LOGIN
+                        </button>
+
+                    </form>
+
+                    <p class="switch-text">
+                        Belum punya akun?
+                        <a href="#" id="showSignup">Sign Up</a>
+                    </p>
+
+                </div>
+
+                <!-- SIGN UP -->
+                <div class="form-face signup-face">
+
+                    <h2>Create Account</h2>
+                    <p class="form-description">
+                        Bergabunglah dan jadilah bagian dari perubahan.
+                    </p>
+
+                    <form id="signupForm">
+
+                        <div class="input-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" placeholder="Masukkan nama lengkap" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Masukkan email" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="Buat password" required minlength="6">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Konfirmasi Password</label>
+                            <input type="password" placeholder="Ulangi password" required minlength="6">
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            SIGN UP
+                        </button>
+
+                    </form>
+
+                    <p class="switch-text">
+                        Sudah punya akun?
+                        <a href="#" id="showLogin">Login</a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Teman Relawan Indonesia - Medan</p>
+    </footer>
+
+    <script>
+        const formCard = document.getElementById("formCard");
+
+        document.getElementById("showSignup").addEventListener("click", function (e) {
+            e.preventDefault();
+            formCard.classList.add("active");
+        });
+
+        document.getElementById("showLogin").addEventListener("click", function (e) {
+            e.preventDefault();
+            formCard.classList.remove("active");
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Fitur Login belum terhubung dengan database.");
+        });
+
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const password = document.querySelector(
+                '.signup-face input[type="password"]'
+            );
+            const passwords = document.querySelectorAll(
+                '.signup-face input[type="password"]'
+            );
+
+            if (passwords[0].value !== passwords[1].value) {
+                alert("Password dan konfirmasi password tidak sama!");
+                return;
+            }
+
+            alert("Form pendaftaran berhasil diisi. Fitur Sign Up belum terhubung dengan database.");
+        });
+
+        document.getElementById("forgotPassword").addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Fitur lupa password belum tersedia.");
+        });
+    </script>
+
+    <footer>
+        <p>Teman Relawan Indonesia | Mengabdi dengan Hati, Membangun Negeri</p>
+        <p>© 2026 Teman Relawan Medan</p>
+    </footer>
+</body>
+
+</html>

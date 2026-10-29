@@ -1,0 +1,586 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* DASAR */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(14, 53, 169);
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* BACKGROUND LOGO */
+.image-tri {
+    position: fixed;
+    width: 340px;
+    max-width: 35%;
+    height: auto;
+    top: 150px;
+    right: 7%;
+    opacity: 0.10;
+    z-index: 0;
+    pointer-events: none;
+    animation: logoMasuk 1.5s ease;
+}
+
+.layer-blur {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    top: 30%;
+    right: 15%;
+    background: #3425ff;
+    filter: blur(150px);
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 4%;
+    gap: 25px;
+    position: relative;
+    z-index: 2;
+    animation: turun 1s ease;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #13cfb6;
+    transform: translateY(-3px);
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 7% 75px;
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+    animation: naik 1s ease;
+}
+
+/* TAG */
+.tag-box {
+    width: 200px;
+    padding: 3px;
+    margin: 0 auto 18px;
+    border-radius: 50px;
+    background: linear-gradient(
+        90deg,
+        #13045b,
+        #3425ff,
+        #13cfb6,
+        #13045b
+    );
+    background-size: 200%;
+    animation: warna 4s linear infinite;
+    box-shadow: 0 0 12px #10105b;
+    transition: 0.3s;
+}
+
+.tag {
+    display: block;
+    background-color: #19053c;
+    border-radius: 50px;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+/* JUDUL */
+.content h1 {
+    font-size: 39px;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.description {
+    font-size: 19px;
+    color: #dce5ff;
+    text-align: center;
+    line-height: 1.7;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+
+/* CONTAINER VISI MISI */
+.visi-misi-container {
+    display: grid;
+    grid-template-columns: 0.85fr 1.4fr;
+    gap: 25px;
+    align-items: stretch;
+    margin-top: 30px;
+}
+
+/* BOX VISI DAN MISI */
+.vm-box {
+    background: rgba(5, 20, 90, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid #13cfb6;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+
+    opacity: 0;
+    animation: kotakMuncul 0.9s ease forwards;
+    transition: all 0.4s ease;
+}
+
+.visi-box {
+    animation-delay: 0.2s;
+}
+
+.misi-box {
+    animation-delay: 0.4s;
+}
+
+/* HEADER DALAM BOX */
+.vm-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 20px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid rgba(19, 207, 182, 0.4);
+}
+
+.emoji-vm {
+    font-size: 45px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+.nomor {
+    color: #13cfb6;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.vm-header h2 {
+    color: white;
+    font-size: 27px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-top: 3px;
+    transition: color 0.3s ease;
+}
+
+/* ISI BOX */
+.vm-content p {
+    color: #e0eaff;
+    font-size: 19px;
+    line-height: 1.9;
+    text-align: justify;
+}
+
+/* DAFTAR MISI */
+.vm-content ol {
+    padding-left: 25px;
+    margin: 0;
+}
+
+.vm-content li {
+    color: #e0eaff;
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: justify;
+    padding-left: 8px;
+    margin-bottom: 17px;
+}
+
+.vm-content li:last-child {
+    margin-bottom: 0;
+}
+
+.vm-content li::marker {
+    color: #13cfb6;
+    font-weight: bold;
+}
+
+/* HOVER BOX */
+.vm-box:hover {
+    transform: translateY(-8px);
+    background: rgba(16, 46, 145, 0.95);
+    border-color: #13cfb6;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.vm-box:hover .emoji-vm {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.vm-box:hover .vm-header h2 {
+    color: #13cfb6;
+}
+
+/* BUTTON */
+.button {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn-documentation,
+.btn-get-started {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-documentation {
+    border: 1px solid white;
+    color: white;
+}
+
+.btn-documentation:hover {
+    background-color: white;
+    color: #102e91;
+    transform: translateY(-4px);
+}
+
+.btn-get-started {
+    background-color: #071147;
+    color: white;
+    border: 1px solid #071147;
+}
+
+.btn-get-started:hover {
+    background-color: #13a995;
+    border-color: #13a995;
+    transform: translateY(-4px);
+}
+
+/* FOOTER */
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 18px;
+    background-color: #080d52;
+    font-size: 15px;
+}
+
+/* ANIMASI */
+@keyframes warna {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 200%;
+    }
+}
+
+@keyframes naik {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes turun {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes kotakMuncul {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logoMasuk {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 0.10;
+        transform: scale(1);
+    }
+}
+
+/* LAPTOP / MACBOOK */
+@media screen and (min-width: 1001px) {
+    .visi-misi-container {
+        grid-template-columns: 0.85fr 1.4fr;
+    }
+
+    .visi-box,
+    .misi-box {
+        min-height: 340px;
+    }
+}
+
+/* TABLET */
+@media screen and (max-width: 1000px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    main {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .visi-misi-container {
+        grid-template-columns: 1fr 1.3fr;
+        gap: 18px;
+    }
+
+    .vm-box {
+        padding: 23px;
+    }
+
+    .vm-content p {
+        font-size: 17px;
+    }
+
+    .vm-content li {
+        font-size: 16px;
+    }
+}
+
+/* IPHONE DAN ANDROID */
+@media screen and (max-width: 600px) {
+    header {
+        padding: 20px;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .logo {
+        font-size: 19px;
+        white-space: normal;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    main {
+        padding: 40px 20px 55px;
+    }
+
+    .image-tri {
+        width: 230px;
+        max-width: 60%;
+        top: 180px;
+        right: 5%;
+    }
+
+    .content h1 {
+        font-size: 29px;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    /* BOX TERSUSUN VERTIKAL */
+    .visi-misi-container {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .vm-box {
+        padding: 23px;
+        min-height: auto;
+    }
+
+    .vm-header {
+        gap: 15px;
+        margin-bottom: 18px;
+    }
+
+    .emoji-vm {
+        font-size: 38px;
+    }
+
+    .vm-header h2 {
+        font-size: 24px;
+    }
+
+    .vm-content p {
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .vm-content li {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 14px;
+    }
+
+    .button {
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .btn-documentation,
+    .btn-get-started {
+        font-size: 14px;
+        padding: 11px 18px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 16px 10px;
+    }
+}
+
+/* HP LAYAR KECIL */
+@media screen and (max-width: 380px) {
+    .logo {
+        font-size: 17px;
+    }
+
+    nav {
+        gap: 9px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .content h1 {
+        font-size: 25px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .vm-box {
+        padding: 19px;
+    }
+
+    .vm-header h2 {
+        font-size: 22px;
+    }
+
+    .vm-content p,
+    .vm-content li {
+        font-size: 15px;
+    }
+
+    .emoji-vm {
+        font-size: 34px;
+    }
+
+    .button {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button a {
+        text-align: center;
+    }
+}
+
+/* REDUCE MOTION */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
