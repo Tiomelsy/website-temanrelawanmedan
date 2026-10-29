@@ -1,382 +1,647 @@
-/* =====================================================
-   TRI MEDAN - 1 CSS UNTUK SEMUA PERANGKAT
-   1. Dasar & animasi (semua perangkat)
-   2. Laptop / MacBook (default)
-   3. Tablet & jendela sempit (maks 1000px)
-   4. HP Android & iPhone (maks 600px)
-   5. HP layar sangat kecil (maks 380px)
-   6. Khusus iPhone / Safari (@supports)
-   7. Hover (laptop) & sentuhan (HP)
-   ===================================================== */
+/* ==============================
+   PENGATURAN DASAR
+============================== */
 
-
-/* =====================================================
-   1. DASAR & ANIMASI
-   ===================================================== */
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 html {
     scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(19, 207, 182, .25);
 }
 
 body {
-    background: linear-gradient(160deg, rgb(14, 53, 169) 0%, rgb(10, 40, 135) 100%) fixed;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", serif;
+    background: linear-gradient(135deg, #071b65, #0e35a9, #174bd4);
     color: white;
     min-height: 100vh;
-    line-height: 1.5;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
 }
 
-a, button { touch-action: manipulation; }
-a:focus-visible, button:focus-visible { outline: 3px solid #13cfb6; outline-offset: 3px; }
-
-@keyframes warna { 0% { background-position: 0%; } 100% { background-position: 200%; } }
-@keyframes naik { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes turun { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes barisKiri { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes barisBawah { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes melayang { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
-@keyframes denyut { 0%, 100% { transform: scale(1); opacity: .13; } 50% { transform: scale(1.18); opacity: .22; } }
-
-
-/* =====================================================
-   2. LAPTOP / MACBOOK (tampilan utama)
-   ===================================================== */
-
-/* ---------- Background ---------- */
-.container { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
-
-.image-tri {
-    position: absolute; top: 150px; right: 7%;
-    width: 340px; max-width: 35%; height: auto;
-    opacity: .12; z-index: 0; pointer-events: none;
-    animation: melayang 7s ease-in-out infinite;
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.layer-blur {
-    position: absolute; top: 25%; left: 10%;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: rgba(19, 207, 182, .13); filter: blur(100px);
-    z-index: 0; pointer-events: none;
-    animation: denyut 6s ease-in-out infinite;
+/* ==============================
+   HEADER DAN LOGO
+============================== */
+
+.header {
+    width: 100%;
+    min-height: 100px;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    z-index: 100;
+    background: rgba(3, 17, 69, 0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
-/* ---------- Header ---------- */
-header {
-    position: relative; z-index: 10;
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 25px; padding: 25px 4%;
-    padding-left: max(4%, env(safe-area-inset-left));
-    padding-right: max(4%, env(safe-area-inset-right));
-    animation: turun .8s ease both;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    text-decoration: none;
+    color: white;
+    min-width: 0;
 }
 
-.logo { font-size: 25px; font-weight: bold; white-space: nowrap; }
+.brand h1 {
+    font-size: clamp(15px, 1.7vw, 23px);
+    letter-spacing: 1px;
+}
 
-.menu-toggle { display: none; }   /* tombol hamburger hanya untuk HP */
+.logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    opacity: 1;
+    filter: none;
+    flex-shrink: 0;
+    animation: logo3D 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
 
-nav { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 25px; }
+.logo:hover {
+    transform: perspective(500px) rotateY(25deg) rotateX(12deg) scale(1.12);
+}
+
+@keyframes logo3D {
+    0%, 100% {
+        transform: perspective(500px) rotateY(0deg) rotateX(0deg);
+    }
+
+    50% {
+        transform: perspective(500px) rotateY(15deg) rotateX(8deg);
+    }
+}
+
+/* ==============================
+   NAVIGASI
+============================== */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 1.5vw, 23px);
+}
 
 nav a {
-    position: relative; color: white; text-decoration: none; font-size: 17px;
-    transition: color .3s ease, transform .3s ease, background .25s ease;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+    position: relative;
 }
 
 nav a::after {
-    content: ""; position: absolute; left: 0; bottom: -4px;
-    width: 100%; height: 2px; background: #13cfb6;
-    transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: white;
+    transition: width 0.3s ease;
 }
 
-.btn-signing {
-    color: white; background: blue; text-decoration: none; white-space: nowrap;
-    border: 2px solid #13cfb6; border-radius: 50px;
-    padding: 10px 25px; font-family: inherit; font-size: 16px;
-    transition: background .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease;
+nav a:hover::after {
+    width: 100%;
 }
 
-/* ---------- Hero ---------- */
-main {
-    position: relative; z-index: 1;
-    display: flex; align-items: center;
-    min-height: calc(100vh - 130px); padding: 40px 7%;
+nav a:hover {
+    color: #c8dcff;
 }
 
-.content { width: 100%; max-width: 850px; }
+.btn-join {
+    color: #0e35a9;
+    background: white;
+    padding: 11px 19px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
 
-.anim { animation: naik .9s ease both; animation-delay: var(--d, 0s); }
+.btn-join:hover {
+    background: #c8dcff;
+    transform: translateY(-3px);
+}
 
-.tag-wrap { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; }
+/* Tombol menu HP */
 
-.tag-box {
-    width: 230px; padding: 3px; border-radius: 50px;
-    background: linear-gradient(90deg, #13045b, #3425ff, #13cfb6, #13045b);
-    background-size: 200%; animation: warna 4s linear infinite;
-    transition: transform .3s ease, box-shadow .3s ease;
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    padding: 9px;
+    flex-shrink: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    margin: 4px 0;
+    background: white;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu-toggle.aktif span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.aktif span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.aktif span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==============================
+   HOME
+============================== */
+
+.home {
+    width: min(1100px, 90%);
+    margin: auto;
+    padding: 90px 0;
+    text-align: center;
+    animation: muncul 1s ease both;
+}
+
+.tag-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 35px;
 }
 
 .tag {
-    display: block; padding: 10px; border-radius: 50px;
-    background: #19053c; color: #13cfb6;
-    text-align: center; text-decoration: none; font-size: 17px; letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 23px;
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.35s ease;
+    position: relative;
+    z-index: 2;
+    touch-action: manipulation;
 }
 
-.content h2 { font-size: 43px; line-height: 1.2; margin-bottom: 25px; }
-
-.description { max-width: 700px; margin-bottom: 30px; font-size: 23px; line-height: 1.6; }
-
-.button { display: flex; flex-wrap: wrap; gap: 18px; }
-
-.btn-documentation, .btn-get-started {
-    display: inline-block; padding: 12px 22px; border-radius: 50px;
-    text-decoration: none; font-size: 16px;
-    transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+.tag:hover,
+.tag:focus-visible {
+    background: white;
+    color: #0e35a9;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.btn-documentation { background: #13cfb6; color: #071b55; border: 2px solid #13cfb6; }
-.btn-get-started { background: transparent; color: white; border: 2px solid white; }
-
-/* ---------- Visi & Misi (tabel) ---------- */
-.visi-misi-home {
-    position: relative; z-index: 1;
-    width: 100%; max-width: 1000px; margin: 40px auto 60px;
-    padding: 20px 4%; scroll-margin-top: 40px;
+.home h2 {
+    font-size: clamp(25px, 4vw, 48px);
+    margin-bottom: 25px;
+    line-height: 1.2;
+    animation: muncul 1s ease both;
 }
 
-.judul-vm-home { text-align: center; margin-bottom: 25px; }
-.judul-vm-home h2 { font-size: 32px; letter-spacing: 2px; }
-
-.tabel-vm-home { width: 100%; border-collapse: separate; border-spacing: 0 15px; }
-
-.tabel-vm-home tr {
-    background: rgba(5, 20, 90, .8);
-    transition: background .4s ease, transform .4s ease, box-shadow .4s ease;
+.description {
+    font-size: clamp(16px, 1.8vw, 21px);
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto;
+    color: #e4edff;
 }
 
-.tabel-vm-home td {
-    height: 110px; padding: 20px 25px; vertical-align: middle;
-    border-top: 1px solid rgba(255, 255, 255, .25);
-    border-bottom: 1px solid rgba(255, 255, 255, .25);
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
 }
 
-.tabel-vm-home td.vm-label {
-    width: 140px; font-size: 22px; font-weight: bold; letter-spacing: 2px; color: #13cfb6;
-    border-left: 4px solid #13cfb6; border-radius: 8px 0 0 8px;
+.social-buttons a,
+.back-button {
+    display: inline-block;
+    padding: 13px 22px;
+    background: white;
+    color: #0e35a9;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s ease;
 }
 
-.tabel-vm-home td.vm-isi {
-    font-size: 19px; line-height: 1.6;
-    border-right: 1px solid rgba(255, 255, 255, .25); border-radius: 0 8px 8px 0;
+.social-buttons a:hover,
+.back-button:hover {
+    background: #c8dcff;
+    transform: translateY(-4px);
 }
 
-/* Animasi muncul saat di-scroll */
-.js .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s ease; }
-.js .reveal.tampil { opacity: 1; transform: none; }
-.js .reveal .tabel-vm-home tr { opacity: 0; }
-.js .reveal.tampil .tabel-vm-home tr { animation: barisKiri .9s ease both; }
-.js .reveal.tampil .tabel-vm-home tr:nth-child(2) { animation-delay: .3s; }
+/* ==============================
+   HALAMAN TENTANG TRI
+============================== */
 
-/* ---------- Footer ---------- */
-footer { position: relative; z-index: 2; padding: 15px; text-align: center; font-size: 14px; }
-
-
-/* =====================================================
-   3. TABLET & JENDELA SEMPIT (maks 1000px)
-   ===================================================== */
-
-@media (max-width: 1000px) {
-    header { flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .logo { width: 100%; text-align: center; font-size: 27px; }
-    nav { gap: 18px; }
-    main { padding: 50px 6%; }
-    .content h2 { font-size: 38px; }
-    .description { font-size: 21px; }
+.page-content {
+    width: min(1100px, 90%);
+    margin: auto;
+    padding: 65px 0;
+    text-align: center;
+    animation: muncul 0.8s ease both;
 }
 
+.page-label {
+    color: #c8dcff;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
 
-/* =====================================================
-   4. HP ANDROID & IPHONE (maks 600px)
-   ===================================================== */
+.page-content > h2 {
+    font-size: clamp(28px, 4vw, 43px);
+    margin-bottom: 20px;
+}
 
-@media (max-width: 600px) {
+.page-intro {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #e4edff;
+}
 
-    body { background: linear-gradient(170deg, rgb(14, 53, 169) 0%, rgb(10, 40, 135) 100%) fixed; overscroll-behavior-y: none; }
-    .container { min-height: auto; }
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin: 35px 0;
+}
 
-    /* Background */
-    .image-tri { top: 300px; right: 0; width: 250px; max-width: 65%; opacity: .10; }
-    .layer-blur { top: 35%; left: 10%; width: 180px; height: 180px; filter: blur(75px); }
+.info-box {
+    padding: 30px;
+    min-height: 180px;
+    text-align: left;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transition: transform 0.4s ease, background 0.4s ease,
+                box-shadow 0.4s ease;
+    animation: muncul 0.8s ease both;
+}
 
-    /* Header + hamburger (aman dari notch iPhone) */
-    header {
-        flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center;
-        gap: 15px;
-        padding-top: calc(20px + env(safe-area-inset-top));
-        padding-bottom: 15px;
-        padding-left: calc(18px + env(safe-area-inset-left));
-        padding-right: calc(18px + env(safe-area-inset-right));
+.info-box:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.info-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #d8e6ff;
+}
+
+.info-box p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* ==============================
+   HALAMAN VISI DAN MISI
+============================== */
+
+.vm-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+    text-align: left;
+}
+
+.vm-card {
+    padding: 35px;
+    min-height: 280px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: 0.4s ease;
+    animation: muncul 0.8s ease both;
+}
+
+.vm-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    background: rgba(255,255,255,0.2);
+}
+
+.vm-number {
+    font-size: 40px;
+    font-weight: bold;
+    color: #b7d0ff;
+    margin-bottom: 15px;
+}
+
+.vm-card h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.vm-card p,
+.vm-card li {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.vm-card ul {
+    padding-left: 22px;
+}
+
+.vm-card li {
+    margin-bottom: 12px;
+}
+
+.back-button {
+    margin-top: 15px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    width: 100%;
+    padding: 22px 15px;
+    margin-top: auto;
+    text-align: center;
+    background: rgba(3,17,69,0.3);
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ==============================
+   ANIMASI
+============================== */
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
 
-    .logo { flex: 1; width: auto; font-size: clamp(20px, 6vw, 26px); line-height: 1.25; text-align: left; white-space: normal; }
-
-    .menu-toggle {
-        display: flex; flex-direction: column; justify-content: center; gap: 6px;
-        width: 46px; height: 46px; padding: 11px;
-        background: transparent; border: 2px solid #13cfb6; border-radius: 14px;
-        cursor: pointer; -webkit-appearance: none; appearance: none;
-        transition: background .3s ease;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    .menu-toggle span { display: block; width: 100%; height: 2px; background: white; border-radius: 2px; transition: transform .35s ease, opacity .25s ease; }
-    .menu-toggle.aktif { background: rgba(19, 207, 182, .2); }
-    .menu-toggle.aktif span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .menu-toggle.aktif span:nth-child(2) { opacity: 0; }
-    .menu-toggle.aktif span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+/* ==============================
+   RESPONSIVE LAPTOP KECIL / TABLET
+============================== */
+
+@media screen and (max-width: 1050px) {
+    .header {
+        padding: 15px 3%;
+        gap: 12px;
+    }
 
     nav {
-        width: 100%; flex-direction: column; flex-wrap: nowrap; gap: 0;
-        max-height: 0; overflow: hidden; opacity: 0;
-        background: rgba(5, 20, 90, .9); border-radius: 14px;
-        -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-        transition: max-height .45s ease, opacity .35s ease;
+        gap: 12px;
     }
 
-    nav.buka { max-height: 420px; opacity: 1; }
-
-    nav a { width: 100%; padding: 14px 10px; text-align: center; font-size: 16px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
-    nav a:last-child { border-bottom: none; }
-    nav a::after { display: none; }
-
-    .btn-signing { width: 100%; max-width: 260px; margin: 0 auto; padding: 11px 25px; text-align: center; font-size: 15px; }
-
-    /* Hero */
-    main {
-        display: block; min-height: auto;
-        padding: 30px max(22px, env(safe-area-inset-right)) 40px max(22px, env(safe-area-inset-left));
+    nav a {
+        font-size: 12px;
     }
 
-    .content { max-width: 100%; text-align: center; }
-
-    .tag-wrap { flex-direction: column; align-items: center; gap: 12px; }
-    .tag-box { width: 220px; max-width: 100%; }
-    .tag { font-size: 15px; padding: 9px; }
-
-    .content h2 { margin-bottom: 20px; font-size: clamp(25px, 7vw, 32px); line-height: 1.3; overflow-wrap: break-word; }
-    .description { margin: 0 auto 25px; font-size: clamp(16px, 4.5vw, 19px); line-height: 1.7; }
-
-    .button { flex-direction: column; align-items: center; gap: 14px; width: 100%; }
-    .btn-documentation, .btn-get-started { width: 100%; max-width: 260px; padding: 12px 15px; text-align: center; font-size: 15px; }
-
-    /* Visi & Misi: tabel berubah jadi kartu bertumpuk */
-    .visi-misi-home {
-        margin: 20px auto 40px; scroll-margin-top: 20px;
-        padding: 10px max(22px, env(safe-area-inset-right)) 10px max(22px, env(safe-area-inset-left));
+    .brand h1 {
+        font-size: 16px;
     }
 
-    .judul-vm-home h2 { font-size: 25px; }
-
-    .tabel-vm-home, .tabel-vm-home tbody { display: block; width: 100%; }
-
-    .tabel-vm-home tr {
-        display: block; margin-bottom: 15px;
-        border: 1px solid rgba(255, 255, 255, .25); border-left: 4px solid #13cfb6; border-radius: 10px;
+    .logo {
+        width: 55px;
+        height: 55px;
     }
 
-    .tabel-vm-home td, .tabel-vm-home td.vm-label, .tabel-vm-home td.vm-isi {
-        display: block; width: 100%; height: auto; border: none; border-radius: 0;
+    .btn-join {
+        padding: 10px 14px;
+        font-size: 13px;
     }
-
-    .tabel-vm-home td.vm-label { padding: 16px 18px 4px; font-size: 19px; }
-    .tabel-vm-home td.vm-isi { padding: 4px 18px 18px; font-size: 16px; line-height: 1.7; }
-
-    .js .reveal.tampil .tabel-vm-home tr { animation-name: barisBawah; animation-duration: .8s; }
-
-    footer { padding: 18px 10px calc(18px + env(safe-area-inset-bottom)); font-size: 12px; }
 }
 
+/* ==============================
+   RESPONSIVE ANDROID / IPHONE
+============================== */
 
-/* =====================================================
-   5. HP LAYAR SANGAT KECIL (maks 380px)
-   ===================================================== */
+@media screen and (max-width: 800px) {
 
-@media (max-width: 380px) {
-    header { padding-left: 13px; padding-right: 13px; }
-    .logo { font-size: 20px; }
-    .content h2 { font-size: 24px; }
-    .description { font-size: 16px; }
-    .judul-vm-home h2 { font-size: 22px; }
-    .tabel-vm-home td.vm-label { font-size: 17px; }
-    .tabel-vm-home td.vm-isi { font-size: 15px; }
-}
-
-
-/* =====================================================
-   6. KHUSUS IPHONE / SAFARI
-   (hanya terbaca oleh Safari iOS)
-   ===================================================== */
-
-@supports (-webkit-touch-callout: none) {
-    body {
-        min-height: -webkit-fill-available;
-        min-height: 100dvh;
+    .header {
+        min-height: 78px;
+        padding: 12px 5%;
     }
 
-    html { -webkit-tap-highlight-color: transparent; }
+    .brand {
+        gap: 9px;
+    }
 
-    /* blur & logo dipaksa pakai GPU supaya tidak patah-patah di Safari */
-    .layer-blur { -webkit-filter: blur(75px); transform: translateZ(0); }
-    .image-tri { -webkit-transform: translateZ(0); }
+    .brand h1 {
+        font-size: clamp(12px, 3vw, 17px);
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: #092779;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    nav.buka {
+        display: flex;
+    }
+
+    nav a {
+        display: block;
+        padding: 14px 10px;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    nav a::after {
+        display: none;
+    }
+
+    .btn-join {
+        display: none;
+    }
+
+    .home {
+        padding: 75px 0;
+    }
+
+    .home h2 {
+        font-size: clamp(25px, 6vw, 38px);
+    }
+
+    .description {
+        font-size: 17px;
+    }
+
+    .page-content {
+        padding: 50px 0;
+    }
 }
 
+/* ==============================
+   RESPONSIVE HP LAYAR KECIL
+============================== */
 
-/* =====================================================
-   7. HOVER (LAPTOP) & SENTUHAN (HP)
-   ===================================================== */
+@media screen and (max-width: 600px) {
 
-/* Laptop / mouse */
-@media (hover: hover) {
-    nav a:hover { color: #13cfb6; transform: translateY(-3px); }
-    nav a:hover::after { transform: scaleX(1); }
+    .info-container,
+    .vm-container {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
 
-    .btn-signing:hover { background: #13cfb6; color: #071b55; transform: scale(1.05); box-shadow: 0 5px 20px rgba(19, 207, 182, .4); }
+    .info-box,
+    .vm-card {
+        padding: 25px;
+        min-height: auto;
+    }
 
-    .tag-box:hover { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(19, 207, 182, .35); }
+    .page-intro {
+        font-size: 16px;
+    }
 
-    .btn-documentation:hover, .btn-get-started:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(19, 207, 182, .4); }
-    .btn-get-started:hover { background: white; color: #071b55; }
+    .tag-wrap {
+        gap: 10px;
+    }
 
-    .tabel-vm-home tr:hover { background: #102e91; transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, .25); }
+    .tag {
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-buttons a {
+        width: min(100%, 280px);
+    }
+
+    footer p {
+        font-size: 12px;
+    }
 }
 
-/* HP / layar sentuh */
-@media (hover: none) {
-    nav a:active { background: rgba(19, 207, 182, .25); color: #13cfb6; }
+/* ==============================
+   HP SANGAT KECIL
+============================== */
 
-    .btn-signing:active { background: #13cfb6; color: #071b55; transform: scale(.96); }
+@media screen and (max-width: 380px) {
 
-    .tag-box:active { transform: scale(.96); }
+    .brand h1 {
+        font-size: 11px;
+    }
 
-    .btn-documentation:active, .btn-get-started:active { transform: scale(.96); box-shadow: 0 4px 16px rgba(19, 207, 182, .45); }
-    .btn-get-started:active { background: white; color: #071b55; }
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
 
-    .tabel-vm-home tr:active { background: #102e91; transform: scale(.98); }
+    .menu-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .home {
+        width: 92%;
+    }
+
+    .home h2 {
+        font-size: 24px;
+    }
+
+    .page-content {
+        width: 92%;
+    }
 }
 
+/* Efek 3D Home */
 
-/* =====================================================
-   MATIKAN ANIMASI UNTUK PENGGUNA YANG MEMINTA
-   ===================================================== */
+.tag,
+.social-buttons a,
+.btn-join {
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.tag:hover,
+.social-buttons a:hover,
+.btn-join:hover {
+    transform: perspective(700px)
+               translateY(-7px)
+               rotateX(8deg)
+               rotateY(-5deg)
+               scale(1.05);
+
+    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+}
+
+/* Mengurangi animasi jika perangkat meminta gerakan minimal */
 
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
         scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }

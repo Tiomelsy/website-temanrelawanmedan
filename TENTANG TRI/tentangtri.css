@@ -1,340 +1,312 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =========================================
+   TENTANG TRI MEDAN
+   RESPONSIVE + 3D ANIMATION
+========================================= */
 
-/* DASAR */
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: rgb(14, 53, 169);
-    font-family: 'Times New Roman', Times, serif;
-    color: white;
-    min-height: 100vh;
-    line-height: 1.5;
-}
-
-.container {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-/* BACKGROUND LOGO */
-.image-tri {
-    position: fixed;
-    width: 340px;
-    max-width: 35%;
-    height: auto;
-    top: 150px;
-    right: 7%;
-    opacity: 0.10;
-    z-index: 0;
-    pointer-events: none;
-    animation: logoMasuk 1.5s ease;
-}
-
-.layer-blur {
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    top: 30%;
-    right: 15%;
-    background: #3425ff;
-    filter: blur(150px);
-    opacity: 0.12;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* HEADER */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 4%;
-    gap: 25px;
-    position: relative;
-    z-index: 2;
-    animation: turun 1s ease;
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: normal;
-    white-space: nowrap;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
-    transition: 0.3s ease;
-}
-
-nav a:hover {
-    color: #13cfb6;
-    transform: translateY(-3px);
-}
-
-/* MAIN */
-main {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 55px 7% 75px;
-    position: relative;
-    z-index: 1;
-}
-
-.content {
-    width: 100%;
-    max-width: 1150px;
+.about-page {
+    width: min(1150px, 90%);
     margin: auto;
-    animation: naik 1s ease;
+    padding: 70px 0;
 }
 
-/* TAG */
-.tag-box {
-    width: 200px;
-    padding: 3px;
-    margin: 0 auto 18px;
-    border-radius: 50px;
-    background: linear-gradient(
-        90deg,
-        #13045b,
-        #3425ff,
-        #13cfb6,
-        #13045b
-    );
-    background-size: 200%;
-    animation: warna 4s linear infinite;
-    box-shadow: 0 0 12px #10105b;
-    transition: 0.3s;
-}
 
-.tag {
-    display: block;
-    background-color: #19053c;
-    border-radius: 50px;
+/* =========================================
+   JUDUL HALAMAN
+========================================= */
+
+.about-heading {
     text-align: center;
-    padding: 7px 10px;
-    font-size: 15px;
-    letter-spacing: 2px;
-    color: white;
+    margin-bottom: 55px;
+    animation: headingAppear 1s ease both;
 }
 
-/* JUDUL */
-.content h1 {
-    font-size: 39px;
-    text-align: center;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
+.about-label {
+    display: inline-block;
+    color: #c8dcff;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
 }
 
-.description {
-    font-size: 19px;
-    color: #dce5ff;
-    text-align: center;
-    line-height: 1.7;
-    max-width: 750px;
-    margin: 0 auto 40px;
+.about-heading h2 {
+    font-size: clamp(35px, 5vw, 55px);
+    margin-bottom: 20px;
 }
 
-/* CONTAINER VISI MISI */
-.visi-misi-container {
+.about-heading h2 span {
+    color: #b7d0ff;
+    text-shadow: 0 5px 20px rgba(183,208,255,0.3);
+}
+
+.about-heading p {
+    max-width: 700px;
+    margin: auto;
+    color: #e4edff;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.heading-line {
+    width: 85px;
+    height: 4px;
+    background: #b7d0ff;
+    border-radius: 10px;
+    margin: 28px auto 0;
+}
+
+
+/* =========================================
+   LAYOUT KARTU INFORMASI
+========================================= */
+
+.about-grid {
     display: grid;
-    grid-template-columns: 0.85fr 1.4fr;
-    gap: 25px;
-    align-items: stretch;
-    margin-top: 30px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+
+    perspective: 1200px;
 }
 
-/* BOX VISI DAN MISI */
-.vm-box {
-    background: rgba(5, 20, 90, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-top: 4px solid #13cfb6;
-    border-radius: 15px;
-    padding: 30px;
+
+/* =========================================
+   KARTU INFORMASI
+========================================= */
+
+.about-card {
     position: relative;
+    min-height: 255px;
+    padding: 35px;
+
     overflow: hidden;
 
-    opacity: 0;
-    animation: kotakMuncul 0.9s ease forwards;
-    transition: all 0.4s ease;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.19),
+        rgba(255,255,255,0.07)
+    );
+
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 22px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.16),
+        inset 0 1px 1px rgba(255,255,255,0.15);
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    animation: cardAppear 1s ease both;
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        background 0.6s ease,
+        border-color 0.6s ease;
 }
 
-.visi-box {
+
+/* Animasi bertahap */
+
+.about-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.about-card:nth-child(2) {
     animation-delay: 0.2s;
 }
 
-.misi-box {
+.about-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.about-card:nth-child(4) {
     animation-delay: 0.4s;
 }
 
-/* HEADER DALAM BOX */
-.vm-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding-bottom: 20px;
-    margin-bottom: 22px;
-    border-bottom: 1px solid rgba(19, 207, 182, 0.4);
+.about-card:nth-child(5) {
+    animation-delay: 0.5s;
 }
 
-.emoji-vm {
-    font-size: 45px;
-    display: inline-block;
-    transition: transform 0.4s ease;
+
+/* Efek dekorasi cahaya */
+
+.about-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -80px;
+
+    background: rgba(183,208,255,0.15);
+    border-radius: 50%;
+
+    transition:
+        transform 0.7s ease,
+        background 0.7s ease;
 }
 
-.nomor {
-    color: #13cfb6;
-    font-size: 14px;
-    letter-spacing: 2px;
+.about-card:hover::before {
+    transform: scale(1.8);
+    background: rgba(183,208,255,0.22);
 }
 
-.vm-header h2 {
-    color: white;
-    font-size: 27px;
-    font-weight: normal;
-    letter-spacing: 2px;
-    margin-top: 3px;
-    transition: color 0.3s ease;
+
+/* Efek garis samping */
+
+.about-card::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: #b7d0ff;
+
+    transition: width 0.5s ease;
 }
 
-/* ISI BOX */
-.vm-content p {
-    color: #e0eaff;
-    font-size: 19px;
-    line-height: 1.9;
-    text-align: justify;
+.about-card:hover::after {
+    width: 9px;
 }
 
-/* DAFTAR MISI */
-.vm-content ol {
-    padding-left: 25px;
-    margin: 0;
+
+/* =========================================
+   HOVER 3D
+========================================= */
+
+.about-card:hover {
+    transform:
+        perspective(1000px)
+        translateY(-12px)
+        rotateX(7deg)
+        rotateY(-5deg)
+        scale(1.025);
+
+    background: rgba(255,255,255,0.21);
+
+    border-color: rgba(255,255,255,0.65);
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,0.3),
+        0 0 20px rgba(183,208,255,0.12);
 }
 
-.vm-content li {
-    color: #e0eaff;
+
+/* =========================================
+   ISI KARTU
+========================================= */
+
+.card-number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    color: rgba(255,255,255,0.35);
+    font-size: 35px;
+    font-weight: bold;
+
+    transform: translateZ(25px);
+}
+
+.card-icon {
+    font-size: 34px;
+    color: #c8dcff;
+    margin-bottom: 20px;
+
+    transform: translateZ(35px);
+
+    transition: transform 0.5s ease;
+}
+
+.about-card:hover .card-icon {
+    transform: translateZ(55px) scale(1.15) rotateY(15deg);
+}
+
+.about-card h3 {
+    position: relative;
+    z-index: 1;
+
+    color: #ffffff;
+    font-size: 25px;
+    margin-bottom: 17px;
+
+    transform: translateZ(30px);
+}
+
+.about-card p {
+    position: relative;
+    z-index: 1;
+
+    color: #e4edff;
     font-size: 17px;
     line-height: 1.8;
-    text-align: justify;
-    padding-left: 8px;
-    margin-bottom: 17px;
+
+    transform: translateZ(20px);
 }
 
-.vm-content li:last-child {
-    margin-bottom: 0;
+
+/* Kotak terakhir berada di tengah */
+
+.card-regions {
+    grid-column: 1 / -1;
+    width: 70%;
+    justify-self: center;
 }
 
-.vm-content li::marker {
-    color: #13cfb6;
-    font-weight: bold;
-}
 
-/* HOVER BOX */
-.vm-box:hover {
-    transform: translateY(-8px);
-    background: rgba(16, 46, 145, 0.95);
-    border-color: #13cfb6;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
+/* =========================================
+   BAGIAN PENUTUP
+========================================= */
 
-.vm-box:hover .emoji-vm {
-    transform: scale(1.15) rotate(-8deg);
-}
-
-.vm-box:hover .vm-header h2 {
-    color: #13cfb6;
-}
-
-/* BUTTON */
-.button {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 35px;
-}
-
-.btn-documentation,
-.btn-get-started {
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.btn-documentation {
-    border: 1px solid white;
-    color: white;
-}
-
-.btn-documentation:hover {
-    background-color: white;
-    color: #102e91;
-    transform: translateY(-4px);
-}
-
-.btn-get-started {
-    background-color: #071147;
-    color: white;
-    border: 1px solid #071147;
-}
-
-.btn-get-started:hover {
-    background-color: #13a995;
-    border-color: #13a995;
-    transform: translateY(-4px);
-}
-
-/* FOOTER */
-footer {
-    position: relative;
-    z-index: 2;
+.about-closing {
     text-align: center;
-    padding: 18px;
-    background-color: #080d52;
-    font-size: 15px;
+    margin-top: 60px;
+    animation: headingAppear 1.2s ease both;
 }
 
-/* ANIMASI */
-@keyframes warna {
-    from {
-        background-position: 0%;
-    }
-
-    to {
-        background-position: 200%;
-    }
+.about-closing p {
+    font-size: 22px;
+    font-style: italic;
+    color: #d8e6ff;
+    margin-bottom: 25px;
 }
 
-@keyframes naik {
+.back-button {
+    display: inline-block;
+    padding: 13px 27px;
+
+    background: white;
+    color: #0e35a9;
+
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: all 0.4s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: #c8dcff;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+
+/* =========================================
+   ANIMASI KEMUNCULAN
+========================================= */
+
+@keyframes headingAppear {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(-30px);
     }
 
     to {
@@ -343,244 +315,262 @@ footer {
     }
 }
 
-@keyframes turun {
+@keyframes cardAppear {
     from {
         opacity: 0;
-        transform: translateY(-25px);
+        transform:
+            perspective(1000px)
+            rotateY(-12deg)
+            translateY(40px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+            perspective(1000px)
+            rotateY(0deg)
+            translateY(0);
     }
 }
 
-@keyframes kotakMuncul {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 800px) {
+
+    .about-page {
+        padding: 55px 0;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes logoMasuk {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
+    .about-grid {
+        gap: 20px;
     }
 
-    to {
-        opacity: 0.10;
-        transform: scale(1);
-    }
-}
-
-/* LAPTOP / MACBOOK */
-@media screen and (min-width: 1001px) {
-    .visi-misi-container {
-        grid-template-columns: 0.85fr 1.4fr;
+    .about-card {
+        padding: 28px;
+        min-height: 235px;
     }
 
-    .visi-box,
-    .misi-box {
-        min-height: 340px;
-    }
-}
-
-/* TABLET */
-@media screen and (max-width: 1000px) {
-    header {
-        flex-wrap: wrap;
-    }
-
-    .logo {
-        font-size: 21px;
-    }
-
-    nav {
-        gap: 14px;
-        flex-wrap: wrap;
-    }
-
-    main {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    .visi-misi-container {
-        grid-template-columns: 1fr 1.3fr;
-        gap: 18px;
-    }
-
-    .vm-box {
-        padding: 23px;
-    }
-
-    .vm-content p {
-        font-size: 17px;
-    }
-
-    .vm-content li {
-        font-size: 16px;
-    }
-}
-
-/* IPHONE DAN ANDROID */
-@media screen and (max-width: 600px) {
-    header {
-        padding: 20px;
-        justify-content: center;
-        gap: 18px;
-    }
-
-    .logo {
-        font-size: 19px;
-        white-space: normal;
-        text-align: center;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 12px;
-    }
-
-    main {
-        padding: 40px 20px 55px;
-    }
-
-    .image-tri {
-        width: 230px;
-        max-width: 60%;
-        top: 180px;
-        right: 5%;
-    }
-
-    .content h1 {
-        font-size: 29px;
-    }
-
-    .description {
-        font-size: 16px;
-        margin-bottom: 30px;
-    }
-
-    /* BOX TERSUSUN VERTIKAL */
-    .visi-misi-container {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    .vm-box {
-        padding: 23px;
-        min-height: auto;
-    }
-
-    .vm-header {
-        gap: 15px;
-        margin-bottom: 18px;
-    }
-
-    .emoji-vm {
-        font-size: 38px;
-    }
-
-    .vm-header h2 {
-        font-size: 24px;
-    }
-
-    .vm-content p {
-        font-size: 17px;
-        line-height: 1.8;
-    }
-
-    .vm-content li {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 14px;
-    }
-
-    .button {
-        gap: 12px;
-        margin-top: 28px;
-    }
-
-    .btn-documentation,
-    .btn-get-started {
-        font-size: 14px;
-        padding: 11px 18px;
-    }
-
-    footer {
-        font-size: 12px;
-        padding: 16px 10px;
-    }
-}
-
-/* HP LAYAR KECIL */
-@media screen and (max-width: 380px) {
-    .logo {
-        font-size: 17px;
-    }
-
-    nav {
-        gap: 9px;
-    }
-
-    nav a {
-        font-size: 11px;
-    }
-
-    .content h1 {
-        font-size: 25px;
-    }
-
-    .description {
-        font-size: 15px;
-    }
-
-    .vm-box {
-        padding: 19px;
-    }
-
-    .vm-header h2 {
+    .about-card h3 {
         font-size: 22px;
     }
 
-    .vm-content p,
-    .vm-content li {
-        font-size: 15px;
+    .about-card p {
+        font-size: 16px;
     }
 
-    .emoji-vm {
-        font-size: 34px;
-    }
-
-    .button {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .button a {
-        text-align: center;
+    .card-regions {
+        width: 85%;
     }
 }
 
-/* REDUCE MOTION */
+
+/* =========================================
+   ANDROID DAN IPHONE
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .about-page {
+        width: 90%;
+        padding: 42px 0;
+    }
+
+    .about-heading {
+        margin-bottom: 35px;
+    }
+
+    .about-heading h2 {
+        font-size: 34px;
+    }
+
+    .about-heading p {
+        font-size: 16px;
+    }
+
+    .about-label {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-card {
+        min-height: auto;
+        padding: 28px;
+    }
+
+    .about-card h3 {
+        font-size: 22px;
+    }
+
+    .about-card p {
+        font-size: 16px;
+    }
+
+    .card-number {
+        font-size: 29px;
+    }
+
+    .card-regions {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .about-closing {
+        margin-top: 40px;
+    }
+
+    .about-closing p {
+        font-size: 18px;
+    }
+}
+
+
+/* =========================================
+   HP LAYAR KECIL
+========================================= */
+
+@media screen and (max-width: 380px) {
+
+    .about-heading h2 {
+        font-size: 29px;
+    }
+
+    .about-card {
+        padding: 23px;
+    }
+
+    .about-card h3 {
+        font-size: 20px;
+    }
+
+    .about-card p {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================
+   EFEK SENTUH ANDROID DAN IPHONE
+========================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .about-card:active {
+        transform:
+            perspective(900px)
+            translateY(-5px)
+            rotateX(4deg)
+            scale(0.98);
+
+        background: rgba(255,255,255,0.24);
+
+        box-shadow:
+            0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .back-button:active {
+        transform: scale(0.95);
+        background: #c8dcff;
+    }
+}
+
+
+/* =========================================
+   AKSESIBILITAS
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
+
+    .about-page *,
+    .about-page *::before,
+    .about-page *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+[22.02, 29/10/2026] melsi: /* Efek 3D Home */
+
+.tag,
+.social-buttons a,
+.btn-join {
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.tag:hover,
+.social-buttons a:hover,
+.btn-join:hover {
+    transform: perspective(700px)
+               translateY(-7px)
+               rotateX(8deg)
+               rotateY(-5deg)
+               scale(1.05);
+
+    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+}
+[22.03, 29/10/2026] melsi: CSS — TENTANG TRI
+/* =================================
+   ANIMASI 3D TENTANG TRI
+================================= */
+
+.info-container {
+    perspective: 1000px;
+}
+
+.info-box {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        background 0.6s ease;
+
+    animation: about3D 1s ease both;
+}
+
+.info-box:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.info-box:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.info-box:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+.info-box:hover {
+    transform: perspective(1000px)
+               translateY(-12px)
+               rotateX(7deg)
+               rotateY(-5deg)
+               scale(1.02);
+
+    box-shadow: 0 22px 35px rgba(0,0,0,0.3);
+}
+
+@keyframes about3D {
+    from {
+        opacity: 0;
+        transform: perspective(1000px)
+                   rotateX(-12deg)
+                   translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px)
+                   rotateX(0deg)
+                   translateY(0);
     }
 }

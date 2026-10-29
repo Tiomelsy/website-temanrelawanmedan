@@ -3,41 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0e35a9">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <title>TEMAN RELAWAN INDONESIA</title>
+    <title>Teman Relawan Indonesia - Medan</title>
 
     <link rel="stylesheet" href="trimedan.css">
-
-    <!-- JavaScript terpisah -->
     <script src="trimedan.js" defer></script>
-
-
-
 </head>
 
-< <body>
+<body>
 
     <div class="container">
 
-        <!-- BACKGROUND LOGO -->
-        <img class="image-tri" src="TRI (LOGO).png" alt="Logo TRI">
-
-        <!-- HEADER -->
-        <header>
-
-            <h1 class="logo">TEMAN RELAWAN INDONESIA</h1>
+        <header class="header">
+            <a href="trimedan.html" class="brand">
+                <img src="TRI (LOGO).png" alt="Logo TRI" class="logo">
+                <h1>TEMAN RELAWAN INDONESIA</h1>
+            </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false"
                 aria-controls="menuNav">
-
                 <span></span>
                 <span></span>
                 <span></span>
-
             </button>
 
             <nav id="menuNav">
@@ -49,69 +37,47 @@
                 <a href="PATNERSHIP/patner.html">PARTNERSHIP</a>
             </nav>
 
-            <a href="JOIN US/joinus.html" class="btn-signing">JOIN US</a>
-
+            <a href="JOIN US/joinus.html" class="btn-join">JOIN US</a>
         </header>
 
-        <!-- BAGIAN UTAMA -->
-        <main id="HOME">
+        <main class="home">
+            <div class="tag-wrap">
+                <a href="TENTANG TRI/tentangtri.html" class="tag">
+                    TENTANG TRI &gt;
+                </a>
 
-            <div class="content">
-
-                <div class="tag-wrap anim" style="--d:.15s">
-
-                    <div class="tag-box">
-                        <a href="TENTANG TRI/tentangtri.html" class="tag">
-                            TENTANG TRI &gt;
-                        </a>
-                    </div>
-
-                    <div class="tag-box">
-                        <a href="VISI & MISI/vmtrimedan.html" class="tag">
-                            VISI &amp; MISI &gt;
-                        </a>
-                    </div>
-
-                </div>
-
-                <h2 class="anim" style="--d:.35s">
-                    #MENGABDI DENGAN HATI, MEMBANGUN NEGERI
-                </h2>
-
-                <p class="description anim" style="--d:.55s">
-                    Setiap langkah kecil memiliki arti.
-                    <br>
-                    Bersama Teman Relawan Indonesia, kita hadir
-                    untuk berbagi, peduli, dan memberikan perubahan
-                    positif bagi masyarakat.
-                </p>
-
-                <div class="button anim" style="--d:.75s">
-
-                    <a href="https://www.instagram.com/temanrelawanid/" target="_blank" rel="noopener noreferrer"
-                        class="btn-documentation">
-                        Instagram TRI Pusat ↗️
-                    </a>
-
-                    <a href="https://www.instagram.com/temanrelawan.medan/" target="_blank" rel="noopener noreferrer"
-                        class="btn-get-started">
-                        Instagram TRI Medan ↗️
-                    </a>
-
-                </div>
-
+                <a href="VISI & MISI/vmtrimedan.html" class="tag">
+                    VISI &amp; MISI &gt;
+                </a>
             </div>
 
+            <h2>#MENGABDI DENGAN HATI, MEMBANGUN NEGERI</h2>
+
+            <p class="description">
+                Setiap langkah kecil memiliki arti.<br>
+                Bersama Teman Relawan Indonesia, kita hadir
+                untuk berbagi, peduli, dan memberikan perubahan
+                positif bagi masyarakat.
+            </p>
+
+            <div class="social-buttons">
+                <a href="https://www.instagram.com/temanrelawanid/" target="_blank" rel="noopener noreferrer">
+                    Instagram TRI
+                </a>
+
+                <a href="https://www.instagram.com/temanrelawan.medan/" target="_blank" rel="noopener noreferrer">
+                    Instagram TRI MEDAN
+                </a>
+            </div>
         </main>
 
-        <!-- FOOTER -->
         <footer>
             <p>Teman Relawan Indonesia | Mengabdi dengan Hati, Membangun Negeri</p>
+            <br>
             <p>© 2026 Teman Relawan Medan</p>
         </footer>
 
     </div>
-
-    </body>
+</body>
 
 </html>

@@ -4,117 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang TRI</title>
+    <meta name="theme-color" content="#0e35a9">
+    <title>Tentang TRI Medan</title>
+
+    <link rel="stylesheet" href="trimedan.css">
     <link rel="stylesheet" href="tentangtri.css">
+    <script src="../trimedan.js" defer></script>
 </head>
 
 <body>
 
     <div class="container">
 
-        <header>
-            <div class="logo">TEMAN RELAWAN INDONESIA</div>
+        <header class="header">
+            <a href="../trimedan.html" class="brand">
+                <img src="../TRI (LOGO).png" alt="Logo TRI" class="logo">
+                <h1>TEMAN RELAWAN INDONESIA</h1>
+            </a>
 
-            <nav>
-                <a href="../trimedan.html"> HOME</a>
-                <a href="bph.html">BPH TRI MEDAN</a>
-                <a href="kaderisasi.html">KADERISASI</a>
-                <a href="sosial.html">SOSIAL</a>
-                <a href="medinfo.html">MEDINFO</a>
-                <a href="partnership.html">PARTNERSHIP</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false"
+                aria-controls="menuNav">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav id="menuNav">
+                <a href="../trimedan.html">HOME</a>
+                <a href="../BPH/bphnyatrimedan.html">BPH</a>
+                <a href="../KADERISASI/kader.html">KADERISASI</a>
+                <a href="../SOSIAL/sosial.html">SOSIAL</a>
+                <a href="../MEDINFO/medinfo.html">MEDINFO</a>
+                <a href="../PATNERSHIP/patner.html">PARTNERSHIP</a>
             </nav>
+
+            <a href="join" class="btn-join">JOIN US</a>
         </header>
 
+        <main class="page-content">
+            <p class="page-label">TENTANG KAMI</p>
+            <h2>Mengenal Teman Relawan Indonesia</h2>
 
-        <main>
+            <p class="page-intro">
+                Teman Relawan Indonesia merupakan wadah yang memfasilitasi
+                generasi muda untuk ikut berkontribusi dalam memajukan
+                Indonesia melalui semangat sosial yang aktif, kreatif,
+                dan konstruktif.
+            </p>
 
-            <div class="content">
+            <div class="info-container">
 
-                <div class="tag-box">
-                    <span class="tag">TENTANG KAMI</span>
+                <div class="info-box">
+                    <h3>Tentang TRI</h3>
+                    <p>
+                        Teman Relawan Indonesia menjadi ruang bagi generasi
+                        muda untuk belajar, berkembang, dan memberikan
+                        kontribusi positif bagi masyarakat.
+                    </p>
                 </div>
 
-                <h2>TENTANG TEMAN RELAWAN INDONESIA</h2>
-
-                <p class="description">
-                    Mengenal lebih dalam tentang perjalanan, nilai-nilai,
-                    dan komitmen Teman Relawan Indonesia dalam memberikan
-                    dampak positif bagi masyarakat.
-                </p>
-
-                <div class="info-container">
-
-                    <!-- KOTAK TENTANG KAMI -->
-                    <div class="info-box tentang">
-
-                        <span class="nomor">01</span>
-
-                        <h3>Mengenal Teman Relawan Indonesia</h3>
-
-                        <p>
-                            Teman Relawan Indonesia merupakan sebuah komunitas
-                            yang mewadahi anak muda untuk memajukan Indonesia
-                            yang lebih baik melalui jiwa sosial yang aktif,
-                            kreatif, dan konstruktif sehingga dapat menebarkan
-                            kebermanfaatan untuk masyarakat.
-                        </p>
-
-                    </div>
-
-                    <!-- KOTAK TANGGAL BERDIRI -->
-                    <div class="info-box">
-
-                        <span class="nomor">02</span>
-
-                        <h3>Tanggal Berdiri</h3>
-
-                        <p>1 Maret 2022</p>
-
-                    </div>
-
-                    <!-- KOTAK PUSAT ORGANISASI -->
-                    <div class="info-box">
-
-                        <span class="nomor">03</span>
-
-                        <h3>Pusat Organisasi</h3>
-
-                        <p>Kota Bandung</p>
-
-                    </div>
-
-                    <!-- KOTAK WILAYAH -->
-                    <div class="info-box">
-
-                        <span class="nomor">04</span>
-
-                        <h3>Wilayah</h3>
-
-                        <p>
-                            Medan, Bandung, Makassar, Yogyakarta,
-                            DKI Jakarta, dan Palembang.
-                        </p>
-
-                    </div>
-
+                <div class="info-box">
+                    <h3>Tanggal Berdiri</h3>
+                    <p>1 Maret 2022</p>
                 </div>
 
-                <div class="button">
+                <div class="info-box">
+                    <h3>Pusat Organisasi</h3>
+                    <p>Kota Bandung</p>
+                </div>
 
-                    <a href="../trimedan.html" class="btn-documentation">
-                        Kembali ke Home
-                    </a>
-
-                    <a href="https://www.instagram.com/temanrelawanid/" target="_blank" class="btn-get-started">
-                        Instagram TRI ↗
-                    </a>
-
+                <div class="info-box">
+                    <h3>Wilayah</h3>
+                    <p>
+                        Medan, Bandung, Makassar, Yogyakarta,
+                        DKI Jakarta, dan Palembang.
+                    </p>
                 </div>
 
             </div>
 
+            <a href="../trimedan.html" class="back-button">
+                ← Kembali ke Home
+            </a>
         </main>
-
 
         <footer>
             <p>Teman Relawan Indonesia | Mengabdi dengan Hati, Membangun Negeri</p>
@@ -122,7 +92,6 @@
         </footer>
 
     </div>
-
 </body>
 
 </html>
