@@ -1,645 +1,382 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =====================================================
+   TRI MEDAN - 1 CSS UNTUK SEMUA PERANGKAT
+   1. Dasar & animasi (semua perangkat)
+   2. Laptop / MacBook (default)
+   3. Tablet & jendela sempit (maks 1000px)
+   4. HP Android & iPhone (maks 600px)
+   5. HP layar sangat kecil (maks 380px)
+   6. Khusus iPhone / Safari (@supports)
+   7. Hover (laptop) & sentuhan (HP)
+   ===================================================== */
+
+
+/* =====================================================
+   1. DASAR & ANIMASI
+   ===================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(19, 207, 182, .25);
 }
 
 body {
-    background-color: rgb(14, 53, 169);
+    background: linear-gradient(160deg, rgb(14, 53, 169) 0%, rgb(10, 40, 135) 100%) fixed;
     font-family: 'Times New Roman', Times, serif;
     color: white;
     min-height: 100vh;
     line-height: 1.5;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* BAGIAN BACKGROUND */
+a, button { touch-action: manipulation; }
+a:focus-visible, button:focus-visible { outline: 3px solid #13cfb6; outline-offset: 3px; }
 
-.container {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
+@keyframes warna { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+@keyframes naik { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes turun { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes barisKiri { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes barisBawah { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes melayang { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+@keyframes denyut { 0%, 100% { transform: scale(1); opacity: .13; } 50% { transform: scale(1.18); opacity: .22; } }
+
+
+/* =====================================================
+   2. LAPTOP / MACBOOK (tampilan utama)
+   ===================================================== */
+
+/* ---------- Background ---------- */
+.container { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
 
 .image-tri {
-    position: absolute;
-    width: 340px;
-    max-width: 35%;
-    height: auto;
-    top: 150px;
-    right: 7%;
-    opacity: 0.12;
-    z-index: 0;
-    pointer-events: none;
+    position: absolute; top: 150px; right: 7%;
+    width: 340px; max-width: 35%; height: auto;
+    opacity: .12; z-index: 0; pointer-events: none;
+    animation: melayang 7s ease-in-out infinite;
 }
 
 .layer-blur {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 25%;
-    left: 10%;
-    background: rgba(19, 207, 182, 0.13);
-    filter: blur(100px);
-    border-radius: 50%;
-    z-index: 0;
-    pointer-events: none;
+    position: absolute; top: 25%; left: 10%;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(19, 207, 182, .13); filter: blur(100px);
+    z-index: 0; pointer-events: none;
+    animation: denyut 6s ease-in-out infinite;
 }
 
-/* HEADER */
-
+/* ---------- Header ---------- */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 4%;
-    gap: 25px;
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 25px; padding: 25px 4%;
+    padding-left: max(4%, env(safe-area-inset-left));
+    padding-right: max(4%, env(safe-area-inset-right));
+    animation: turun .8s ease both;
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-    white-space: nowrap;
-}
+.logo { font-size: 25px; font-weight: bold; white-space: nowrap; }
 
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
+.menu-toggle { display: none; }   /* tombol hamburger hanya untuk HP */
+
+nav { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 25px; }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    transition: 0.3s;
+    position: relative; color: white; text-decoration: none; font-size: 17px;
+    transition: color .3s ease, transform .3s ease, background .25s ease;
 }
 
-nav a:hover {
-    color: #13cfb6;
-    transform: translateY(-3px);
+nav a::after {
+    content: ""; position: absolute; left: 0; bottom: -4px;
+    width: 100%; height: 2px; background: #13cfb6;
+    transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
 }
 
 .btn-signing {
-    text-decoration: none;
-    color: white;
-    background: blue;
-    border: 2px solid #13cfb6;
-    border-radius: 50px;
-    padding: 10px 25px;
-    font-family: inherit;
-    font-size: 16px;
-    white-space: nowrap;
-    transition: 0.3s;
+    color: white; background: blue; text-decoration: none; white-space: nowrap;
+    border: 2px solid #13cfb6; border-radius: 50px;
+    padding: 10px 25px; font-family: inherit; font-size: 16px;
+    transition: background .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease;
 }
 
-.btn-signing:hover {
-    background: #13cfb6;
-    color: #071b55;
-    transform: scale(1.05);
-}
-
-/* BAGIAN UTAMA */
-
+/* ---------- Hero ---------- */
 main {
-    min-height: calc(100vh - 130px);
-    display: flex;
-    align-items: center;
-    padding: 40px 7%;
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
+    display: flex; align-items: center;
+    min-height: calc(100vh - 130px); padding: 40px 7%;
 }
 
-.content {
-    width: 100%;
-    max-width: 850px;
-    animation: naik 1s ease;
-}
+.content { width: 100%; max-width: 850px; }
+
+.anim { animation: naik .9s ease both; animation-delay: var(--d, 0s); }
+
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; }
 
 .tag-box {
-    width: 230px;
-    padding: 3px;
-    border-radius: 50px;
-    background: linear-gradient(
-        90deg,
-        #13045b,
-        #3425ff,
-        #13cfb6,
-        #13045b
-    );
-    background-size: 200%;
-    animation: warna 4s linear infinite;
-    margin-bottom: 25px;
+    width: 230px; padding: 3px; border-radius: 50px;
+    background: linear-gradient(90deg, #13045b, #3425ff, #13cfb6, #13045b);
+    background-size: 200%; animation: warna 4s linear infinite;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .tag {
-    display: block;
-    background-color: #19053c;
-    border-radius: 50px;
-    text-align: center;
-    padding: 10px;
-    font-size: 17px;
-    color: #13cfb6;
-    text-decoration: none;
-    letter-spacing: 1px;
+    display: block; padding: 10px; border-radius: 50px;
+    background: #19053c; color: #13cfb6;
+    text-align: center; text-decoration: none; font-size: 17px; letter-spacing: 1px;
 }
 
-.content h2 {
-    font-size: 43px;
-    line-height: 1.2;
-    margin-bottom: 25px;
+.content h2 { font-size: 43px; line-height: 1.2; margin-bottom: 25px; }
+
+.description { max-width: 700px; margin-bottom: 30px; font-size: 23px; line-height: 1.6; }
+
+.button { display: flex; flex-wrap: wrap; gap: 18px; }
+
+.btn-documentation, .btn-get-started {
+    display: inline-block; padding: 12px 22px; border-radius: 50px;
+    text-decoration: none; font-size: 16px;
+    transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
 }
 
-.description {
-    font-size: 23px;
-    color: white;
-    line-height: 1.6;
-    max-width: 700px;
-    margin-bottom: 30px;
-}
+.btn-documentation { background: #13cfb6; color: #071b55; border: 2px solid #13cfb6; }
+.btn-get-started { background: transparent; color: white; border: 2px solid white; }
 
-/* TOMBOL INSTAGRAM */
-
-.button {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-}
-
-.btn-documentation,
-.btn-get-started {
-    display: inline-block;
-    padding: 12px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.btn-documentation {
-    background: #13cfb6;
-    color: #071b55;
-    border: 2px solid #13cfb6;
-}
-
-.btn-get-started {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-}
-
-.btn-documentation:hover,
-.btn-get-started:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(19, 207, 182, 0.4);
-}
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-    padding: 15px;
-    position: relative;
-    z-index: 2;
-    font-size: 14px;
-    color: white;
-}
-
-/* ANIMASI */
-
-@keyframes warna {
-    0% {
-        background-position: 0%;
-    }
-
-    100% {
-        background-position: 200%;
-    }
-}
-
-@keyframes naik {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* TABLET DAN LAPTOP KECIL */
-
-@media screen and (max-width: 1000px) {
-
-    header {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .logo {
-        width: 100%;
-        text-align: center;
-        font-size: 27px;
-    }
-
-    nav {
-        gap: 18px;
-    }
-
-    main {
-        padding: 50px 6%;
-    }
-
-    .content {
-        max-width: 750px;
-    }
-
-    .content h2 {
-        font-size: 38px;
-    }
-
-    .description {
-        font-size: 21px;
-    }
-}
-
-/* HP ANDROID DAN IPHONE */
-
-@media screen and (max-width: 600px) {
-
-    body {
-        min-height: 100vh;
-    }
-
-    .container {
-        min-height: auto;
-    }
-
-    header {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 25px 18px 15px;
-        gap: 20px;
-    }
-
-    .logo {
-        width: 100%;
-        font-size: clamp(23px, 7vw, 30px);
-        text-align: center;
-        white-space: normal;
-        line-height: 1.25;
-    }
-
-    nav {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 18px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
-    .btn-signing {
-        font-size: 15px;
-        padding: 9px 25px;
-    }
-
-    main {
-        min-height: auto;
-        padding: 45px 22px 55px;
-    }
-
-    .content {
-        width: 100%;
-        max-width: 100%;
-        text-align: center;
-    }
-
-    .tag-box {
-        width: 220px;
-        max-width: 100%;
-        margin: 0 auto 25px;
-    }
-
-    .tag {
-        font-size: 15px;
-        padding: 9px;
-    }
-
-    .content h2 {
-        font-size: clamp(25px, 7vw, 32px);
-        line-height: 1.3;
-        text-align: center;
-        margin-bottom: 20px;
-        overflow-wrap: break-word;
-    }
-
-    .description {
-        font-size: clamp(16px, 4.5vw, 19px);
-        line-height: 1.7;
-        text-align: center;
-        color: white;
-        margin: 0 auto 25px;
-    }
-
-    .button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        width: 100%;
-    }
-
-    .btn-documentation,
-    .btn-get-started {
-        width: 100%;
-        max-width: 260px;
-        text-align: center;
-        font-size: 15px;
-        padding: 11px 15px;
-    }
-
-    .image-tri {
-        width: 250px;
-        max-width: 65%;
-        top: 280px;
-        right: 0;
-        left: auto;
-        opacity: 0.10;
-    }
-
-    .layer-blur {
-        width: 180px;
-        height: 180px;
-        top: 35%;
-        left: 10%;
-        filter: blur(75px);
-    }
-
-    footer {
-        padding: 18px 10px;
-        font-size: 12px;
-    }
-}
-
-/* HP DENGAN LAYAR SANGAT KECIL */
-
-@media screen and (max-width: 380px) {
-
-    header {
-        padding: 22px 13px 12px;
-    }
-
-    .logo {
-        font-size: 23px;
-    }
-
-    nav {
-        gap: 10px 13px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    main {
-        padding: 35px 17px 45px;
-    }
-
-    .content h2 {
-        font-size: 25px;
-    }
-
-    .description {
-        font-size: 16px;
-    }
-}
-
-/* LAPTOP */
-@media screen and (min-width: 1001px) {
-    .visi-misi {
-        max-width: 1100px;
-        margin: 65px auto 40px;
-    }
-
-    .visi-misi-container {
-        grid-template-columns: 0.85fr 1.5fr;
-        gap: 25px;
-    }
-
-    .vm-box {
-        padding: 30px;
-    }
-
-    .vm-box p {
-        font-size: 18px;
-    }
-
-    .vm-box li {
-        font-size: 17px;
-    }
-}
-
-/* HP ANDROID DAN IPHONE */
-@media screen and (max-width: 600px) {
-    .visi-misi {
-        margin: 45px auto 25px;
-    }
-
-    .visi-misi > h2 {
-        font-size: 25px;
-    }
-
-    .visi-misi-container {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .vm-box {
-        padding: 22px;
-    }
-
-    .vm-icon {
-        font-size: 40px;
-        text-align: center;
-    }
-
-    .vm-box h3 {
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .vm-box p {
-        font-size: 15px;
-        line-height: 1.8;
-    }
-
-    .vm-box li {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-}
-
-/* HP LAYAR KECIL */
-@media screen and (max-width: 380px) {
-    .visi-misi > h2 {
-        font-size: 23px;
-    }
-
-    .vm-box {
-        padding: 17px;
-    }
-
-    .vm-icon {
-        font-size: 35px;
-    }
-
-    .vm-box h3 {
-        font-size: 20px;
-    }
-
-    .vm-box p,
-    .vm-box li {
-        font-size: 14px;
-    }
-} 
-
-/* TOMBOL VISI MISI */
-
-.menu-tambahan {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-/* TABEL VISI MISI */
-
+/* ---------- Visi & Misi (tabel) ---------- */
 .visi-misi-home {
-    width: 100%;
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 20px;
-    animation: vmMuncul 1s ease;
-    scroll-margin-top: 40px;
+    position: relative; z-index: 1;
+    width: 100%; max-width: 1000px; margin: 40px auto 60px;
+    padding: 20px 4%; scroll-margin-top: 40px;
 }
 
-.judul-vm-home {
-    text-align: center;
-    margin-bottom: 25px;
-}
+.judul-vm-home { text-align: center; margin-bottom: 25px; }
+.judul-vm-home h2 { font-size: 32px; letter-spacing: 2px; }
 
-.judul-vm-home h2 {
-    color: white;
-    font-size: 32px;
-    letter-spacing: 2px;
-}
-
-.tabel-vm-home {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 15px;
-}
+.tabel-vm-home { width: 100%; border-collapse: separate; border-spacing: 0 15px; }
 
 .tabel-vm-home tr {
-    background: rgba(5, 20, 90, 0.8);
-    animation: barisMuncul 1s ease both;
-    transition: all 0.4s ease;
-}
-
-.tabel-vm-home tr:nth-child(2) {
-    animation-delay: 0.3s;
+    background: rgba(5, 20, 90, .8);
+    transition: background .4s ease, transform .4s ease, box-shadow .4s ease;
 }
 
 .tabel-vm-home td {
-    height: 110px;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-left: 4px solid #13cfb6;
-    border-radius: 8px;
-    transition: all 0.4s ease;
+    height: 110px; padding: 20px 25px; vertical-align: middle;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+    border-bottom: 1px solid rgba(255, 255, 255, .25);
 }
 
-/* HOVER */
-
-.tabel-vm-home tr:hover {
-    background: #102e91;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+.tabel-vm-home td.vm-label {
+    width: 140px; font-size: 22px; font-weight: bold; letter-spacing: 2px; color: #13cfb6;
+    border-left: 4px solid #13cfb6; border-radius: 8px 0 0 8px;
 }
 
-/* ANIMASI */
-
-@keyframes vmMuncul {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.tabel-vm-home td.vm-isi {
+    font-size: 19px; line-height: 1.6;
+    border-right: 1px solid rgba(255, 255, 255, .25); border-radius: 0 8px 8px 0;
 }
 
-@keyframes barisMuncul {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* Animasi muncul saat di-scroll */
+.js .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s ease; }
+.js .reveal.tampil { opacity: 1; transform: none; }
+.js .reveal .tabel-vm-home tr { opacity: 0; }
+.js .reveal.tampil .tabel-vm-home tr { animation: barisKiri .9s ease both; }
+.js .reveal.tampil .tabel-vm-home tr:nth-child(2) { animation-delay: .3s; }
+
+/* ---------- Footer ---------- */
+footer { position: relative; z-index: 2; padding: 15px; text-align: center; font-size: 14px; }
+
+
+/* =====================================================
+   3. TABLET & JENDELA SEMPIT (maks 1000px)
+   ===================================================== */
+
+@media (max-width: 1000px) {
+    header { flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .logo { width: 100%; text-align: center; font-size: 27px; }
+    nav { gap: 18px; }
+    main { padding: 50px 6%; }
+    .content h2 { font-size: 38px; }
+    .description { font-size: 21px; }
 }
 
-/* LAPTOP */
 
-@media screen and (min-width: 1001px) {
+/* =====================================================
+   4. HP ANDROID & IPHONE (maks 600px)
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    body { background: linear-gradient(170deg, rgb(14, 53, 169) 0%, rgb(10, 40, 135) 100%) fixed; overscroll-behavior-y: none; }
+    .container { min-height: auto; }
+
+    /* Background */
+    .image-tri { top: 300px; right: 0; width: 250px; max-width: 65%; opacity: .10; }
+    .layer-blur { top: 35%; left: 10%; width: 180px; height: 180px; filter: blur(75px); }
+
+    /* Header + hamburger (aman dari notch iPhone) */
+    header {
+        flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center;
+        gap: 15px;
+        padding-top: calc(20px + env(safe-area-inset-top));
+        padding-bottom: 15px;
+        padding-left: calc(18px + env(safe-area-inset-left));
+        padding-right: calc(18px + env(safe-area-inset-right));
+    }
+
+    .logo { flex: 1; width: auto; font-size: clamp(20px, 6vw, 26px); line-height: 1.25; text-align: left; white-space: normal; }
+
+    .menu-toggle {
+        display: flex; flex-direction: column; justify-content: center; gap: 6px;
+        width: 46px; height: 46px; padding: 11px;
+        background: transparent; border: 2px solid #13cfb6; border-radius: 14px;
+        cursor: pointer; -webkit-appearance: none; appearance: none;
+        transition: background .3s ease;
+    }
+
+    .menu-toggle span { display: block; width: 100%; height: 2px; background: white; border-radius: 2px; transition: transform .35s ease, opacity .25s ease; }
+    .menu-toggle.aktif { background: rgba(19, 207, 182, .2); }
+    .menu-toggle.aktif span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.aktif span:nth-child(2) { opacity: 0; }
+    .menu-toggle.aktif span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    nav {
+        width: 100%; flex-direction: column; flex-wrap: nowrap; gap: 0;
+        max-height: 0; overflow: hidden; opacity: 0;
+        background: rgba(5, 20, 90, .9); border-radius: 14px;
+        -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        transition: max-height .45s ease, opacity .35s ease;
+    }
+
+    nav.buka { max-height: 420px; opacity: 1; }
+
+    nav a { width: 100%; padding: 14px 10px; text-align: center; font-size: 16px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+    nav a:last-child { border-bottom: none; }
+    nav a::after { display: none; }
+
+    .btn-signing { width: 100%; max-width: 260px; margin: 0 auto; padding: 11px 25px; text-align: center; font-size: 15px; }
+
+    /* Hero */
+    main {
+        display: block; min-height: auto;
+        padding: 30px max(22px, env(safe-area-inset-right)) 40px max(22px, env(safe-area-inset-left));
+    }
+
+    .content { max-width: 100%; text-align: center; }
+
+    .tag-wrap { flex-direction: column; align-items: center; gap: 12px; }
+    .tag-box { width: 220px; max-width: 100%; }
+    .tag { font-size: 15px; padding: 9px; }
+
+    .content h2 { margin-bottom: 20px; font-size: clamp(25px, 7vw, 32px); line-height: 1.3; overflow-wrap: break-word; }
+    .description { margin: 0 auto 25px; font-size: clamp(16px, 4.5vw, 19px); line-height: 1.7; }
+
+    .button { flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+    .btn-documentation, .btn-get-started { width: 100%; max-width: 260px; padding: 12px 15px; text-align: center; font-size: 15px; }
+
+    /* Visi & Misi: tabel berubah jadi kartu bertumpuk */
     .visi-misi-home {
-        max-width: 1000px;
+        margin: 20px auto 40px; scroll-margin-top: 20px;
+        padding: 10px max(22px, env(safe-area-inset-right)) 10px max(22px, env(safe-area-inset-left));
     }
+
+    .judul-vm-home h2 { font-size: 25px; }
+
+    .tabel-vm-home, .tabel-vm-home tbody { display: block; width: 100%; }
+
+    .tabel-vm-home tr {
+        display: block; margin-bottom: 15px;
+        border: 1px solid rgba(255, 255, 255, .25); border-left: 4px solid #13cfb6; border-radius: 10px;
+    }
+
+    .tabel-vm-home td, .tabel-vm-home td.vm-label, .tabel-vm-home td.vm-isi {
+        display: block; width: 100%; height: auto; border: none; border-radius: 0;
+    }
+
+    .tabel-vm-home td.vm-label { padding: 16px 18px 4px; font-size: 19px; }
+    .tabel-vm-home td.vm-isi { padding: 4px 18px 18px; font-size: 16px; line-height: 1.7; }
+
+    .js .reveal.tampil .tabel-vm-home tr { animation-name: barisBawah; animation-duration: .8s; }
+
+    footer { padding: 18px 10px calc(18px + env(safe-area-inset-bottom)); font-size: 12px; }
 }
 
-/* ANDROID DAN IPHONE */
 
-@media screen and (max-width: 600px) {
-    .visi-misi-home {
-        margin: 40px auto;
-        padding: 10px 5px;
-    }
+/* =====================================================
+   5. HP LAYAR SANGAT KECIL (maks 380px)
+   ===================================================== */
 
-    .judul-vm-home h2 {
-        font-size: 25px;
-    }
-
-    .tabel-vm-home td {
-        height: 90px;
-    }
+@media (max-width: 380px) {
+    header { padding-left: 13px; padding-right: 13px; }
+    .logo { font-size: 20px; }
+    .content h2 { font-size: 24px; }
+    .description { font-size: 16px; }
+    .judul-vm-home h2 { font-size: 22px; }
+    .tabel-vm-home td.vm-label { font-size: 17px; }
+    .tabel-vm-home td.vm-isi { font-size: 15px; }
 }
 
-/* HP LAYAR KECIL */
 
-@media screen and (max-width: 380px) {
-    .judul-vm-home h2 {
-        font-size: 22px;
+/* =====================================================
+   6. KHUSUS IPHONE / SAFARI
+   (hanya terbaca oleh Safari iOS)
+   ===================================================== */
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: -webkit-fill-available;
+        min-height: 100dvh;
     }
 
-    .tabel-vm-home td {
-        height: 75px;
+    html { -webkit-tap-highlight-color: transparent; }
+
+    /* blur & logo dipaksa pakai GPU supaya tidak patah-patah di Safari */
+    .layer-blur { -webkit-filter: blur(75px); transform: translateZ(0); }
+    .image-tri { -webkit-transform: translateZ(0); }
+}
+
+
+/* =====================================================
+   7. HOVER (LAPTOP) & SENTUHAN (HP)
+   ===================================================== */
+
+/* Laptop / mouse */
+@media (hover: hover) {
+    nav a:hover { color: #13cfb6; transform: translateY(-3px); }
+    nav a:hover::after { transform: scaleX(1); }
+
+    .btn-signing:hover { background: #13cfb6; color: #071b55; transform: scale(1.05); box-shadow: 0 5px 20px rgba(19, 207, 182, .4); }
+
+    .tag-box:hover { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(19, 207, 182, .35); }
+
+    .btn-documentation:hover, .btn-get-started:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(19, 207, 182, .4); }
+    .btn-get-started:hover { background: white; color: #071b55; }
+
+    .tabel-vm-home tr:hover { background: #102e91; transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, .25); }
+}
+
+/* HP / layar sentuh */
+@media (hover: none) {
+    nav a:active { background: rgba(19, 207, 182, .25); color: #13cfb6; }
+
+    .btn-signing:active { background: #13cfb6; color: #071b55; transform: scale(.96); }
+
+    .tag-box:active { transform: scale(.96); }
+
+    .btn-documentation:active, .btn-get-started:active { transform: scale(.96); box-shadow: 0 4px 16px rgba(19, 207, 182, .45); }
+    .btn-get-started:active { background: white; color: #071b55; }
+
+    .tabel-vm-home tr:active { background: #102e91; transform: scale(.98); }
+}
+
+
+/* =====================================================
+   MATIKAN ANIMASI UNTUK PENGGUNA YANG MEMINTA
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
 }
