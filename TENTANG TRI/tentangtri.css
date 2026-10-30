@@ -981,3 +981,100 @@
         scroll-behavior: auto !important;
     }
 }
+
+/* =========================================
+   ANIMASI LOGO TRI - SAMA DI SEMUA HALAMAN
+========================================= */
+
+.header .brand {
+    perspective: 900px;
+    transform-style: preserve-3d;
+}
+
+.header .brand .logo {
+    transform-origin: center;
+    transform-style: preserve-3d;
+
+    animation: logoTRISeragam 5s ease-in-out infinite;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+
+    will-change: transform;
+}
+
+/* ANIMASI 3D OTOMATIS */
+
+@keyframes logoTRISeragam {
+    0%, 100% {
+        transform:
+            perspective(700px)
+            rotateY(0deg)
+            rotateX(0deg)
+            translateY(0)
+            scale(1);
+    }
+
+    25% {
+        transform:
+            perspective(700px)
+            rotateY(18deg)
+            rotateX(8deg)
+            translateY(-3px)
+            scale(1.05);
+    }
+
+    50% {
+        transform:
+            perspective(700px)
+            rotateY(0deg)
+            rotateX(-5deg)
+            translateY(-5px)
+            scale(1);
+    }
+
+    75% {
+        transform:
+            perspective(700px)
+            rotateY(-18deg)
+            rotateX(8deg)
+            translateY(-3px)
+            scale(1.05);
+    }
+}
+
+/* EFEK HOVER LAPTOP */
+
+@media (hover: hover) and (pointer: fine) {
+    .header .brand:hover .logo {
+        animation-play-state: paused;
+
+        transform:
+            perspective(700px)
+            rotateY(25deg)
+            rotateX(12deg)
+            scale(1.12);
+
+        filter:
+            drop-shadow(0 8px 15px rgba(255, 255, 255, 0.35));
+    }
+}
+
+/* EFEK SENTUHAN HP DAN TABLET */
+
+@media (hover: none) and (pointer: coarse) {
+    .header .brand:active .logo {
+        filter:
+            drop-shadow(0 5px 10px rgba(255, 255, 255, 0.3));
+    }
+}
+
+/* AKSESIBILITAS */
+
+@media (prefers-reduced-motion: reduce) {
+    .header .brand .logo {
+        animation: none;
+        transition: none;
+    }
+}
