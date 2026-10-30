@@ -1,141 +1,657 @@
-/* =================================
-   CSS HALAMAN VISI & MISI TRI
-================================= */
 
-.page-content {
-    width: min(1100px, 90%);
-    margin: auto;
-    padding: 65px 0;
-    text-align: center;
+/* ==========================================
+   VISI & MISI TRI MEDAN
+   RESPONSIVE: LAPTOP, MACBOOK, ANDROID, IPHONE
+   CSS KHUSUS HALAMAN VISI & MISI
+========================================== */
+
+/* DASAR HALAMAN */
+
+.vm-body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(163, 199, 255, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 88% 80%,
+            rgba(255, 255, 255, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #06164f 0%,
+            #0e35a9 52%,
+            #174bd4 100%
+        );
 }
 
-.page-label {
-    color: #c8dcff;
-    font-size: 15px;
+.vm-body .container {
+    min-height: 100vh;
+    overflow: visible;
+}
+
+
+/* ==========================================
+   LOGO 3D
+   Hanya mengatur logo pada halaman ini
+========================================== */
+
+.vm-body .header .brand {
+    perspective: 800px;
+}
+
+.vm-body .header .logo {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 1;
+    filter: none;
+
+    transform-style: preserve-3d;
+    transform-origin: center;
+
+    animation: vmLogo3D 5s ease-in-out infinite;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+@keyframes vmLogo3D {
+    0%, 100% {
+        transform:
+            perspective(700px)
+            rotateY(0deg)
+            rotateX(0deg)
+            scale(1);
+    }
+
+    25% {
+        transform:
+            perspective(700px)
+            rotateY(18deg)
+            rotateX(8deg)
+            scale(1.05);
+    }
+
+    50% {
+        transform:
+            perspective(700px)
+            rotateY(0deg)
+            rotateX(0deg)
+            scale(1);
+    }
+
+    75% {
+        transform:
+            perspective(700px)
+            rotateY(-18deg)
+            rotateX(-8deg)
+            scale(1.05);
+    }
+}
+
+.vm-body .header .brand:hover .logo {
+    animation-play-state: paused;
+    transform:
+        perspective(700px)
+        rotateY(25deg)
+        rotateX(12deg)
+        scale(1.12);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.25));
+}
+
+
+/* ==========================================
+   KONTEN UTAMA
+========================================== */
+
+.vm-main {
+    width: min(1160px, 90%);
+    margin: 0 auto;
+    padding: 65px 0 75px;
+}
+
+
+/* ==========================================
+   JUDUL
+========================================== */
+
+.vm-heading {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: vmHeadingIn 0.9s ease both;
+}
+
+.vm-eyebrow {
+    display: inline-block;
+    color: #d8e7ff;
+    font-size: 12px;
     font-weight: bold;
     letter-spacing: 4px;
     margin-bottom: 18px;
-    animation: vmFadeDown 0.8s ease both;
 }
 
-.page-content > h2 {
-    font-size: clamp(30px, 4vw, 46px);
-    margin-bottom: 35px;
-    animation: vmFadeUp 0.9s ease both;
+.vm-heading-line {
+    width: 75px;
+    height: 3px;
+    margin: 0 auto 18px;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffffff,
+        transparent
+    );
 }
 
-/* Layout visi dan misi */
+.vm-heading h2 {
+    color: #ffffff;
+    font-size: clamp(36px, 5vw, 59px);
+    letter-spacing: 4px;
+    text-shadow: 0 7px 25px rgba(0,0,0,0.25);
+}
 
-.vm-container {
+.vm-heading h2 span {
+    color: #bcd5ff;
+    font-style: italic;
+}
+
+.vm-heading > p {
+    color: #dce9ff;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-top: 13px;
+}
+
+.vm-heading-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 23px;
+}
+
+.vm-heading-decoration span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.vm-heading-decoration span:nth-child(2) {
+    width: 35px;
+    border-radius: 10px;
+}
+
+
+/* ==========================================
+   KARTU VISI DAN MISI
+========================================== */
+
+.vm-content {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
     gap: 28px;
-    margin: 40px 0;
-    text-align: left;
+    perspective: 1200px;
 }
 
 .vm-card {
     position: relative;
-    padding: 38px;
-    min-height: 310px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 370px;
+    padding: 34px;
+
     overflow: hidden;
+    border-radius: 23px;
 
     background: linear-gradient(
         145deg,
-        rgba(255,255,255,0.18),
+        rgba(255,255,255,0.20),
         rgba(255,255,255,0.07)
     );
 
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.38);
 
-    box-shadow: 0 12px 30px rgba(0,0,0,0.16);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.20),
+        inset 0 1px 1px rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transform-style: preserve-3d;
 
     transition:
-        transform 0.45s ease,
-        background 0.45s ease,
-        box-shadow 0.45s ease;
+        transform 0.5s ease,
+        background 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
 
-    animation: vmFadeUp 1s ease both;
+    animation: vmCardIn 0.9s ease both;
 }
 
-.vm-card:nth-child(2) {
-    animation-delay: 0.2s;
+.vm-vision {
+    animation-delay: 0.12s;
+}
+
+.vm-mission {
+    animation-delay: 0.28s;
+}
+
+/* Ornamen dekorasi kartu */
+
+.vm-card::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    top: -95px;
+    right: -75px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    pointer-events: none;
+    transition: transform 0.6s ease;
+}
+
+.vm-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d9e8ff,
+        transparent
+    );
 }
 
 .vm-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255,255,255,0.2);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    transform:
+        perspective(1000px)
+        translateY(-10px)
+        rotateX(4deg)
+        rotateY(-2deg);
+
+    background: rgba(255,255,255,0.23);
+
+    border-color: rgba(255,255,255,0.7);
+
+    box-shadow:
+        0 28px 55px rgba(0,0,0,0.28),
+        0 0 25px rgba(173,204,255,0.16);
 }
 
-/* Nomor dekorasi */
+.vm-card:hover::before {
+    transform: scale(1.5);
+}
+
+
+/* ==========================================
+   ISI KARTU
+========================================== */
+
+.vm-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
 
 .vm-number {
-    color: #b7d0ff;
-    font-size: 48px;
+    color: #c5dcff;
+    font-size: 43px;
     font-weight: bold;
-    margin-bottom: 15px;
-    opacity: 0.9;
+    line-height: 1;
+}
+
+.vm-symbol {
+    color: #e0ecff;
+    font-size: 35px;
+    transition: transform 0.5s ease;
+}
+
+.vm-card:hover .vm-symbol {
+    transform: rotate(45deg) scale(1.2);
+}
+
+.vm-card-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    margin-bottom: 25px;
+}
+
+.vm-card-label {
+    color: #c8dcff;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 9px;
 }
 
 .vm-card h3 {
-    color: white;
+    color: #ffffff;
     font-size: 30px;
-    letter-spacing: 3px;
-    margin-bottom: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
-.vm-card p {
-    color: #e4edff;
+.vm-vision-text {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 5px 0;
+
+    color: #f0f5ff;
     font-size: 18px;
     line-height: 1.9;
+    font-style: italic;
 }
 
-/* Daftar misi */
 
-.vm-card ul {
-    padding-left: 23px;
+/* ==========================================
+   DAFTAR MISI
+========================================== */
+
+.vm-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex: 1;
 }
 
-.vm-card li {
-    color: #e4edff;
-    font-size: 17px;
+.vm-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.17);
+
+    color: #edf3ff;
+    font-size: 15px;
     line-height: 1.8;
-    padding-left: 5px;
-    margin-bottom: 14px;
+
+    transition:
+        padding-left 0.3s ease,
+        color 0.3s ease;
 }
 
-.vm-card li::marker {
-    color: #b7d0ff;
+.vm-list li:last-child {
+    border-bottom: none;
 }
 
-/* Tombol kembali */
+.vm-list li:hover {
+    padding-left: 6px;
+    color: #ffffff;
+}
 
-.back-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 13px 25px;
+.vm-list-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    color: #0e35a9;
-    background: white;
-    text-decoration: none;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+
+    color: #dce9ff;
+    font-size: 11px;
     font-weight: bold;
+}
+
+
+/* ==========================================
+   BAGIAN BAWAH KARTU
+========================================== */
+
+.vm-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 30px;
+    padding-top: 17px;
+
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.vm-card-footer > span:first-child {
+    color: #c8dcff;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.vm-footer-line {
+    width: 65px;
+    height: 2px;
+    border-radius: 5px;
+    background: #c8dcff;
+}
+
+
+/* ==========================================
+   TABEL INFORMASI
+========================================== */
+
+.vm-information {
+    margin-top: 75px;
+    animation: vmHeadingIn 1s ease both;
+}
+
+.vm-info-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.vm-info-heading > span {
+    color: #c8dcff;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.vm-info-heading h3 {
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 27px;
+    letter-spacing: 2px;
+}
+
+.vm-info-heading p {
+    max-width: 650px;
+    margin: 12px auto 0;
+    color: #e0eaff;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.vm-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 17px;
+
+    background: rgba(255,255,255,0.10);
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.vm-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.vm-table th {
+    padding: 18px 23px;
+    background: rgba(255,255,255,0.16);
+
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.vm-table td {
+    padding: 19px 23px;
+
+    color: #edf3ff;
+    font-size: 15px;
+    line-height: 1.7;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.vm-table td:first-child {
+    width: 28%;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.vm-table-label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 27px;
+    height: 27px;
+    margin-right: 10px;
+
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+
+    color: #c8dcff;
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   TOMBOL KEMBALI
+========================================== */
+
+.vm-back-area {
+    margin-top: 48px;
+    text-align: center;
+}
+
+.vm-back-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 25px;
 
     border-radius: 30px;
-    transition: 0.35s ease;
+    background: #ffffff;
+    color: #0e35a9;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.back-button:hover {
-    background: #c8dcff;
+.vm-back-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background: #dce9ff;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.22);
 }
 
-/* Animasi */
+.vm-back-button span {
+    font-size: 19px;
+}
 
-@keyframes vmFadeUp {
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.vm-footer {
+    width: 100%;
+    padding: 25px 15px;
+    margin-top: auto;
+
+    text-align: center;
+
+    background: rgba(3,17,69,0.42);
+    border-top: 1px solid rgba(255,255,255,0.18);
+}
+
+.vm-footer p {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.vm-footer > span {
+    display: block;
+    margin-top: 8px;
+    color: #d4e3ff;
+    font-size: 13px;
+}
+
+.vm-footer small {
+    display: block;
+    margin-top: 12px;
+    color: #c1d4ff;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   ANIMASI MASUK
+========================================== */
+
+@keyframes vmHeadingIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes vmCardIn {
     from {
         opacity: 0;
         transform: translateY(35px);
@@ -147,206 +663,241 @@
     }
 }
 
-@keyframes vmFadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-25px);
+
+/* ==========================================
+   LAPTOP KECIL DAN MACBOOK
+========================================== */
+
+@media screen and (max-width: 1050px) {
+
+    .vm-main {
+        width: 92%;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Tablet */
-
-@media screen and (max-width: 800px) {
-    .page-content {
-        padding: 50px 0;
-    }
-
-    .vm-container {
-        gap: 18px;
-    }
-
-    .vm-card {
-        padding: 28px;
-    }
-}
-
-/* Android dan iPhone */
-
-@media screen and (max-width: 600px) {
-    .vm-container {
-        grid-template-columns: 1fr;
+    .vm-content {
         gap: 20px;
     }
 
-    .page-content {
-        width: 90%;
-        padding: 40px 0;
-    }
-
-    .page-content > h2 {
-        font-size: 30px;
-    }
-
     .vm-card {
-        min-height: auto;
         padding: 27px;
     }
 
+}
+
+
+/* ==========================================
+   TABLET DAN HP
+========================================== */
+
+@media screen and (max-width: 800px) {
+
+    .vm-body .header .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .vm-main {
+        width: 90%;
+        padding: 48px 0 60px;
+    }
+
+    .vm-heading {
+        margin-bottom: 35px;
+    }
+
+    .vm-heading h2 {
+        font-size: clamp(32px, 7vw, 46px);
+    }
+
+    .vm-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .vm-card {
+        min-height: 0;
+        padding: 30px;
+    }
+
+    .vm-information {
+        margin-top: 55px;
+    }
+
+}
+
+
+/* ==========================================
+   ANDROID DAN IPHONE
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    .vm-main {
+        width: 91%;
+        padding: 40px 0 50px;
+    }
+
+    .vm-eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .vm-heading h2 {
+        font-size: 35px;
+        letter-spacing: 2px;
+    }
+
+    .vm-heading > p {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    .vm-card {
+        padding: 25px 22px;
+        border-radius: 18px;
+    }
+
     .vm-number {
-        font-size: 40px;
+        font-size: 36px;
+    }
+
+    .vm-symbol {
+        font-size: 29px;
     }
 
     .vm-card h3 {
         font-size: 25px;
     }
 
-    .vm-card p,
-    .vm-card li {
+    .vm-vision-text {
         font-size: 16px;
+        line-height: 1.85;
     }
+
+    .vm-list li {
+        font-size: 14px;
+        gap: 10px;
+        line-height: 1.75;
+    }
+
+    .vm-information {
+        margin-top: 48px;
+    }
+
+    .vm-info-heading h3 {
+        font-size: 22px;
+    }
+
+    .vm-info-heading p {
+        font-size: 14px;
+    }
+
+    .vm-table th,
+    .vm-table td {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+
+    .vm-table td:first-child {
+        width: 32%;
+    }
+
+    .vm-back-button {
+        padding: 13px 20px;
+        font-size: 12px;
+    }
+
+    .vm-footer p {
+        font-size: 12px;
+    }
+
 }
 
+
+/* ==========================================
+   HP LAYAR KECIL
+========================================== */
+
 @media screen and (max-width: 380px) {
-    .page-content > h2 {
-        font-size: 26px;
+
+    .vm-body .header .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .vm-body .header .brand h1 {
+        font-size: 11px;
+    }
+
+    .vm-main {
+        width: 92%;
+    }
+
+    .vm-heading h2 {
+        font-size: 30px;
     }
 
     .vm-card {
-        padding: 22px;
-    }
-}
-
-/* =================================
-   ANIMASI 3D VISI & MISI
-================================= */
-
-.vm-container {
-    perspective: 1200px;
-}
-
-.vm-card {
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-
-    transition:
-        transform 0.6s ease,
-        box-shadow 0.6s ease,
-        background 0.6s ease;
-
-    animation: vm3D 1s ease both;
-}
-
-.vm-card:nth-child(2) {
-    animation-delay: 0.25s;
-}
-
-.vm-card:hover {
-    transform: perspective(1200px)
-               translateY(-13px)
-               rotateX(6deg)
-               rotateY(5deg)
-               scale(1.025);
-
-    box-shadow: 0 25px 40px rgba(0,0,0,0.3);
-}
-
-.vm-number {
-    transform: translateZ(25px);
-    transition: transform 0.5s ease;
-}
-
-.vm-card:hover .vm-number {
-    transform: translateZ(45px) scale(1.08);
-}
-
-.vm-card h3,
-.vm-card p,
-.vm-card li {
-    transform: translateZ(10px);
-}
-
-@keyframes vm3D {
-    from {
-        opacity: 0;
-        transform: perspective(1200px)
-                   rotateY(-12deg)
-                   translateY(35px);
+        padding: 21px 18px;
     }
 
-    to {
-        opacity: 1;
-        transform: perspective(1200px)
-                   rotateY(0deg)
-                   translateY(0);
-    }
-}
-
-/* =================================
-   ANIMASI 3D VISI & MISI
-================================= */
-
-.vm-container {
-    perspective: 1200px;
-}
-
-.vm-card {
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-
-    transition:
-        transform 0.6s ease,
-        box-shadow 0.6s ease,
-        background 0.6s ease;
-
-    animation: vm3D 1s ease both;
-}
-
-.vm-card:nth-child(2) {
-    animation-delay: 0.25s;
-}
-
-.vm-card:hover {
-    transform: perspective(1200px)
-               translateY(-13px)
-               rotateX(6deg)
-               rotateY(5deg)
-               scale(1.025);
-
-    box-shadow: 0 25px 40px rgba(0,0,0,0.3);
-}
-
-.vm-number {
-    transform: translateZ(25px);
-    transition: transform 0.5s ease;
-}
-
-.vm-card:hover .vm-number {
-    transform: translateZ(45px) scale(1.08);
-}
-
-.vm-card h3,
-.vm-card p,
-.vm-card li {
-    transform: translateZ(10px);
-}
-
-@keyframes vm3D {
-    from {
-        opacity: 0;
-        transform: perspective(1200px)
-                   rotateY(-12deg)
-                   translateY(35px);
+    .vm-card h3 {
+        font-size: 23px;
     }
 
-    to {
-        opacity: 1;
-        transform: perspective(1200px)
-                   rotateY(0deg)
-                   translateY(0);
+    .vm-list li {
+        font-size: 13px;
     }
+
+    .vm-table th,
+    .vm-table td {
+        padding: 12px 9px;
+        font-size: 12px;
+    }
+
+}
+
+
+/* ==========================================
+   EFEK SENTUH HP
+========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .vm-body .header .brand:active .logo {
+        transform:
+            perspective(700px)
+            rotateY(18deg)
+            rotateX(10deg)
+            scale(1.08);
+    }
+
+    .vm-card:active {
+        transform: scale(0.985);
+        background: rgba(255,255,255,0.23);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .vm-back-button:active {
+        transform: scale(0.96);
+        background: #dce9ff;
+    }
+
+}
+
+
+/* ==========================================
+   AKSESIBILITAS
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .vm-body *,
+    .vm-body *::before,
+    .vm-body *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
 }

@@ -5,93 +5,244 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0e35a9">
+
     <title>Tentang TRI Medan</title>
 
-    <link rel="stylesheet" href="trimedan.css">
+    <link rel="stylesheet" href="../trimedan.css">
     <link rel="stylesheet" href="tentangtri.css">
+
     <script src="../trimedan.js" defer></script>
 </head>
 
-<body>
+<body class="about-body">
 
     <div class="container">
 
+        <!-- HEADER: NAVIGASI DIPERTAHANKAN -->
         <header class="header">
-            <a href="../trimedan.html" class="brand">
-                <img src="../TRI (LOGO).png" alt="Logo TRI" class="logo">
+
+            <a href="/trimedan.html" class="brand">
+                <img src="/TRI (LOGO).png alt=" Logo TRI" class="logo">
                 <h1>TEMAN RELAWAN INDONESIA</h1>
             </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false"
                 aria-controls="menuNav">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
             <nav id="menuNav">
-                <a href="../trimedan.html">HOME</a>
-                <a href="../BPH/bphnyatrimedan.html">BPH</a>
-                <a href="../KADERISASI/kader.html">KADERISASI</a>
-                <a href="../SOSIAL/sosial.html">SOSIAL</a>
-                <a href="../MEDINFO/medinfo.html">MEDINFO</a>
-                <a href="../PATNERSHIP/patner.html">PARTNERSHIP</a>
+                <a href="/trimedan.html">HOME</a>
+                <a href="/BPH/bphnyatrimedan.html">BPH</a>
+                <a href="/KADERISASI/kader.html">KADERISASI</a>
+                <a href="/SOSIAL/sosial.html">SOSIAL</a>
+                <a href="/MEDINFO/medinfo.html">MEDINFO</a>
+                <a href="/PATNERSHIP/patner.html">PARTNERSHIP</a>
             </nav>
 
-            <a href="join" class="btn-join">JOIN US</a>
+            <a href="/JOIN US/joinus.html" class="btn-join">JOIN US</a>
+
         </header>
 
-        <main class="page-content">
-            <p class="page-label">TENTANG KAMI</p>
-            <h2>Mengenal Teman Relawan Indonesia</h2>
 
-            <p class="page-intro">
-                Teman Relawan Indonesia merupakan wadah yang memfasilitasi
-                generasi muda untuk ikut berkontribusi dalam memajukan
-                Indonesia melalui semangat sosial yang aktif, kreatif,
-                dan konstruktif.
-            </p>
+        <!-- KONTEN TENTANG TRI -->
+        <main class="about-page">
 
-            <div class="info-container">
+            <section class="about-heading">
 
-                <div class="info-box">
-                    <h3>Tentang TRI</h3>
+                <span class="about-label">TENTANG KAMI</span>
+
+                <h2>
+                    Mengenal <span>Teman Relawan Indonesia</span>
+                </h2>
+
+                <div class="heading-line"></div>
+
+            </section>
+
+
+            <!-- TENTANG TRI PUSAT -->
+            <section class="about-section">
+
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <div>
+                        <p class="section-label">ABOUT US</p>
+                        <h3>Tentang TRI</h3>
+                    </div>
+                </div>
+
+                <div class="about-intro-card">
                     <p>
-                        Teman Relawan Indonesia menjadi ruang bagi generasi
-                        muda untuk belajar, berkembang, dan memberikan
-                        kontribusi positif bagi masyarakat.
+                        Teman Relawan Indonesia merupakan sebuah komunitas yang mewadahi anak muda untuk memajukan
+                        Indonesia yang lebih baik melalui jiwa sosial yang aktif, kreatif dan konstruktif sehingga dapat
+                        menebarkan kebermanfaatan untuk masyarakat.
                     </p>
                 </div>
 
-                <div class="info-box">
-                    <h3>Tanggal Berdiri</h3>
-                    <p>1 Maret 2022</p>
+
+                <!-- INFORMASI ORGANISASI -->
+                <div class="about-grid">
+
+                    <article class="about-card">
+                        <span class="card-number">01</span>
+                        <div class="card-icon">📅</div>
+                        <h3>Tanggal Berdiri</h3>
+                        <p><strong>1 Maret 2022</strong></p>
+                    </article>
+
+                    <article class="about-card">
+                        <span class="card-number">02</span>
+                        <div class="card-icon">📍</div>
+                        <h3>Pusat Organisasi</h3>
+                        <p><strong>KOTA BANDUNG</strong></p>
+                    </article>
+
+                    <article class="about-card card-regions">
+                        <span class="card-number">03</span>
+                        <div class="card-icon">🌏</div>
+                        <h3>Wilayah TRI</h3>
+                        <p>
+                            Teman Relawan Indonesia juga terdapat di beberapa daerah, salah satunya
+                            <strong>MEDAN</strong>, selain itu juga berada di
+                            <strong>Bandung, Makassar, Jogjakarta, Palembang,</strong>
+                            dan <strong>DKI JAKARTA</strong>
+                        </p>
+                    </article>
+
                 </div>
 
-                <div class="info-box">
-                    <h3>Pusat Organisasi</h3>
-                    <p>Kota Bandung</p>
-                </div>
+            </section>
 
-                <div class="info-box">
-                    <h3>Wilayah</h3>
-                    <p>
-                        Medan, Bandung, Makassar, Yogyakarta,
-                        DKI Jakarta, dan Palembang.
-                    </p>
-                </div>
 
+            <!-- PEMBATAS -->
+            <div class="section-divider">
+                <span></span>
+                <div>TRI MEDAN</div>
+                <span></span>
             </div>
 
-            <a href="../trimedan.html" class="back-button">
-                ← Kembali ke Home
-            </a>
+
+            <!-- TENTANG TRI MEDAN -->
+            <section class="about-section medan-section">
+
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <div>
+                        <p class="section-label">OUR COMMUNITY</p>
+                        <h3>Tentang TRI Medan</h3>
+                    </div>
+                </div>
+
+
+                <div class="medan-highlight">
+                    <div class="highlight-icon">🤝</div>
+
+                    <p>
+                        <strong>Teman Relawan Indonesia (TRI) Medan hadir sebagai wadah aksi nyata buat anak muda Medan
+                            yang pengen bergerak bareng demi masyarakat yang lebih produktif dan mandiri.</strong>
+                    </p>
+                </div>
+
+
+                <div class="medan-description">
+                    <p>
+                        Kita adalah bagian resmi dari TRI Pusat yang sudah berdiri sejak 1 Maret 2022. Nah, sekarang
+                        giliran TRI Medan yang jadi tempat ngumpulnya anak-anak muda di sini buat menyebarkan virus
+                        kerelawanan di Sumatera Utara. Kita percaya, anak Medan itu punya energi yang paten dan
+                        kepedulian yang tinggi kalau soal aksi sosial.
+                    </p>
+                </div>
+
+
+                <!-- PROGRAM TRI MEDAN -->
+                <div class="program-heading">
+                    <span class="program-label">OUR ACTIVITIES</span>
+                    <h3>Apa aja yang kita lakukan?</h3>
+                    <p>Ruang untuk tumbuh, belajar, dan memberikan dampak nyata.</p>
+                </div>
+
+
+                <div class="program-grid">
+
+                    <article class="program-card">
+                        <div class="program-icon">🤝</div>
+                        <span class="program-number">01</span>
+
+                        <h4>Ngumpul &amp; Kolaborasi</h4>
+
+                        <p>
+                            Jadi ruang ketemu buat kita-kita yang punya visi dan tujuan yang sama.
+                        </p>
+                    </article>
+
+
+                    <article class="program-card">
+                        <div class="program-icon">🚀</div>
+                        <span class="program-number">02</span>
+
+                        <h4>Asah Potensi</h4>
+
+                        <p>
+                            Gak cuma sekadar relawan, di sini kita juga belajar kepemimpinan dan upgrade <em>soft
+                                skills</em> lewat berbagai pelatihan.
+                        </p>
+                    </article>
+
+
+                    <article class="program-card">
+                        <div class="program-icon">🌱</div>
+                        <span class="program-number">03</span>
+
+                        <h4>Turun ke Lapangan</h4>
+
+                        <p>
+                            Aksi nyata langsung ke masyarakat lewat program sosial dan lingkungan yang berdampak jangka
+                            panjang.
+                        </p>
+                    </article>
+
+                </div>
+
+
+                <!-- PENUTUP -->
+                <div class="about-closing">
+
+                    <div class="closing-decoration">TRI MEDAN</div>
+
+                    <p>
+                        Gak usah cuma jadi penonton. Ini saatnya anak muda Medan ambil peran dan bawa manfaat buat
+                        sesama.
+                    </p>
+
+                    <h3>
+                        Yok, kita buat dampak positif bareng TRI Medan!
+                    </h3>
+
+                </div>
+
+            </section>
+
+
+            <div class="back-wrapper">
+                <a href="/trimedan.html" class="back-button">
+                    ← Kembali ke Home
+                </a>
+            </div>
+
         </main>
 
-        <footer>
+
+        <!-- FOOTER -->
+        <footer class="about-footer">
             <p>Teman Relawan Indonesia | Mengabdi dengan Hati, Membangun Negeri</p>
             <p>© 2026 Teman Relawan Medan</p>
         </footer>
 
     </div>
+
 </body>
 
 </html>

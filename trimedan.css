@@ -1,6 +1,7 @@
-/* ==============================
+
+/* =========================================
    PENGATURAN DASAR
-============================== */
+========================================= */
 
 * {
     margin: 0;
@@ -10,39 +11,93 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     font-family: "Times New Roman", serif;
-    background: linear-gradient(135deg, #071b65, #0e35a9, #174bd4);
     color: white;
+    background: linear-gradient(135deg, #071b65, #0e35a9, #174bd4);
     min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: hidden;
+    line-height: 1.5;
 }
+
+a, button {
+    touch-action: manipulation;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #c8dcff;
+    outline-offset: 4px;
+}
+
+/* =========================================
+   CONTAINER DAN BACKGROUND
+========================================= */
 
 .container {
     width: 100%;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    position: relative;
+    overflow-x: clip;
+    isolation: isolate;
 }
 
-/* ==============================
-   HEADER DAN LOGO
-============================== */
+.container::before {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    top: 25%;
+    left: -160px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.09);
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: -1;
+    animation: cahaya 7s ease-in-out infinite;
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    right: -150px;
+    bottom: 5%;
+    border-radius: 50%;
+    background: rgba(150, 195, 255, 0.13);
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: -1;
+    animation: cahaya 8s ease-in-out infinite reverse;
+}
+
+/* =========================================
+   HEADER
+========================================= */
 
 .header {
     width: 100%;
     min-height: 100px;
-    padding: 18px 5%;
+    padding: 18px 4%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
     position: relative;
     z-index: 100;
-    background: rgba(3, 17, 69, 0.25);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    background: rgba(3, 17, 69, 0.30);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: turun 0.8s ease both;
 }
 
 .brand {
@@ -52,58 +107,91 @@ body {
     text-decoration: none;
     color: white;
     min-width: 0;
+    flex-shrink: 0;
 }
 
 .brand h1 {
     font-size: clamp(15px, 1.7vw, 23px);
     letter-spacing: 1px;
+    line-height: 1.25;
 }
+
+/* =========================================
+   LOGO 3D
+========================================= */
 
 .logo {
     width: 65px;
     height: 65px;
     object-fit: contain;
-    opacity: 1;
-    filter: none;
     flex-shrink: 0;
-    animation: logo3D 5s ease-in-out infinite;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-}
-
-.logo:hover {
-    transform: perspective(500px) rotateY(25deg) rotateX(12deg) scale(1.12);
+    transform-origin: center;
+    animation: logo3D 5s ease-in-out infinite;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    will-change: transform;
 }
 
 @keyframes logo3D {
     0%, 100% {
-        transform: perspective(500px) rotateY(0deg) rotateX(0deg);
+        transform: perspective(700px)
+                   rotateY(0deg)
+                   rotateX(0deg)
+                   translateY(0);
+    }
+
+    25% {
+        transform: perspective(700px)
+                   rotateY(12deg)
+                   rotateX(5deg)
+                   translateY(-3px);
     }
 
     50% {
-        transform: perspective(500px) rotateY(15deg) rotateX(8deg);
+        transform: perspective(700px)
+                   rotateY(0deg)
+                   rotateX(-5deg)
+                   translateY(-5px);
+    }
+
+    75% {
+        transform: perspective(700px)
+                   rotateY(-12deg)
+                   rotateX(5deg)
+                   translateY(-3px);
     }
 }
 
-/* ==============================
+@media (hover: hover) {
+    .logo:hover {
+        transform: perspective(700px)
+                   rotateY(25deg)
+                   rotateX(12deg)
+                   scale(1.12);
+        filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.3));
+    }
+}
+
+/* =========================================
    NAVIGASI
-============================== */
+========================================= */
 
 nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: clamp(10px, 1.5vw, 23px);
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: clamp(12px, 1vw, 15px);
     font-weight: bold;
     letter-spacing: 0.5px;
-    transition: 0.3s ease;
     position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav a::after {
@@ -123,7 +211,12 @@ nav a:hover::after {
 
 nav a:hover {
     color: #c8dcff;
+    transform: translateY(-2px);
 }
+
+/* =========================================
+   JOIN US
+========================================= */
 
 .btn-join {
     color: #0e35a9;
@@ -133,22 +226,30 @@ nav a:hover {
     text-decoration: none;
     font-weight: bold;
     white-space: nowrap;
-    transition: 0.3s ease;
+    flex-shrink: 0;
+    transition: background 0.35s ease,
+                color 0.35s ease,
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
 }
 
 .btn-join:hover {
     background: #c8dcff;
+    color: #071b65;
     transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Tombol menu HP */
+/* =========================================
+   TOMBOL HAMBURGER
+========================================= */
 
 .menu-toggle {
     display: none;
     width: 42px;
     height: 42px;
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
     background: transparent;
     cursor: pointer;
     padding: 9px;
@@ -162,7 +263,7 @@ nav a:hover {
     margin: 4px 0;
     background: white;
     border-radius: 5px;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .menu-toggle.aktif span:nth-child(1) {
@@ -177,21 +278,24 @@ nav a:hover {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ==============================
+/* =========================================
    HOME
-============================== */
+========================================= */
 
 .home {
     width: min(1100px, 90%);
     margin: auto;
-    padding: 90px 0;
+    padding: clamp(65px, 10vh, 110px) 0;
     text-align: center;
+    position: relative;
+    z-index: 1;
     animation: muncul 1s ease both;
 }
 
 .tag-wrap {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 35px;
@@ -200,30 +304,29 @@ nav a:hover {
 .tag {
     display: inline-block;
     padding: 12px 23px;
-    border: 1px solid rgba(255,255,255,0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: 25px;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.35s ease;
     position: relative;
     z-index: 2;
-    touch-action: manipulation;
+    transform-style: preserve-3d;
+    transition: background 0.35s ease,
+                color 0.35s ease,
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
 }
 
 .tag:hover,
 .tag:focus-visible {
     background: white;
     color: #0e35a9;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.home h2 {
-    font-size: clamp(25px, 4vw, 48px);
-    margin-bottom: 25px;
-    line-height: 1.2;
-    animation: muncul 1s ease both;
+    transform: perspective(700px)
+               translateY(-5px)
+               rotateX(8deg)
+               rotateY(-5deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .description {
@@ -232,18 +335,24 @@ nav a:hover {
     max-width: 750px;
     margin: 0 auto;
     color: #e4edff;
+    overflow-wrap: break-word;
+    animation: muncul 1.1s ease both;
 }
+
+/* =========================================
+   SOCIAL MEDIA BUTTONS
+========================================= */
 
 .social-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 15px;
     margin-top: 35px;
 }
 
-.social-buttons a,
-.back-button {
+.social-buttons a {
     display: inline-block;
     padding: 13px 22px;
     background: white;
@@ -251,18 +360,25 @@ nav a:hover {
     text-decoration: none;
     border-radius: 25px;
     font-weight: bold;
-    transition: 0.3s ease;
+    transform-style: preserve-3d;
+    transition: background 0.35s ease,
+                color 0.35s ease,
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
 }
 
-.social-buttons a:hover,
-.back-button:hover {
+.social-buttons a:hover {
     background: #c8dcff;
-    transform: translateY(-4px);
+    transform: perspective(700px)
+               translateY(-5px)
+               rotateX(7deg)
+               rotateY(-4deg);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* ==============================
-   HALAMAN TENTANG TRI
-============================== */
+/* =========================================
+   BOX INFORMASI TENTANG TRI
+========================================= */
 
 .page-content {
     width: min(1100px, 90%);
@@ -303,19 +419,20 @@ nav a:hover {
     padding: 30px;
     min-height: 180px;
     text-align: left;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    transition: transform 0.4s ease, background 0.4s ease,
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease,
+                background 0.4s ease,
                 box-shadow 0.4s ease;
     animation: muncul 0.8s ease both;
 }
 
 .info-box:hover {
-    transform: translateY(-8px);
-    background: rgba(255,255,255,0.2);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: perspective(800px) translateY(-8px) rotateX(2deg);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .info-box h3 {
@@ -329,9 +446,9 @@ nav a:hover {
     line-height: 1.7;
 }
 
-/* ==============================
-   HALAMAN VISI DAN MISI
-============================== */
+/* =========================================
+   BOX VISI DAN MISI
+========================================= */
 
 .vm-container {
     display: grid;
@@ -345,16 +462,19 @@ nav a:hover {
     padding: 35px;
     min-height: 280px;
     border-radius: 20px;
-    background: rgba(255,255,255,0.13);
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    transition: 0.4s ease;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease,
+                background 0.4s ease,
+                box-shadow 0.4s ease;
     animation: muncul 0.8s ease both;
 }
 
 .vm-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    background: rgba(255,255,255,0.2);
+    transform: perspective(800px) translateY(-8px) rotateX(2deg);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .vm-number {
@@ -383,21 +503,43 @@ nav a:hover {
     margin-bottom: 12px;
 }
 
+/* =========================================
+   TOMBOL KEMBALI
+========================================= */
+
 .back-button {
+    display: inline-block;
     margin-top: 15px;
+    padding: 13px 22px;
+    background: white;
+    color: #0e35a9;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
-/* ==============================
+.back-button:hover {
+    background: #c8dcff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
    FOOTER
-============================== */
+========================================= */
 
 footer {
     width: 100%;
     padding: 22px 15px;
     margin-top: auto;
     text-align: center;
-    background: rgba(3,17,69,0.3);
-    border-top: 1px solid rgba(255,255,255,0.15);
+    position: relative;
+    z-index: 1;
+    background: rgba(3, 17, 69, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 footer p {
@@ -405,9 +547,9 @@ footer p {
     line-height: 1.7;
 }
 
-/* ==============================
+/* =========================================
    ANIMASI
-============================== */
+========================================= */
 
 @keyframes muncul {
     from {
@@ -421,9 +563,33 @@ footer p {
     }
 }
 
-/* ==============================
-   RESPONSIVE LAPTOP KECIL / TABLET
-============================== */
+@keyframes turun {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cahaya {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   LAPTOP KECIL DAN TABLET
+========================================= */
 
 @media screen and (max-width: 1050px) {
     .header {
@@ -454,23 +620,25 @@ footer p {
     }
 }
 
-/* ==============================
-   RESPONSIVE ANDROID / IPHONE
-============================== */
+/* =========================================
+   TABLET DAN HP
+========================================= */
 
-@media screen and (max-width: 800px) {
-
+@media screen and (max-width: 900px) {
     .header {
         min-height: 78px;
-        padding: 12px 5%;
+        padding: 12px 4%;
+        gap: 12px;
+        flex-wrap: wrap;
     }
 
     .brand {
         gap: 9px;
+        flex: 1;
     }
 
     .brand h1 {
-        font-size: clamp(12px, 3vw, 17px);
+        font-size: clamp(12px, 2.5vw, 17px);
     }
 
     .logo {
@@ -480,33 +648,39 @@ footer p {
 
     .menu-toggle {
         display: block;
-        margin-left: auto;
+        order: 3;
+        margin-left: 0;
     }
 
     nav {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
+        order: 4;
         width: 100%;
-        padding: 20px;
-        background: #092779;
+        padding: 10px 15px;
+        background: rgba(5, 20, 80, 0.97);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 14px;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        box-shadow: 0 12px 20px rgba(0,0,0,0.2);
-        z-index: 1000;
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
     }
 
     nav.buka {
         display: flex;
+        animation: turun 0.3s ease both;
     }
 
     nav a {
         display: block;
-        padding: 14px 10px;
+        width: 100%;
+        padding: 13px 10px;
         font-size: 15px;
-        border-bottom: 1px solid rgba(255,255,255,0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    nav a:last-child {
+        border-bottom: none;
     }
 
     nav a::after {
@@ -514,19 +688,14 @@ footer p {
     }
 
     .btn-join {
-        display: none;
+        order: 2;
+        display: inline-block;
+        padding: 9px 14px;
+        font-size: 13px;
     }
 
     .home {
-        padding: 75px 0;
-    }
-
-    .home h2 {
-        font-size: clamp(25px, 6vw, 38px);
-    }
-
-    .description {
-        font-size: 17px;
+        padding: 70px 0;
     }
 
     .page-content {
@@ -534,11 +703,40 @@ footer p {
     }
 }
 
-/* ==============================
-   RESPONSIVE HP LAYAR KECIL
-============================== */
+/* =========================================
+   HP
+========================================= */
 
 @media screen and (max-width: 600px) {
+    .home {
+        width: 90%;
+        padding: 65px 0;
+    }
+
+    .tag-wrap {
+        gap: 12px;
+    }
+
+    .tag {
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+    .description {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .social-buttons a {
+        width: min(100%, 280px);
+        text-align: center;
+    }
 
     .info-container,
     .vm-container {
@@ -556,22 +754,12 @@ footer p {
         font-size: 16px;
     }
 
-    .tag-wrap {
-        gap: 10px;
+    .page-content {
+        width: 90%;
     }
 
-    .tag {
-        padding: 11px 16px;
-        font-size: 14px;
-    }
-
-    .social-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .social-buttons a {
-        width: min(100%, 280px);
+    footer {
+        padding: 20px 12px;
     }
 
     footer p {
@@ -579,14 +767,19 @@ footer p {
     }
 }
 
-/* ==============================
-   HP SANGAT KECIL
-============================== */
+/* =========================================
+   HP LAYAR KECIL
+========================================= */
 
 @media screen and (max-width: 380px) {
+    .header {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
 
     .brand h1 {
         font-size: 11px;
+        letter-spacing: 0.5px;
     }
 
     .logo {
@@ -597,14 +790,25 @@ footer p {
     .menu-toggle {
         width: 38px;
         height: 38px;
+        padding: 7px;
+    }
+
+    .btn-join {
+        padding: 8px 11px;
+        font-size: 12px;
     }
 
     .home {
         width: 92%;
     }
 
-    .home h2 {
-        font-size: 24px;
+    .tag {
+        font-size: 13px;
+        padding: 10px 13px;
+    }
+
+    .description {
+        font-size: 15px;
     }
 
     .page-content {
@@ -612,28 +816,28 @@ footer p {
     }
 }
 
-/* Efek 3D Home */
+/* =========================================
+   SAFARI IPHONE
+========================================= */
 
-.tag,
-.social-buttons a,
-.btn-join {
-    transform-style: preserve-3d;
-    transition: all 0.5s ease;
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: -webkit-fill-available;
+    }
+
+    .header {
+        padding-left: max(4%, env(safe-area-inset-left));
+        padding-right: max(4%, env(safe-area-inset-right));
+    }
+
+    footer {
+        padding-bottom: calc(22px + env(safe-area-inset-bottom));
+    }
 }
 
-.tag:hover,
-.social-buttons a:hover,
-.btn-join:hover {
-    transform: perspective(700px)
-               translateY(-7px)
-               rotateX(8deg)
-               rotateY(-5deg)
-               scale(1.05);
-
-    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
-}
-
-/* Mengurangi animasi jika perangkat meminta gerakan minimal */
+/* =========================================
+   PENGATURAN GERAK MINIMAL
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -641,7 +845,216 @@ footer p {
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =====================================
+   DESKRIPSI TEMAN RELAWAN INDONESIA
+===================================== */
+
+.tri-description {
+    width: min(1100px, 92%);
+    margin: 80px auto 60px;
+    padding: 35px;
+    box-sizing: border-box;
+    color: #ffffff;
+    animation: descriptionFade 1s ease both;
+}
+
+.description-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.description-line {
+    display: block;
+    width: 65px;
+    height: 4px;
+    margin: 0 auto 15px;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.description-heading p {
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-bottom: 8px;
+}
+
+.description-heading h2 {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.description-box {
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.description-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.description-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    text-align: justify;
+    margin: 0 0 18px;
+}
+
+.description-content p:last-child {
+    margin-bottom: 0;
+}
+
+.description-content strong {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.description-info {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.info-item {
+    padding: 22px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-7px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.info-item span {
+    font-size: 13px;
+    font-weight: 800;
+    opacity: 0.75;
+}
+
+.info-item h3 {
+    font-size: 16px;
+    margin: 12px 0 7px;
+}
+
+.info-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ANIMASI */
+
+@keyframes descriptionFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 800px) {
+    .tri-description {
+        width: 94%;
+        padding: 25px 10px;
+        margin: 55px auto 40px;
+    }
+
+    .description-box {
+        padding: 25px;
+    }
+
+    .description-info {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* HP */
+
+@media (max-width: 600px) {
+    .tri-description {
+        width: 100%;
+        padding: 20px 15px;
+        margin: 40px auto 30px;
+    }
+
+    .description-heading p {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .description-box {
+        padding: 20px 17px;
+        border-radius: 17px;
+    }
+
+    .description-content p {
+        font-size: 14px;
+        line-height: 1.8;
+        text-align: left;
+    }
+
+    .info-item {
+        padding: 18px;
+    }
+
+    .info-item h3 {
+        font-size: 15px;
+    }
+
+    .info-item p {
+        font-size: 13px;
+    }
+}
+
+/* HP LAYAR KECIL */
+
+@media (max-width: 380px) {
+    .description-box {
+        padding: 17px 14px;
+    }
+
+    .description-content p {
+        font-size: 13px;
+    }
+
+    .description-heading h2 {
+        font-size: 23px;
+    }
+}
+
+/* AKSESIBILITAS */
+
+@media (prefers-reduced-motion: reduce) {
+    .tri-description,
+    .description-box,
+    .info-item {
+        animation: none !important;
+        transition: none !important;
     }
 }
