@@ -74,3 +74,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+/* =====================================
+   OPENING ANIMATION TRI MEDAN
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const opening = document.getElementById("triOpening");
+
+    if (!opening) return;
+
+    const openingKey = "triMedanOpeningShown";
+
+    // Periksa apakah opening sudah pernah ditampilkan
+    try {
+        if (sessionStorage.getItem(openingKey)) {
+            opening.remove();
+            return;
+        }
+
+        sessionStorage.setItem(openingKey, "true");
+
+    } catch (error) {
+        // Tetap jalankan opening jika sessionStorage tidak tersedia
+    }
+
+    // Durasi opening
+    setTimeout(function () {
+
+        opening.classList.add("hide-opening");
+
+        // Hapus elemen setelah transisi selesai
+        setTimeout(function () {
+            opening.remove();
+        }, 1000);
+
+    }, 3500);
+
+});

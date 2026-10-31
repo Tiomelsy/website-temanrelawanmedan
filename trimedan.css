@@ -1155,3 +1155,385 @@ footer p {
         transition: none;
     }
 }
+
+/* ANIMASI STATISTIK - SEMUA PERANGKAT */
+
+.info-item {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.10),
+        rgba(120, 170, 255, 0.30),
+        rgba(255, 255, 255, 0.15)
+    );
+
+    background-size: 200% 200%;
+    animation: warnaStatistik 5s ease-in-out infinite;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border 0.4s ease;
+}
+
+/* Angka statistik */
+.info-item h2 {
+    font-size: clamp(30px, 4vw, 43px);
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease;
+}
+
+/* Keterangan statistik */
+.info-item p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e4edff;
+}
+
+/* Animasi perubahan warna */
+@keyframes warnaStatistik {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Animasi ketika disentuh di HP dan tablet */
+.info-item:active {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    border-color: #ffffff;
+}
+
+.info-item:active h2 {
+    transform: scale(1.1);
+}
+
+/* Animasi ketika diarahkan kursor di laptop */
+@media (hover: hover) and (pointer: fine) {
+    .info-item:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        border-color: #ffffff;
+    }
+
+    .info-item:hover h2 {
+        transform: scale(1.1);
+    }
+}
+
+/* Tetap menghormati pengaturan aksesibilitas */
+@media (prefers-reduced-motion: reduce) {
+    .info-item {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .info-item h2 {
+        transition: none !important;
+    }
+}
+
+/* =====================================
+   OPENING ANIMATION TRI MEDAN
+===================================== */
+
+.tri-opening {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    z-index: 999999;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #1749bd 0%,
+            #0e35a9 45%,
+            #061747 100%
+        );
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+/* Efek cahaya background */
+
+.opening-glow {
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    background: rgba(80, 150, 255, 0.35);
+
+    border-radius: 50%;
+    filter: blur(90px);
+
+    animation: glowOpening 3s ease-in-out infinite alternate;
+}
+
+/* Konten opening */
+
+.opening-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+    text-align: center;
+
+    animation: contentOpening 1.2s ease both;
+}
+
+/* Logo 3D */
+
+.logo-3d {
+    width: clamp(120px, 22vw, 190px);
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 28px;
+
+    border-radius: 35px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25),
+        inset 0 0 25px rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transform-style: preserve-3d;
+
+    animation: logo3D 2.5s ease-in-out infinite;
+}
+
+.logo-3d img {
+    width: 75%;
+    height: 75%;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.25));
+}
+
+/* Judul */
+
+.opening-content h1 {
+    color: #ffffff;
+
+    font-size: clamp(17px, 3vw, 28px);
+    font-weight: 800;
+
+    letter-spacing: clamp(1px, 0.5vw, 4px);
+
+    margin: 0 0 10px;
+
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+
+    animation: textOpening 1.5s ease both;
+}
+
+.opening-content p {
+    color: #c9dcff;
+
+    font-size: clamp(12px, 2vw, 15px);
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    margin: 0;
+
+    animation: textOpening 1.8s ease both;
+}
+
+/* Loading indicator */
+
+.opening-loader {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 35px;
+}
+
+.opening-loader span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    animation: loaderOpening 1s ease-in-out infinite;
+}
+
+.opening-loader span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.opening-loader span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* =====================================
+   KEYFRAMES
+===================================== */
+
+@keyframes logo3D {
+    0%, 100% {
+        transform: perspective(800px)
+                   rotateY(-12deg)
+                   rotateX(8deg)
+                   translateY(0);
+    }
+
+    50% {
+        transform: perspective(800px)
+                   rotateY(12deg)
+                   rotateX(-5deg)
+                   translateY(-12px);
+    }
+}
+
+@keyframes glowOpening {
+    from {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+@keyframes contentOpening {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes textOpening {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loaderOpening {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-7px);
+    }
+}
+
+/* Opening selesai */
+
+.tri-opening.hide-opening {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* =====================================
+   RESPONSIVE - TABLET & HP
+===================================== */
+
+@media screen and (max-width: 768px) {
+    .logo-3d {
+        width: 145px;
+        border-radius: 28px;
+    }
+
+    .opening-content h1 {
+        letter-spacing: 2px;
+    }
+
+    .opening-content p {
+        letter-spacing: 3px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo-3d {
+        width: 125px;
+        border-radius: 24px;
+    }
+
+    .opening-content {
+        padding: 15px;
+    }
+
+    .opening-content h1 {
+        font-size: 16px;
+    }
+
+    .opening-content p {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
+
+/* Aksesibilitas */
+
+@media (prefers-reduced-motion: reduce) {
+    .opening-glow,
+    .logo-3d,
+    .opening-content,
+    .opening-content h1,
+    .opening-content p,
+    .opening-loader span {
+        animation: none !important;
+    }
+
+    .tri-opening {
+        transition: opacity 0.3s ease,
+                    visibility 0.3s ease;
+    }
+}

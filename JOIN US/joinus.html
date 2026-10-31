@@ -4,24 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0e35a9">
+    <meta name="description" content="Bergabung bersama Teman Relawan Indonesia Wilayah Medan.">
+
     <title>JOIN US | TRI Medan</title>
+
     <link rel="stylesheet" href="joinus.css">
+    <script src="joinus.js" defer></script>
 </head>
 
 <body>
 
-    <a href="../trimedan.html" class="back-home">← HOME</a>
+    <a href="/trimedan.html" class="back-home">
+        <span>←</span> HOME
+    </a>
 
     <main class="container">
 
+        <!-- WELCOME SECTION -->
         <section class="welcome-section">
-            <img src="../TRI (LOGO).png" alt="Logo TRI" class="logo">
+
+            <div class="logo-wrapper">
+                <div class="logo-orbit"></div>
+
+                <div class="logo-3d">
+                    <img src="/TRI (LOGO).png" alt="Logo Teman Relawan Indonesia" class="logo">
+                </div>
+            </div>
 
             <h1>BE PART OF US</h1>
-            <p class="subtitle">Teman Relawan Indonesia</p>
+
+            <p class="subtitle">
+                TEMAN RELAWAN INDONESIA
+            </p>
 
             <div class="welcome-text">
                 <h2>Let's Make a Difference!</h2>
+
                 <p>
                     Bersama Teman Relawan Indonesia, mari bergerak,
                     berbagi, dan menciptakan perubahan positif
@@ -30,8 +50,17 @@
             </div>
 
             <div class="decoration"></div>
+
+            <div class="welcome-caption">
+                <span></span>
+                <p>MAKE A DIFFERENCE WITH US</p>
+                <span></span>
+            </div>
+
         </section>
 
+
+        <!-- FORM SECTION -->
         <section class="form-section">
 
             <div class="form-card" id="formCard">
@@ -39,29 +68,44 @@
                 <!-- LOGIN -->
                 <div class="form-face login-face">
 
-                    <h2>Welcome Back!</h2>
-                    <p class="form-description">
-                        Login untuk melanjutkan perjalananmu bersama TRI.
-                    </p>
+                    <div class="card-decoration"></div>
+
+                    <div class="form-heading">
+                        <span class="form-label">MEMBER AREA</span>
+
+                        <h2>Welcome Back!</h2>
+
+                        <p class="form-description">
+                            Login untuk melanjutkan perjalananmu
+                            bersama TRI.
+                        </p>
+                    </div>
 
                     <form id="loginForm">
 
                         <div class="input-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="Masukkan email" required>
+                            <label for="loginEmail">Email</label>
+
+                            <input type="email" id="loginEmail" placeholder="Masukkan email" autocomplete="email"
+                                required>
                         </div>
 
                         <div class="input-group">
-                            <label>Password</label>
-                            <input type="password" placeholder="Masukkan password" required>
+                            <label for="loginPassword">Password</label>
+
+                            <input type="password" id="loginPassword" placeholder="Masukkan password"
+                                autocomplete="current-password" required>
                         </div>
 
                         <div class="forgot">
-                            <a href="#" id="forgotPassword">Forgot Password?</a>
+                            <a href="#" id="forgotPassword">
+                                Forgot Password?
+                            </a>
                         </div>
 
                         <button type="submit" class="submit-btn">
                             LOGIN
+                            <span>→</span>
                         </button>
 
                     </form>
@@ -73,38 +117,58 @@
 
                 </div>
 
+
                 <!-- SIGN UP -->
                 <div class="form-face signup-face">
 
-                    <h2>Create Account</h2>
-                    <p class="form-description">
-                        Bergabunglah dan jadilah bagian dari perubahan.
-                    </p>
+                    <div class="card-decoration"></div>
+
+                    <div class="form-heading">
+                        <span class="form-label">JOIN OUR COMMUNITY</span>
+
+                        <h2>Create Account</h2>
+
+                        <p class="form-description">
+                            Bergabunglah dan jadilah bagian
+                            dari perubahan.
+                        </p>
+                    </div>
 
                     <form id="signupForm">
 
                         <div class="input-group">
-                            <label>Nama Lengkap</label>
-                            <input type="text" placeholder="Masukkan nama lengkap" required>
+                            <label for="signupName">Nama Lengkap</label>
+
+                            <input type="text" id="signupName" placeholder="Masukkan nama lengkap" autocomplete="name"
+                                required>
                         </div>
 
                         <div class="input-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="Masukkan email" required>
+                            <label for="signupEmail">Email</label>
+
+                            <input type="email" id="signupEmail" placeholder="Masukkan email" autocomplete="email"
+                                required>
                         </div>
 
                         <div class="input-group">
-                            <label>Password</label>
-                            <input type="password" placeholder="Buat password" required minlength="6">
+                            <label for="signupPassword">Password</label>
+
+                            <input type="password" id="signupPassword" placeholder="Buat password"
+                                autocomplete="new-password" minlength="6" required>
                         </div>
 
                         <div class="input-group">
-                            <label>Konfirmasi Password</label>
-                            <input type="password" placeholder="Ulangi password" required minlength="6">
+                            <label for="confirmPassword">
+                                Konfirmasi Password
+                            </label>
+
+                            <input type="password" id="confirmPassword" placeholder="Ulangi password"
+                                autocomplete="new-password" minlength="6" required>
                         </div>
 
                         <button type="submit" class="submit-btn">
                             SIGN UP
+                            <span>→</span>
                         </button>
 
                     </form>
@@ -122,56 +186,19 @@
 
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Teman Relawan Indonesia - Medan</p>
+        <p>
+            Teman Relawan Indonesia |
+            Mengabdi dengan Hati, Membangun Negeri
+        </p>
+
+        <p>
+            © 2026 Teman Relawan Indonesia - Medan
+        </p>
     </footer>
 
-    <script>
-        const formCard = document.getElementById("formCard");
-
-        document.getElementById("showSignup").addEventListener("click", function (e) {
-            e.preventDefault();
-            formCard.classList.add("active");
-        });
-
-        document.getElementById("showLogin").addEventListener("click", function (e) {
-            e.preventDefault();
-            formCard.classList.remove("active");
-        });
-
-        document.getElementById("loginForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("Fitur Login belum terhubung dengan database.");
-        });
-
-        document.getElementById("signupForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const password = document.querySelector(
-                '.signup-face input[type="password"]'
-            );
-            const passwords = document.querySelectorAll(
-                '.signup-face input[type="password"]'
-            );
-
-            if (passwords[0].value !== passwords[1].value) {
-                alert("Password dan konfirmasi password tidak sama!");
-                return;
-            }
-
-            alert("Form pendaftaran berhasil diisi. Fitur Sign Up belum terhubung dengan database.");
-        });
-
-        document.getElementById("forgotPassword").addEventListener("click", function (e) {
-            e.preventDefault();
-            alert("Fitur lupa password belum tersedia.");
-        });
-    </script>
-
-    <footer>
-        <p>Teman Relawan Indonesia | Mengabdi dengan Hati, Membangun Negeri</p>
-        <p>© 2026 Teman Relawan Medan</p>
-    </footer>
 </body>
 
 </html>
