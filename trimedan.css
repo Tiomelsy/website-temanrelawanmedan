@@ -1412,53 +1412,388 @@ footer p {
     }
 }
 
-/* =====================================
-   SOCIAL MEDIA ICONS - TRI MEDAN
-   RESPONSIVE ALL DEVICES
-===================================== */
+/* =========================================
+   PROGRAM TRI MEDAN
+========================================= */
+
+.program-section {
+    width: 100%;
+    padding: 30px 20px 35px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.program-container {
+    width: 100%;
+    max-width: 950px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* KARTU PROGRAM */
+
+.program-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    min-height: 210px;
+    padding: 30px;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #0e35a9,
+        #174cc9,
+        #2464dc
+    );
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease,
+        background 0.45s ease;
+}
+
+/* AKSEN CAHAYA */
+
+.program-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -65px;
+    top: -75px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.10);
+
+    transition:
+        transform 0.5s ease,
+        background 0.5s ease;
+}
+
+.program-card::after {
+    content: "";
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    right: 30px;
+    bottom: -75px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+
+    transition: transform 0.5s ease;
+}
+
+/* ISI KARTU */
+
+.program-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.program-number {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    color: #c8dcff;
+}
+
+.program-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+.program-card p {
+    margin: 0 0 20px;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.program-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.program-link .arrow {
+    display: inline-block;
+    font-size: 20px;
+
+    transition: transform 0.35s ease;
+}
+
+/* VARIASI KARTU KEDUA */
+
+.program-card.terlaksana {
+    background: linear-gradient(
+        135deg,
+        #123b9e,
+        #2058c7,
+        #3978e8
+    );
+}
+
+/* =========================================
+   ANIMASI DAN TRANSISI DESKTOP
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .program-card:hover {
+        transform:
+            perspective(1000px)
+            translateY(-9px)
+            rotateX(4deg)
+            rotateY(-3deg);
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .program-card:hover::before {
+        transform: scale(1.4);
+        background: rgba(255, 255, 255, 0.16);
+    }
+
+    .program-card:hover::after {
+        transform: translateY(-20px) scale(1.2);
+    }
+
+    .program-card:hover .arrow {
+        transform: translateX(7px);
+    }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+    .program-section {
+        padding: 25px 25px 30px;
+    }
+
+    .program-container {
+        gap: 18px;
+    }
+
+    .program-card {
+        min-height: 200px;
+        padding: 24px;
+    }
+
+    .program-card h3 {
+        font-size: 17px;
+    }
+
+    .program-card p {
+        font-size: 13px;
+    }
+}
+
+/* =========================================
+   IPHONE DAN ANDROID
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .program-section {
+        padding: 20px 18px 25px;
+    }
+
+    .program-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        max-width: 420px;
+    }
+
+    .program-card {
+        min-height: 175px;
+        padding: 23px;
+
+        border-radius: 18px;
+    }
+
+    .program-card h3 {
+        font-size: 17px;
+    }
+
+    .program-card p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .program-number {
+        margin-bottom: 11px;
+    }
+}
+
+/* =========================================
+   HP LAYAR KECIL
+========================================= */
+
+@media screen and (max-width: 380px) {
+
+    .program-section {
+        padding: 18px 13px 22px;
+    }
+
+    .program-container {
+        gap: 13px;
+    }
+
+    .program-card {
+        min-height: 165px;
+        padding: 20px;
+
+        border-radius: 16px;
+    }
+
+    .program-card h3 {
+        font-size: 15px;
+    }
+
+    .program-card p {
+        font-size: 12px;
+    }
+
+    .program-link {
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   EFEK SENTUH TABLET DAN HP
+========================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .program-card:active {
+        transform: scale(0.97);
+        filter: brightness(1.12);
+    }
+
+    .program-card:active .arrow {
+        transform: translateX(5px);
+    }
+}
+
+/* =========================================
+   AKSESIBILITAS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .program-card,
+    .program-card::before,
+    .program-card::after,
+    .program-link .arrow {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================
+   IKON MEDIA SOSIAL TRI MEDAN
+   LAPTOP, MACBOOK, TABLET, IPHONE, ANDROID
+========================================= */
+
+/* POSISI UTAMA IKON */
 
 .social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     flex-wrap: wrap;
+
+    width: 100%;
     gap: 16px;
-    margin-top: 35px;
+
+    margin: 22px auto 35px;
+    padding: 0;
+
+    box-sizing: border-box;
 }
 
+/* BENTUK DAN UKURAN IKON */
+
 .social-icons .social-icon {
-    width: 55px;
-    height: 55px;
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+    padding: 0;
+    margin: 0;
+
     border-radius: 15px;
-    text-decoration: none;
+    box-sizing: border-box;
 
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-decoration: none;
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-
-    transform-style: preserve-3d;
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.18);
 
     transition:
         transform 0.4s ease,
         box-shadow 0.4s ease,
-        filter 0.4s ease,
-        background 0.4s ease;
-
-    animation: socialAppear 0.8s ease both;
+        filter 0.4s ease;
 }
 
+/* UKURAN LOGO SVG */
+
 .social-icons .social-icon svg {
-    width: 27px;
-    height: 27px;
+    width: 26px;
+    height: 26px;
     display: block;
 }
 
-/* WARNA SETIAP IKON */
+/* WARNA MASING-MASING MEDIA SOSIAL */
 
 .social-icons .instagram {
     background: linear-gradient(
@@ -1475,18 +1810,19 @@ footer p {
     background: #050505;
 }
 
-.social-icons .x-social {
-    background: #000000;
+.social-icons .gmail {
+    background: #EA4335;
 }
 
 .social-icons .whatsapp {
     background: #20c96b;
 }
 
-/* ANIMASI 3D LAPTOP / DESKTOP */
+/* =========================================
+   ANIMASI 3D UNTUK LAPTOP DAN MACBOOK
+========================================= */
 
 @media (hover: hover) and (pointer: fine) {
-
     .social-icons .social-icon:hover {
         transform:
             perspective(700px)
@@ -1495,243 +1831,103 @@ footer p {
             rotateY(-8deg)
             scale(1.08);
 
-        box-shadow:
-            0 15px 30px rgba(0, 0, 0, 0.3);
-
-        filter: brightness(1.15);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.28);
+        filter: brightness(1.12);
     }
-
 }
 
-/* EFEK SENTUH ANDROID / IPHONE / TABLET */
-
-@media (hover: none) and (pointer: coarse) {
-
-    .social-icons .social-icon:active {
-        transform: scale(0.92) translateY(-3px);
-        filter: brightness(1.2);
-    }
-
-}
-
-/* ANIMASI KEMUNCULAN */
-
-@keyframes socialAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.85);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-}
-
-/* RESPONSIVE TABLET */
+/* =========================================
+   TABLET
+========================================= */
 
 @media screen and (max-width: 900px) {
-
     .social-icons {
         gap: 14px;
-    }
-
-    .social-icons .social-icon {
-        width: 52px;
-        height: 52px;
-    }
-
-}
-
-/* RESPONSIVE HP / IPHONE / ANDROID */
-
-@media screen and (max-width: 600px) {
-
-    .social-icons {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 28px;
+        margin: 20px auto 32px;
     }
 
     .social-icons .social-icon {
         width: 50px;
+        min-width: 50px;
         height: 50px;
-        border-radius: 14px;
+        flex-basis: 50px;
     }
 
     .social-icons .social-icon svg {
         width: 25px;
         height: 25px;
     }
-
 }
 
-/* HP LAYAR KECIL */
+/* =========================================
+   IPHONE DAN ANDROID
+========================================= */
 
-@media screen and (max-width: 380px) {
-
+@media screen and (max-width: 600px) {
     .social-icons {
-        gap: 11px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        gap: 13px;
+        margin: 18px auto 30px;
+        padding: 0 12px;
     }
 
     .social-icons .social-icon {
-        width: 46px;
-        height: 46px;
-        border-radius: 12px;
+        width: 47px;
+        min-width: 47px;
+        height: 47px;
+        flex-basis: 47px;
+
+        border-radius: 13px;
     }
 
     .social-icons .social-icon svg {
         width: 23px;
         height: 23px;
     }
-
 }
 
-/* AKSESIBILITAS */
+/* =========================================
+   HP DENGAN LAYAR KECIL
+========================================= */
 
-@media (prefers-reduced-motion: reduce) {
-
-    .social-icons .social-icon {
-        animation: none !important;
-        transition: none !important;
+@media screen and (max-width: 380px) {
+    .social-icons {
+        gap: 10px;
+        padding: 0 8px;
     }
 
+    .social-icons .social-icon {
+        width: 43px;
+        min-width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+
+        border-radius: 12px;
+    }
+
+    .social-icons .social-icon svg {
+        width: 21px;
+        height: 21px;
+    }
 }
 
-/* =================================
-   TOMBOL PROGRAM TRI
-================================= */
+/* =========================================
+   EFEK SENTUH UNTUK HP DAN TABLET
+========================================= */
 
-.program-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 35px;
-}
-
-.program-buttons a {
-    width: auto;
-    padding: 13px 22px;
-    text-align: center;
-}
-
-/* =================================
-   IKON MEDIA SOSIAL TRI
-================================= */
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.social-icons .social-icon {
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border-radius: 15px;
-    color: #fff;
-    text-decoration: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,.2);
-    transition: transform .4s ease, filter .4s ease, box-shadow .4s ease;
-}
-
-.social-icons .social-icon svg {
-    width: 27px;
-    height: 27px;
-}
-
-.social-icons .instagram {
-    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-}
-
-.social-icons .tiktok {
-    background: #050505;
-}
-
-.social-icons .x-social {
-    background: #000;
-}
-
-.social-icons .whatsapp {
-    background: #20c96b;
-}
-
-/* ANIMASI 3D DESKTOP */
-
-@media (hover: hover) and (pointer: fine) {
-    .social-icons .social-icon:hover {
-        transform: perspective(700px) translateY(-8px) rotateX(10deg) rotateY(-8deg) scale(1.08);
-        box-shadow: 0 15px 30px rgba(0,0,0,.3);
+@media (hover: none) and (pointer: coarse) {
+    .social-icons .social-icon:active {
+        transform: scale(0.91);
         filter: brightness(1.15);
     }
 }
 
-/* EFEK SENTUH */
-
-@media (hover: none) and (pointer: coarse) {
-    .social-icons .social-icon:active {
-        transform: scale(.92);
-        filter: brightness(1.2);
-    }
-}
-
-/* RESPONSIVE TABLET DAN HP */
-
-@media (max-width: 900px) {
-    .social-icons .social-icon {
-        width: 52px;
-        height: 52px;
-    }
-}
-
-@media (max-width: 600px) {
-    .program-buttons {
-        flex-direction: column;
-        gap: 13px;
-    }
-
-    .program-buttons a {
-        width: min(100%, 300px);
-    }
-
-    .social-icons {
-        flex-direction: row;
-        gap: 13px;
-    }
-
-    .social-icons .social-icon {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-@media (max-width: 380px) {
-    .social-icons {
-        gap: 10px;
-    }
-
-    .social-icons .social-icon {
-        width: 46px;
-        height: 46px;
-    }
-}
-
-/* AKSESIBILITAS */
+/* =========================================
+   AKSESIBILITAS
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
     .social-icons .social-icon {
