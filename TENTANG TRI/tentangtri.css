@@ -574,7 +574,214 @@
     line-height: 1.85;
 }
 
+/* =================================
+   OUR ACTIVITIES - TEMAN RELAWAN
+================================= */
 
+.activities-section {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(45px, 7vw, 85px) clamp(16px, 5vw, 70px);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.activities-section *,
+.activities-section *::before,
+.activities-section *::after {
+    box-sizing: border-box;
+}
+
+.activities-heading {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto clamp(30px, 5vw, 48px);
+    text-align: center;
+}
+
+.activities-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: rgb(14, 53, 169);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.activities-heading h2 {
+    margin: 0 0 12px;
+    font-size: clamp(25px, 4vw, 36px);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.activities-heading p {
+    margin: 0;
+    color: #666;
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.7;
+}
+
+/* SUSUNAN KARTU */
+
+.activities-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(15px, 2.5vw, 25px);
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* KARTU AKTIVITAS */
+
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    padding: clamp(20px, 3vw, 30px);
+
+    background: #fff;
+    border: 1px solid rgba(14, 53, 169, 0.13);
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+/* NOMOR DI ATAS SEBELAH KANAN */
+
+.activity-number {
+    display: block;
+    align-self: flex-end;
+    margin: 0 0 20px;
+
+    color: rgb(14, 53, 169);
+    font-size: clamp(25px, 3vw, 32px);
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* EMOJI DAN JUDUL DI BAWAH NOMOR */
+
+.activity-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    margin-bottom: 14px;
+}
+
+.activity-icon {
+    flex-shrink: 0;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height: 1.2;
+}
+
+.activity-title h4 {
+    min-width: 0;
+    margin: 0;
+
+    color: #17213a;
+    font-size: clamp(16px, 1.8vw, 19px);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* DESKRIPSI DI BAWAH JUDUL */
+
+.activity-card p {
+    margin: 0;
+    color: #666;
+
+    font-size: clamp(14px, 1.5vw, 15px);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* EFEK HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+    .activity-card:hover {
+        transform: translateY(-8px);
+        border-color: rgb(14, 53, 169);
+        box-shadow: 0 16px 32px rgba(14, 53, 169, 0.13);
+    }
+}
+
+/* TABLET */
+
+@media screen and (max-width: 900px) {
+    .activities-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* HP */
+
+@media screen and (max-width: 600px) {
+    .activities-section {
+        padding: 45px 18px;
+    }
+
+    .activities-heading {
+        margin-bottom: 28px;
+    }
+
+    .activities-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .activity-card {
+        padding: 23px;
+        border-radius: 15px;
+    }
+
+    .activity-number {
+        margin-bottom: 17px;
+    }
+
+    .activity-title {
+        gap: 10px;
+    }
+}
+
+/* HP LAYAR KECIL */
+
+@media screen and (max-width: 360px) {
+    .activities-section {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .activity-card {
+        padding: 19px;
+    }
+
+    .activity-title h4 {
+        font-size: 15px;
+    }
+
+    .activity-card p {
+        font-size: 13px;
+    }
+}
+
+/* PENGURANGAN ANIMASI SESUAI PENGATURAN PERANGKAT */
+
+@media (prefers-reduced-motion: reduce) {
+    .activity-card {
+        transition: none;
+    }
+}
 /* =========================================
    PENUTUP
 ========================================= */
