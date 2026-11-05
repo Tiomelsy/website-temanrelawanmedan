@@ -5,373 +5,722 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Join Us | Teman Relawan Indonesia Medan</title>
+    <title>JOIN US | Teman Relawan Indonesia Medan</title>
 
-    <!-- Favicon TRI -->
-    <link rel="icon" type="image/png" href="../TRI%20(LOGO).png">
+    <meta name="description"
+        content="Bergabung bersama Teman Relawan Indonesia Wilayah Medan dan jadilah bagian dari gerakan kebaikan.">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- FAVICON TRI -->
+    <link rel="icon" type="image/png" href="../TRI%20%28LOGO%29.png">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="../trimedan.css">
     <link rel="stylesheet" href="joinus.css">
+
+    <!-- JAVASCRIPT -->
+    <script src="joinus.js" defer></script>
 </head>
 
-<body>
+<body class="joinus-body">
 
-    <!-- HEADER -->
-    <header class="site-header">
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
 
         <a href="../trimedan.html" class="brand">
-            <img src="../TRI%20(LOGO).png" alt="Logo Teman Relawan Indonesia">
-            <span>TEMAN RELAWAN INDONESIA</span>
+            <img src="../TRI%20%28LOGO%29.png" alt="Logo Teman Relawan Indonesia" class="logo">
+
+            <h1>TEMAN RELAWAN INDONESIA</h1>
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu navigasi" aria-expanded="false">
-            <i class="fa-solid fa-bars"></i>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu" aria-expanded="false"
+            aria-controls="mainNav">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
         </button>
 
-        <nav class="main-nav" id="mainNav">
+        <nav id="mainNav" class="main-nav">
+
             <a href="../trimedan.html">HOME</a>
-            <a href="../pages/kaderisasi.html">KADERISASI</a>
-            <a href="../pages/sosial.html">SOSIAL</a>
-            <a href="../pages/medinfo.html">MEDINFO</a>
-            <a href="../pages/partnership.html">PARTNERSHIP</a>
+
+            <a href="../BPH/bphnyatrimedan.html">BPH</a>
+
+            <a href="../KADERISASI/kader.html">KADERISASI</a>
+
+            <a href="../SOSIAL/sosial.html">SOSIAL</a>
+
+            <a href="../MEDINFO/medinfo.html">MEDINFO</a>
+
+            <a href="../PATNERSHIP/patner.html">PARTNERSHIP</a>
+
         </nav>
 
     </header>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- ================= HERO JOIN US ================= -->
+
     <main>
 
-        <!-- HERO -->
-        <section class="hero">
+        <section class="join-hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    TEMAN RELAWAN INDONESIA WILAYAH MEDAN
+                </span>
+
+                <h2>
+                    JOIN <span>US!</span>
+                </h2>
+
+                <h3>
+                    Saatnya Menjadi Bagian dari Perubahan
+                </h3>
+
+                <p>
+                    Setiap langkah kecil memiliki arti.
+                    Bersama Teman Relawan Indonesia, kita dapat
+                    menciptakan ruang untuk berbagi, peduli,
+                    belajar, dan memberikan dampak positif
+                    bagi masyarakat.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#program-bergabung" class="btn-primary">
+                        TEMUKAN PERANMU
+                        <span>→</span>
+                    </a>
+
+                    <a href="#social-media" class="btn-secondary">
+                        HUBUNGI KAMI
+                    </a>
+
+                </div>
+
+            </div>
 
             <div class="hero-decoration decoration-one"></div>
             <div class="hero-decoration decoration-two"></div>
 
-            <div class="hero-content">
-
-                <p class="hero-label">BE PART OF US</p>
-
-                <h1>
-                    MAKE A DIFFERENCE
-                    <span>WITH US.</span>
-                </h1>
-
-                <p class="hero-description">
-                    TEMAN RELAWAN INDONESIA
-                </p>
-
-                <p class="hero-text">
-                    Bersama Teman Relawan Indonesia, mari bergerak,
-                    berbagi, dan menciptakan perubahan positif bagi sesama.
-                    Karena setiap langkah kecil memiliki arti.
-                </p>
-
-                <a href="#join-section" class="hero-button">
-                    JOIN OUR TEAM
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-            <div class="hero-logo">
-                <div class="logo-circle">
-                    <img src="../TRI%20(LOGO).png" alt="Logo TRI Medan">
-                </div>
-                <span>ONE STEP, ONE IMPACT</span>
-            </div>
-
         </section>
 
 
-        <!-- WHY JOIN US -->
-        <section class="benefit-section">
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="join-intro section-container">
 
             <div class="section-heading">
-                <p>WHY JOIN US?</p>
-                <h2>Grow, Connect, and Inspire.</h2>
-                <span>
-                    Jadilah bagian dari perjalanan untuk memberikan
-                    dampak positif kepada masyarakat.
+
+                <span class="section-label">
+                    LET'S MAKE AN IMPACT
                 </span>
-            </div>
 
-            <div class="benefit-grid">
-
-                <article class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Social Impact</h3>
-                    <p>
-                        Ikut berkontribusi dalam kegiatan sosial
-                        dan memberikan manfaat bagi sesama.
-                    </p>
-                </article>
-
-                <article class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fa-solid fa-people-group"></i>
-                    </div>
-                    <h3>Build Connection</h3>
-                    <p>
-                        Bertemu dengan orang-orang baru,
-                        membangun relasi, dan bekerja sama.
-                    </p>
-                </article>
-
-                <article class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3>Develop Yourself</h3>
-                    <p>
-                        Mengembangkan kemampuan, pengalaman,
-                        dan rasa tanggung jawab.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- JOIN SECTION -->
-        <section class="join-section" id="join-section">
-
-            <div class="join-intro">
-                <p class="section-tag">YOUR JOURNEY STARTS HERE</p>
-
-                <h2>Ready to Be Part of Us?</h2>
+                <h2>
+                    Satu Langkah untuk
+                    <span>Seribu Kebaikan</span>
+                </h2>
 
                 <p>
-                    Kami percaya bahwa perubahan besar dimulai
-                    dari kepedulian kecil. Mari tumbuh dan bergerak
-                    bersama Teman Relawan Indonesia Wilayah Medan.
+                    Menjadi relawan bukan hanya tentang membantu,
+                    tetapi juga tentang belajar memahami,
+                    membangun kepedulian, dan tumbuh bersama.
                 </p>
 
-                <div class="join-note">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <span>
-                        Formulir pada halaman ini merupakan tampilan
-                        demonstrasi. Pendaftaran belum terhubung
-                        ke sistem database.
-                    </span>
-                </div>
             </div>
 
+            <div class="intro-content">
 
-            <!-- FORM BOX -->
-            <div class="form-card">
+                <div class="intro-card intro-main-card">
 
-                <div class="form-header">
-                    <span class="form-label">JOIN THE MOVEMENT</span>
-                    <h3 id="formTitle">Welcome Back!</h3>
-                    <p id="formSubtitle">
-                        Masuk untuk melanjutkan.
+                    <div class="intro-icon">♡</div>
+
+                    <h3>Mengapa Bergabung dengan TRI?</h3>
+
+                    <p>
+                        Teman Relawan Indonesia menjadi ruang bagi
+                        setiap individu untuk berkontribusi dalam
+                        kegiatan sosial, mengembangkan kemampuan,
+                        memperluas relasi, serta menghadirkan
+                        manfaat bagi lingkungan sekitar.
                     </p>
+
                 </div>
 
+                <div class="intro-side">
 
-                <!-- LOGIN FORM -->
-                <form id="loginForm">
+                    <div class="intro-card">
 
-                    <div class="input-group">
-                        <label for="loginEmail">Email</label>
-                        <div class="input-wrapper">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="loginEmail" placeholder="Masukkan email" required>
-                        </div>
+                        <div class="intro-number">01</div>
+
+                        <h3>Berbagi</h3>
+
+                        <p>
+                            Menumbuhkan kepedulian melalui aksi
+                            dan kegiatan sosial.
+                        </p>
+
                     </div>
 
-                    <div class="input-group">
-                        <label for="loginPassword">Password</label>
-                        <div class="input-wrapper">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="loginPassword" placeholder="Masukkan password" required>
-                            <button type="button" class="password-toggle" data-target="loginPassword"
-                                aria-label="Tampilkan password">
-                                <i class="fa-regular fa-eye"></i>
-                            </button>
-                        </div>
+                    <div class="intro-card">
+
+                        <div class="intro-number">02</div>
+
+                        <h3>Bertumbuh</h3>
+
+                        <p>
+                            Mengembangkan potensi diri,
+                            pengalaman, dan keterampilan.
+                        </p>
+
                     </div>
 
-                    <button type="button" class="forgot-password" id="forgotPassword">
-                        Lupa password?
-                    </button>
-
-                    <button type="submit" class="submit-button">
-                        LOGIN
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-
-                    <p class="switch-form">
-                        Belum memiliki akun?
-                        <button type="button" id="showRegister">
-                            Daftar sekarang
-                        </button>
-                    </p>
-
-                </form>
-
-
-                <!-- REGISTER FORM -->
-                <form id="registerForm" class="hidden">
-
-                    <div class="input-group">
-                        <label for="registerName">Nama Lengkap</label>
-                        <div class="input-wrapper">
-                            <i class="fa-regular fa-user"></i>
-                            <input type="text" id="registerName" placeholder="Masukkan nama lengkap" required>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="registerEmail">Email</label>
-                        <div class="input-wrapper">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="registerEmail" placeholder="Masukkan email" required>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="registerPassword">Password</label>
-                        <div class="input-wrapper">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="registerPassword" placeholder="Buat password" required>
-                            <button type="button" class="password-toggle" data-target="registerPassword"
-                                aria-label="Tampilkan password">
-                                <i class="fa-regular fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="confirmPassword">Konfirmasi Password</label>
-                        <div class="input-wrapper">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <input type="password" id="confirmPassword" placeholder="Ulangi password" required>
-                            <button type="button" class="password-toggle" data-target="confirmPassword"
-                                aria-label="Tampilkan password">
-                                <i class="fa-regular fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="submit-button">
-                        CREATE ACCOUNT
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-
-                    <p class="switch-form">
-                        Sudah memiliki akun?
-                        <button type="button" id="showLogin">
-                            Login
-                        </button>
-                    </p>
-
-                </form>
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- SOCIAL MEDIA -->
-        <section class="social-section">
+        <!-- ================= PROGRAM BERGABUNG ================= -->
 
-            <p class="section-tag">STAY CONNECTED</p>
+        <section class="join-program section-container" id="program-bergabung">
 
-            <h2>Find Us on Social Media</h2>
+            <div class="section-heading">
 
-            <p>
-                Ikuti perjalanan dan kegiatan Teman Relawan Indonesia
-                Wilayah Medan melalui media sosial kami.
-            </p>
+                <span class="section-label">
+                    BE PART OF US
+                </span>
+
+                <h2>
+                    Temukan Peranmu
+                    <span>Bersama TRI</span>
+                </h2>
+
+                <p>
+                    Ada banyak kesempatan untuk ikut mengambil
+                    bagian dalam perjalanan kebaikan bersama
+                    Teman Relawan Indonesia Wilayah Medan.
+                </p>
+
+            </div>
+
+
+            <div class="program-grid">
+
+                <!-- PROGRAM 1 -->
+
+                <article class="join-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon">♡</div>
+
+                        <span class="card-number">01</span>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-category">
+                            VOLUNTEER
+                        </span>
+
+                        <h3>Relawan</h3>
+
+                        <p>
+                            Bergabung sebagai relawan dan ikut
+                            berpartisipasi dalam berbagai kegiatan
+                            sosial yang diselenggarakan TRI Medan.
+                        </p>
+
+                    </div>
+
+                    <a href="#social-media" class="card-link">
+                        HUBUNGI KAMI <span>→</span>
+                    </a>
+
+                </article>
+
+
+                <!-- PROGRAM 2 -->
+
+                <article class="join-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon">✦</div>
+
+                        <span class="card-number">02</span>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-category">
+                            ORGANIZATION
+                        </span>
+
+                        <h3>Member TRI</h3>
+
+                        <p>
+                            Menjadi bagian dari keluarga besar
+                            TRI dan ikut berkontribusi dalam
+                            pengembangan organisasi.
+                        </p>
+
+                    </div>
+
+                    <a href="#social-media" class="card-link">
+                        HUBUNGI KAMI <span>→</span>
+                    </a>
+
+                </article>
+
+
+                <!-- PROGRAM 3 -->
+
+                <article class="join-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon">◎</div>
+
+                        <span class="card-number">03</span>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-category">
+                            COLLABORATION
+                        </span>
+
+                        <h3>Kegiatan & Event</h3>
+
+                        <p>
+                            Ikut terlibat dalam kegiatan,
+                            kolaborasi, dan berbagai program
+                            sosial bersama TRI Medan.
+                        </p>
+
+                    </div>
+
+                    <a href="#social-media" class="card-link">
+                        HUBUNGI KAMI <span>→</span>
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BENEFIT ================= -->
+
+        <section class="join-benefits">
+
+            <div class="section-container">
+
+                <div class="section-heading light-heading">
+
+                    <span class="section-label">
+                        GROW TOGETHER
+                    </span>
+
+                    <h2>
+                        Apa yang Bisa Kamu
+                        <span>Dapatkan?</span>
+                    </h2>
+
+                    <p>
+                        Lebih dari sekadar pengalaman,
+                        ada banyak hal yang bisa kamu pelajari
+                        dan kembangkan bersama TRI.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit-grid">
+
+                    <article class="benefit-card">
+
+                        <div class="benefit-icon">✧</div>
+
+                        <h3>Pengalaman Baru</h3>
+
+                        <p>
+                            Mendapatkan pengalaman melalui
+                            keterlibatan dalam berbagai kegiatan
+                            sosial dan kemanusiaan.
+                        </p>
+
+                    </article>
+
+
+                    <article class="benefit-card">
+
+                        <div class="benefit-icon">♧</div>
+
+                        <h3>Relasi dan Pertemanan</h3>
+
+                        <p>
+                            Bertemu dengan orang-orang baru
+                            yang memiliki semangat dan kepedulian
+                            untuk melakukan hal positif.
+                        </p>
+
+                    </article>
+
+
+                    <article class="benefit-card">
+
+                        <div class="benefit-icon">◇</div>
+
+                        <h3>Pengembangan Diri</h3>
+
+                        <p>
+                            Melatih komunikasi, kerja sama,
+                            tanggung jawab, kepemimpinan,
+                            dan kemampuan lainnya.
+                        </p>
+
+                    </article>
+
+
+                    <article class="benefit-card">
+
+                        <div class="benefit-icon">♡</div>
+
+                        <h3>Kontribusi Sosial</h3>
+
+                        <p>
+                            Menjadi bagian dari aksi nyata
+                            yang memberikan manfaat bagi
+                            masyarakat dan lingkungan.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CALL TO ACTION ================= -->
+
+        <section class="join-cta section-container">
+
+            <div class="cta-box">
+
+                <div class="cta-decoration"></div>
+
+                <div class="cta-content">
+
+                    <span class="section-label">
+                        YOUR JOURNEY STARTS HERE
+                    </span>
+
+                    <h2>
+                        Siap Menjadi Bagian dari
+                        <span>Teman Relawan Indonesia?</span>
+                    </h2>
+
+                    <p>
+                        Jangan ragu untuk mengenal TRI lebih dekat.
+                        Hubungi kami melalui media sosial resmi
+                        TRI Medan untuk mendapatkan informasi
+                        mengenai kesempatan bergabung.
+                    </p>
+
+                    <a href="https://wa.me/6285362172949" target="_blank" rel="noopener noreferrer" class="cta-button">
+
+                        HUBUNGI TRI MEDAN
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SOCIAL MEDIA ================= -->
+
+        <section class="social-section section-container" id="social-media">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    STAY CONNECTED
+                </span>
+
+                <h2>
+                    Terhubung dengan
+                    <span>TRI Medan</span>
+                </h2>
+
+                <p>
+                    Ikuti media sosial dan hubungi kami
+                    untuk mendapatkan informasi lebih lanjut
+                    mengenai Teman Relawan Indonesia Wilayah Medan.
+                </p>
+
+            </div>
+
 
             <div class="social-grid">
 
+
+                <!-- INSTAGRAM -->
+
                 <a href="https://www.instagram.com/temanrelawan.medan/" target="_blank" rel="noopener noreferrer"
-                    class="social-card">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span>Instagram</span>
-                    <small>@temanrelawan.medan</small>
+                    class="social-card instagram-card">
+
+                    <div class="social-icon instagram-icon">
+                        <span>◎</span>
+                    </div>
+
+                    <div class="social-info">
+
+                        <span class="social-category">
+                            INSTAGRAM
+                        </span>
+
+                        <h3>@temanrelawan.medan</h3>
+
+                        <p>
+                            Ikuti dokumentasi, informasi,
+                            dan aktivitas TRI Medan.
+                        </p>
+
+                    </div>
+
+                    <span class="social-arrow">↗</span>
+
                 </a>
 
-                <a href="https://www.tiktok.com/@temanrelawan.medan" target="_blank" rel="noopener noreferrer"
-                    class="social-card">
-                    <i class="fa-brands fa-tiktok"></i>
-                    <span>TikTok</span>
-                    <small>@temanrelawan.medan</small>
+
+                <!-- TIKTOK -->
+
+                <a href="https://www.tiktok.com/@temanrelawan.medan?is_from_webapp=1&sender_device=pc" target="_blank"
+                    rel="noopener noreferrer" class="social-card tiktok-card">
+
+                    <div class="social-icon tiktok-icon">
+                        <span>♪</span>
+                    </div>
+
+                    <div class="social-info">
+
+                        <span class="social-category">
+                            TIKTOK
+                        </span>
+
+                        <h3>@temanrelawan.medan</h3>
+
+                        <p>
+                            Saksikan berbagai keseruan
+                            dan aktivitas TRI Medan.
+                        </p>
+
+                    </div>
+
+                    <span class="social-arrow">↗</span>
+
                 </a>
 
-                <a href="mailto:medan@temanrelawan.org" class="social-card">
-                    <i class="fa-regular fa-envelope"></i>
-                    <span>Email</span>
-                    <small>medan@temanrelawan.org</small>
+
+                <!-- EMAIL -->
+
+                <a href="mailto:medan@temanrelawan.org" class="social-card email-card">
+
+                    <div class="social-icon email-icon">
+                        <span>✉</span>
+                    </div>
+
+                    <div class="social-info">
+
+                        <span class="social-category">
+                            EMAIL
+                        </span>
+
+                        <h3>medan@temanrelawan.org</h3>
+
+                        <p>
+                            Sampaikan pertanyaan atau
+                            keperluan informasi melalui email.
+                        </p>
+
+                    </div>
+
+                    <span class="social-arrow">↗</span>
+
                 </a>
 
-                <a href="https://wa.me/6285362172949" target="_blank" rel="noopener noreferrer" class="social-card">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                    <small>Contact Us</small>
+
+                <!-- WHATSAPP -->
+
+                <a href="https://wa.me/6285362172949" target="_blank" rel="noopener noreferrer"
+                    class="social-card whatsapp-card">
+
+                    <div class="social-icon whatsapp-icon">
+                        <span>☏</span>
+                    </div>
+
+                    <div class="social-info">
+
+                        <span class="social-category">
+                            WHATSAPP
+                        </span>
+
+                        <h3>0853-6217-2949</h3>
+
+                        <p>
+                            Hubungi TRI Medan secara langsung
+                            untuk informasi lebih lanjut.
+                        </p>
+
+                    </div>
+
+                    <span class="social-arrow">↗</span>
+
                 </a>
+
 
             </div>
 
         </section>
 
 
-        <!-- BACK HOME -->
+        <!-- ================= BACK TO HOME ================= -->
+
         <section class="back-home-section">
-            <a href="../trimedan.html" class="back-home-button">
-                <i class="fa-solid fa-arrow-left"></i>
-                KEMBALI KE HOME
-            </a>
+
+            <div class="back-home-content">
+
+                <h2>
+                    Bersama Kita Bisa
+                    Membawa Perubahan.
+                </h2>
+
+                <p>
+                    Terima kasih telah mengenal
+                    Teman Relawan Indonesia Wilayah Medan.
+                </p>
+
+                <a href="../trimedan.html" class="back-home-button">
+                    <span>←</span>
+                    KEMBALI KE HOME
+                </a>
+
+            </div>
+
         </section>
 
     </main>
 
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
+    <!-- ================= FOOTER ================= -->
 
-        <div class="footer-content">
+    <footer class="footer">
+
+        <div class="footer-main">
 
             <div class="footer-brand">
-                <img src="../TRI%20(LOGO).png" alt="Logo Teman Relawan Indonesia">
+
+                <div class="footer-logo-wrapper">
+
+                    <img src="../TRI%20%28LOGO%29.png" alt="Logo Teman Relawan Indonesia" class="footer-logo">
+
+                </div>
 
                 <div>
-                    <h3>TEMAN RELAWAN INDONESIA</h3>
-                    <p>Mengabdi dengan Hati, Membangun Negeri.</p>
+
+                    <h2>TEMAN RELAWAN INDONESIA</h2>
+
+                    <span>WILAYAH MEDAN</span>
+
                 </div>
+
+                <p>
+                    Bergerak bersama, berbagi kepedulian,
+                    dan menghadirkan perubahan melalui
+                    aksi nyata.
+                </p>
+
             </div>
 
-            <div class="footer-links">
+
+            <div class="footer-navigation">
+
+                <h3>NAVIGASI</h3>
+
                 <a href="../trimedan.html">HOME</a>
-                <a href="../pages/kaderisasi.html">KADERISASI</a>
-                <a href="../pages/sosial.html">SOSIAL</a>
-                <a href="../pages/medinfo.html">MEDINFO</a>
-                <a href="../pages/partnership.html">PARTNERSHIP</a>
+                <a href="../BPH/bphnyatrimedan.html">BPH</a>
+                <a href="../KADERISASI/kader.html">KADERISASI</a>
+                <a href="../SOSIAL/sosial.html">SOSIAL</a>
+                <a href="../MEDINFO/medinfo.html">MEDINFO</a>
+                <a href="../PATNERSHIP/patner.html">PARTNERSHIP</a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>HUBUNGI KAMI</h3>
+
+                <a href="https://www.instagram.com/temanrelawan.medan/" target="_blank" rel="noopener noreferrer">
+                    Instagram
+                </a>
+
+                <a href="https://www.tiktok.com/@temanrelawan.medan?is_from_webapp=1&sender_device=pc" target="_blank"
+                    rel="noopener noreferrer">
+                    TikTok
+                </a>
+
+                <a href="mailto:medan@temanrelawan.org">
+                    Email TRI Medan
+                </a>
+
+                <a href="https://wa.me/6285362172949" target="_blank" rel="noopener noreferrer">
+                    WhatsApp
+                </a>
+
             </div>
 
         </div>
 
+
         <div class="footer-bottom">
+
             <p>
-                © 2026 Teman Relawan Indonesia - Medan
+                © 2026 Teman Relawan Indonesia Wilayah Medan.
+                All Rights Reserved.
             </p>
-            <p>All Rights Reserved.</p>
+
+            <p>
+                Made with Care by TRI Medan
+            </p>
+
         </div>
 
     </footer>
-
-
-    <!-- JAVASCRIPT -->
-    <script src="joinus.js"></script>
 
 </body>
 
