@@ -170,15 +170,32 @@
     transform: rotateX(12deg) rotateY(-15deg);
 }
 
-.art-center span {
-    font: bold 45px Arial, sans-serif;
-    letter-spacing: 4px;
+/* / LOGO TRI MEDAN / */
+
+/* LOGO ASLI TRI MEDAN */
+
+.art-center {
+    width: 145px;
+    height: 145px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+
+    transform: rotateX(12deg) rotateY(-15deg);
 }
 
-.art-center small {
-    text-align: center;
-    font: 10px/1.5 Arial, sans-serif;
-    letter-spacing: 2px;
+.art-center img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
 
 .spark {

@@ -2100,11 +2100,6 @@ body.tri-program-page {
     }
 }
 
-
-/* =========================================================
-   RESPONSIVE HP LAYAR KECIL
-========================================================= */
-
 @media screen and (max-width: 360px) {
     .social-section {
         padding-left: 12px;

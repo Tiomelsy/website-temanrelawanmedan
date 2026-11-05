@@ -1,6 +1,7 @@
-/* =====================================
+
+/* =========================================
    GLOBAL
-===================================== */
+========================================= */
 
 * {
     margin: 0;
@@ -11,369 +12,587 @@
 
 :root {
     --blue: #0e35a9;
-    --blue-dark: #082477;
+    --blue-dark: #071b59;
     --cyan: #13cfb6;
     --white: #ffffff;
     --light: #e5edff;
 }
 
 html {
-    min-height: 100%;
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
     min-height: 100vh;
-    min-height: 100dvh;
-
-    display: flex;
-    flex-direction: column;
-
     overflow-x: hidden;
-
     color: var(--white);
 
     background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(19, 207, 182, 0.18),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(73, 129, 255, 0.24),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #061b60,
-            #0e35a9,
-            #092a83
-        );
+        radial-gradient(circle at 15% 20%, rgba(19,207,182,.15), transparent 32%),
+        radial-gradient(circle at 85% 80%, rgba(73,129,255,.2), transparent 35%),
+        linear-gradient(135deg, #061b60, #0e35a9, #092a83);
 
     background-size: 200% 200%;
-
-    animation:
-        pageEnter 1s ease,
-        backgroundMove 12s ease infinite;
+    animation: backgroundMove 15s ease infinite;
 }
 
-@keyframes pageEnter {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+button,
+input {
+    font: inherit;
 }
 
 @keyframes backgroundMove {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 
-/* =====================================
-   HOME BUTTON
-===================================== */
+/* =========================================
+   HEADER TRI MEDAN
+========================================= */
 
-.back-home {
-    position: absolute;
-    top: 25px;
-    left: 35px;
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 
-    z-index: 20;
+    background: rgba(5, 24, 82, .96);
+    border-bottom: 1px solid rgba(255,255,255,.15);
 
-    display: inline-flex;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.13);
+}
+
+.header-container {
+    width: 94%;
+    max-width: 1450px;
+    min-height: 88px;
+    margin: auto;
+
+    display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 22px;
+}
 
-    color: white;
-    text-decoration: none;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    flex-shrink: 0;
 
-    font-size: 17px;
+    font-size: clamp(14px, 1.5vw, 20px);
+    font-weight: bold;
     letter-spacing: 1px;
-
-    transition: 0.35s ease;
 }
 
-.back-home span {
-    transition: transform 0.35s ease;
+.brand img {
+    width: 54px;
+    height: 54px;
+    display: block;
+    object-fit: contain;
 }
 
-.back-home:hover {
+.brand span {
+    max-width: 245px;
+    line-height: 1.25;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(9px, 1.35vw, 22px);
+}
+
+.main-nav a {
+    position: relative;
+    padding: 12px 0;
+
+    color: #e4ecff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    white-space: nowrap;
+
+    transition: color .3s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--cyan);
+    transition: width .35s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
     color: var(--cyan);
 }
 
-.back-home:hover span {
-    transform: translateX(-6px);
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav .join-nav {
+    padding: 11px 16px;
+    border: 1px solid var(--cyan);
+    border-radius: 7px;
+    color: var(--cyan);
+
+    transition: .35s ease;
+}
+
+.main-nav .join-nav::after {
+    display: none;
+}
+
+.main-nav .join-nav:hover,
+.main-nav .join-nav.active {
+    color: var(--blue-dark);
+    background: var(--cyan);
+    box-shadow: 0 0 18px rgba(19,207,182,.3);
 }
 
 
-/* =====================================
-   MAIN CONTAINER
-===================================== */
+/* HAMBURGER */
 
-.container {
-    width: 90%;
-    max-width: 1150px;
+.menu-toggle {
+    display: none;
+    width: 43px;
+    height: 43px;
+    padding: 9px;
 
-    flex: 1;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+}
 
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+
+    background: white;
+    border-radius: 5px;
+
+    transition: .3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+    width: min(90%, 1250px);
+    min-height: 590px;
     margin: auto;
+    padding: 85px 0 75px;
 
     display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
+    grid-template-columns: 1.1fr .9fr;
     align-items: center;
-
-    gap: 65px;
-
-    padding: 100px 0 50px;
+    gap: 50px;
 }
 
-
-/* =====================================
-   WELCOME SECTION
-===================================== */
-
-.welcome-section {
-    position: relative;
-
+.hero-content {
     animation: slideLeft 1s ease both;
 }
 
 @keyframes slideLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-45px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-
-/* LOGO 3D */
-
-.logo-wrapper {
-    width: 145px;
-    height: 145px;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    perspective: 900px;
-
-    margin-bottom: 25px;
-}
-
-.logo-orbit {
-    position: absolute;
-
-    width: 135px;
-    height: 135px;
-
-    border: 2px solid rgba(19, 207, 182, 0.65);
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 15px rgba(19, 207, 182, 0.25),
-        inset 0 0 15px rgba(19, 207, 182, 0.15);
-
-    animation: orbitSpin 8s linear infinite;
-}
-
-.logo-3d {
-    width: 115px;
-    height: 115px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transform-style: preserve-3d;
-
-    animation: logo3D 5s ease-in-out infinite;
-}
-
-.logo {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(0 12px 15px rgba(0, 0, 0, 0.35));
-
-    transform: translateZ(25px);
-}
-
-@keyframes logo3D {
-    0%, 100% {
-        transform: rotateY(-12deg) rotateX(8deg) translateY(0);
-    }
-
-    50% {
-        transform: rotateY(15deg) rotateX(-8deg) translateY(-12px);
-    }
-}
-
-@keyframes orbitSpin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* WELCOME TEXT */
-
-.welcome-section h1 {
-    font-size: clamp(34px, 4vw, 54px);
-
-    letter-spacing: 3px;
-
+.eyebrow,
+.section-label,
+.info-label {
+    display: inline-block;
     color: var(--cyan);
-
-    margin-bottom: 10px;
-
-    text-shadow: 0 5px 20px rgba(19, 207, 182, 0.2);
-}
-
-.subtitle {
-    font-size: 19px;
+    font-size: 12px;
+    font-weight: bold;
     letter-spacing: 2px;
-    color: #dce7ff;
 }
 
-.welcome-text {
-    margin-top: 45px;
-    max-width: 460px;
+.hero-content h1 {
+    margin: 20px 0;
+    font-size: clamp(48px, 6.5vw, 83px);
+    line-height: 1.05;
+    letter-spacing: 2px;
 }
 
-.welcome-text h2 {
-    font-size: 29px;
+.hero-content h1 span {
     color: var(--cyan);
-    margin-bottom: 15px;
+    text-shadow: 0 0 25px rgba(19,207,182,.25);
 }
 
-.welcome-text p {
-    font-size: 18px;
-    line-height: 1.8;
+.hero-content > p {
+    max-width: 570px;
     color: var(--light);
+    font-size: 18px;
+    line-height: 1.85;
 }
 
-.decoration {
-    width: 105px;
-    height: 5px;
+.primary-button {
+    width: fit-content;
+    margin-top: 30px;
+    padding: 15px 23px;
 
-    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
 
-    border-radius: 20px;
+    color: var(--blue-dark);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
 
-    background: linear-gradient(
-        90deg,
-        var(--cyan),
-        #ffffff,
-        var(--cyan)
-    );
-
+    border-radius: 8px;
+    background: linear-gradient(110deg, #13cfb6, #a4fff1, #13cfb6);
     background-size: 200% 100%;
 
-    animation: decorationColor 4s linear infinite;
+    box-shadow: 0 10px 25px rgba(0,0,0,.18);
+    transition: .4s ease;
 }
 
-@keyframes decorationColor {
-    from {
-        background-position: 0% 50%;
-    }
-
-    to {
-        background-position: 200% 50%;
-    }
+.primary-button:hover {
+    transform: translateY(-5px);
+    background-position: 100% 50%;
+    box-shadow: 0 15px 30px rgba(19,207,182,.25);
 }
 
-.welcome-caption {
+.primary-button span {
+    font-size: 20px;
+    transition: transform .3s ease;
+}
+
+.primary-button:hover span {
+    transform: translateX(5px);
+}
+
+.hero-caption {
+    margin-top: 38px;
     display: flex;
     align-items: center;
     gap: 10px;
 
-    margin-top: 22px;
-
-    color: #c7d8ff;
-    font-size: 12px;
+    color: #c9d9ff;
+    font-size: 10px;
     letter-spacing: 2px;
 }
 
-.welcome-caption span {
-    width: 25px;
+.hero-caption span {
+    width: 28px;
     height: 1px;
     background: var(--cyan);
 }
 
 
-/* =====================================
-   FORM SECTION
-===================================== */
+/* LOGO 3D */
 
-.form-section {
-    width: 100%;
+.hero-visual {
+    position: relative;
+    min-height: 380px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    perspective: 1400px;
-
+    perspective: 1000px;
     animation: slideRight 1s ease both;
 }
 
 @keyframes slideRight {
-    from {
-        opacity: 0;
-        transform: translateX(45px);
-    }
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.hero-logo {
+    position: relative;
+    z-index: 2;
+    width: 205px;
+    height: 205px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: logoFloat 5s ease-in-out infinite;
+}
+
+.hero-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotateY(-8deg); }
+    50% { transform: translateY(-17px) rotateY(8deg); }
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(19,207,182,.6);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(19,207,182,.12);
+}
+
+.orbit-one {
+    width: 310px;
+    height: 190px;
+    animation: orbitOne 9s linear infinite;
+}
+
+.orbit-two {
+    width: 250px;
+    height: 340px;
+    animation: orbitTwo 12s linear infinite;
+}
+
+@keyframes orbitOne {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes orbitTwo {
+    to { transform: rotate(-360deg); }
+}
+
+.star {
+    position: absolute;
+    z-index: 3;
+    color: var(--cyan);
+    font-size: 28px;
+    animation: starFloat 3s ease-in-out infinite;
+}
+
+.star-one { top: 15%; left: 17%; }
+.star-two { right: 13%; top: 28%; animation-delay: .8s; }
+.star-three { right: 22%; bottom: 13%; animation-delay: 1.4s; }
+
+@keyframes starFloat {
+    0%, 100% { transform: translateY(0) rotate(0); opacity: .65; }
+    50% { transform: translateY(-12px) rotate(25deg); opacity: 1; }
+}
+
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.section-heading {
+    max-width: 750px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 13px 0;
+    font-size: clamp(29px, 4vw, 43px);
+}
+
+.section-heading h2 span {
+    color: var(--cyan);
+}
+
+.section-heading p {
+    color: var(--light);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   BENEFIT BOX / 3D
+========================================= */
+
+.benefit-section {
+    padding: 85px 5% 95px;
+    background: rgba(3,16,62,.3);
+}
+
+.benefit-grid {
+    width: min(100%, 1100px);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 25px;
+
+    perspective: 1200px;
+}
+
+.benefit-card {
+    min-width: 0;
+    min-height: 245px;
+    padding: 30px 25px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 18px;
+
+    background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.13);
+    transform-style: preserve-3d;
+
+    transition: .45s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-12px) rotateX(5deg) rotateY(-4deg);
+    border-color: var(--cyan);
+
+    background: linear-gradient(145deg, rgba(19,207,182,.2), rgba(255,255,255,.08));
+    box-shadow: 0 25px 40px rgba(0,0,0,.2);
+}
+
+.benefit-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--blue-dark);
+    background: var(--cyan);
+    border-radius: 18px;
+
+    font-size: 30px;
+    transform: translateZ(30px);
+    transition: transform .4s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: translateZ(45px) rotateY(360deg);
+}
+
+.benefit-card h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.benefit-card p {
+    color: var(--light);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MEMBER AREA
+========================================= */
+
+.member-section {
+    padding: 90px 5% 100px;
+}
+
+.member-layout {
+    width: min(100%, 1150px);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.member-information h2 {
+    margin: 18px 0;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.2;
+}
+
+.member-information h2 span {
+    color: var(--cyan);
+}
+
+.member-information > p {
+    color: var(--light);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.info-list {
+    margin-top: 32px;
+    display: grid;
+    gap: 18px;
+}
+
+.info-list div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #edf3ff;
+    font-size: 16px;
+}
+
+.info-list span {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--blue-dark);
+    background: var(--cyan);
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 
 /* FORM CARD 3D */
 
+.form-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    perspective: 1400px;
+}
+
 .form-card {
     position: relative;
-
     width: 100%;
-    max-width: 430px;
-
-    height: 570px;
+    max-width: 440px;
+    height: 590px;
 
     transform-style: preserve-3d;
-
-    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: transform .9s cubic-bezier(.2,.7,.2,1);
 }
 
 .form-card.active {
@@ -383,176 +602,109 @@ body {
 .form-face {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
 
-    padding: 35px;
-
+    padding: 38px;
     overflow-y: auto;
     overflow-x: hidden;
 
-    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 23px;
 
-    color: #12347f;
+    color: #172c61;
+    background: linear-gradient(145deg, #fff, #eaf1ff);
 
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #eef4ff
-    );
-
-    border: 1px solid rgba(255, 255, 255, 0.8);
-
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.28),
-        inset 0 1px 5px rgba(255, 255, 255, 0.9);
-
+    box-shadow: 0 25px 60px rgba(0,0,0,.28);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-
-    transition:
-        background 0.5s ease,
-        box-shadow 0.5s ease;
-}
-
-.form-face:hover {
-    box-shadow:
-        0 30px 65px rgba(0, 0, 0, 0.35),
-        0 0 25px rgba(19, 207, 182, 0.18);
 }
 
 .signup-face {
     transform: rotateY(180deg);
 }
 
-
-/* CARD COLOR DECORATION */
-
 .card-decoration {
-    width: 65px;
+    width: 70px;
     height: 5px;
+    margin: 0 auto 25px;
 
-    border-radius: 20px;
-
-    margin: 0 auto 22px;
-
-    background: linear-gradient(
-        90deg,
-        #0e35a9,
-        #13cfb6,
-        #0e35a9
-    );
-
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--blue));
     background-size: 200% 100%;
 
-    animation: cardColor 4s linear infinite;
+    animation: lineColor 4s linear infinite;
 }
 
-@keyframes cardColor {
-    from {
-        background-position: 0% 50%;
-    }
-
-    to {
-        background-position: 200% 50%;
-    }
-}
-
-
-/* FORM HEADING */
-
-.form-heading {
-    text-align: center;
+@keyframes lineColor {
+    to { background-position: 200% 50%; }
 }
 
 .form-label {
-    display: inline-block;
-
+    display: block;
     color: #087f91;
-
+    text-align: center;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 2px;
-
-    margin-bottom: 10px;
 }
 
 .form-face h2 {
+    margin: 10px 0;
+    text-align: center;
     font-size: 30px;
-    margin-bottom: 10px;
 }
 
 .form-description {
-    font-size: 15px;
-
+    margin-bottom: 27px;
     color: #65718d;
-
-    line-height: 1.5;
-
-    margin-bottom: 25px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
-
-/* INPUT */
-
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 17px;
 }
 
 .input-group label {
     display: block;
-
+    margin-bottom: 8px;
     font-size: 15px;
     font-weight: bold;
-
-    margin-bottom: 8px;
 }
 
 .input-group input {
     width: 100%;
     min-width: 0;
-
     padding: 13px 14px;
 
     border: 1px solid #ccd4e5;
     border-radius: 9px;
-
     outline: none;
 
-    color: #12347f;
-    background: #ffffff;
-
+    color: #172c61;
+    background: white;
     font-size: 15px;
 
-    transition: 0.35s ease;
+    transition: .3s ease;
 }
 
 .input-group input:focus {
     border-color: var(--cyan);
-
-    box-shadow:
-        0 0 0 4px rgba(19, 207, 182, 0.14);
-
+    box-shadow: 0 0 0 4px rgba(19,207,182,.14);
     transform: translateY(-2px);
 }
 
-
-/* FORGOT PASSWORD */
-
 .forgot {
+    margin: -4px 0 18px;
     text-align: right;
-    margin: -5px 0 20px;
 }
 
 .forgot a,
 .switch-text a {
     color: #087f91;
-
-    text-decoration: none;
     font-weight: bold;
-
-    transition: color 0.3s ease;
 }
 
 .forgot a:hover,
@@ -560,400 +712,87 @@ body {
     color: #13bda9;
 }
 
-
-/* SUBMIT BUTTON */
-
-.submit-btn {
+.submit-button {
     width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-
     padding: 14px;
 
-    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    border: 0;
     border-radius: 9px;
 
-    background: linear-gradient(
-        110deg,
-        #0e35a9,
-        #087f91,
-        #13bda9
-    );
-
-    background-size: 200% 100%;
-
     color: white;
+    background: linear-gradient(110deg, #0e35a9, #087f91, #13bda9);
+    background-size: 200% 100%;
 
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;
-
     cursor: pointer;
 
-    transition:
-        background-position 0.5s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: .4s ease;
 }
 
-.submit-btn span {
-    transition: transform 0.3s ease;
-}
-
-.submit-btn:hover {
+.submit-button:hover {
     background-position: 100% 50%;
-
     transform: translateY(-3px);
-
-    box-shadow: 0 9px 22px rgba(19, 207, 182, 0.28);
+    box-shadow: 0 9px 22px rgba(19,207,182,.28);
 }
 
-.submit-btn:hover span {
+.submit-button span {
+    transition: transform .3s ease;
+}
+
+.submit-button:hover span {
     transform: translateX(5px);
 }
 
 .switch-text {
+    margin-top: 22px;
     text-align: center;
-
-    margin-top: 23px;
-
     font-size: 15px;
 }
 
 
-/* =====================================
-   FOOTER
-===================================== */
-
-footer {
-    width: 100%;
-
-    text-align: center;
-
-    padding: 20px 15px;
-
-    color: #dbe6ff;
-
-    font-size: 14px;
-    line-height: 1.8;
-
-    background: rgba(3, 17, 65, 0.2);
-
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-
-/* =====================================
-   TABLET
-===================================== */
-
-@media screen and (max-width: 900px) {
-
-    .container {
-        width: 92%;
-        gap: 30px;
-    }
-
-    .welcome-section h1 {
-        font-size: 38px;
-    }
-
-    .form-face {
-        padding: 28px;
-    }
-
-    .form-card {
-        height: 570px;
-    }
-}
-
-
-/* =====================================
-   ANDROID & IPHONE
-===================================== */
-
-@media screen and (max-width: 650px) {
-
-    .back-home {
-        position: relative;
-
-        top: auto;
-        left: auto;
-
-        width: fit-content;
-
-        margin: 20px 0 0 20px;
-
-        font-size: 15px;
-    }
-
-    .container {
-        width: 90%;
-
-        display: flex;
-        flex-direction: column;
-
-        gap: 35px;
-
-        padding: 35px 0 40px;
-    }
-
-    .welcome-section {
-        width: 100%;
-        text-align: center;
-    }
-
-    .logo-wrapper {
-        width: 115px;
-        height: 115px;
-
-        margin: 0 auto 20px;
-    }
-
-    .logo-orbit {
-        width: 110px;
-        height: 110px;
-    }
-
-    .logo-3d {
-        width: 90px;
-        height: 90px;
-    }
-
-    .welcome-section h1 {
-        font-size: clamp(27px, 8vw, 36px);
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        font-size: 15px;
-        letter-spacing: 1.5px;
-    }
-
-    .welcome-text {
-        max-width: 100%;
-        margin-top: 25px;
-    }
-
-    .welcome-text h2 {
-        font-size: 24px;
-    }
-
-    .welcome-text p {
-        font-size: 16px;
-        line-height: 1.7;
-    }
-
-    .decoration {
-        margin: 22px auto 0;
-    }
-
-    .welcome-caption {
-        justify-content: center;
-        font-size: 10px;
-    }
-
-    .form-section {
-        width: 100%;
-    }
-
-    .form-card {
-        width: 100%;
-        max-width: 430px;
-        height: 570px;
-    }
-
-    .form-face {
-        padding: 30px 25px;
-        border-radius: 20px;
-    }
-
-    footer {
-        font-size: 12px;
-        padding: 16px 12px;
-    }
-}
-
-
-/* =====================================
-   SMALL ANDROID / IPHONE
-===================================== */
-
-@media screen and (max-width: 380px) {
-
-    .container {
-        width: 92%;
-    }
-
-    .welcome-section h1 {
-        font-size: 27px;
-    }
-
-    .welcome-text h2 {
-        font-size: 22px;
-    }
-
-    .form-card {
-        height: 590px;
-    }
-
-    .form-face {
-        padding: 25px 19px;
-    }
-
-    .form-face h2 {
-        font-size: 26px;
-    }
-
-    .input-group input {
-        padding: 12px;
-        font-size: 14px;
-    }
-}
-
-
-/* =====================================
-   SHORT SCREEN
-===================================== */
-
-@media screen and (max-height: 650px) and (min-width: 651px) {
-
-    .container {
-        padding-top: 85px;
-    }
-
-    .form-card {
-        height: 550px;
-    }
-
-    .form-face {
-        padding: 25px;
-    }
-}
-
-
-/* =====================================
-   TOUCH DEVICE
-===================================== */
-
-@media (hover: none) {
-
-    .submit-btn:hover {
-        transform: none;
-    }
-
-}
-
-
-/* =====================================
-   ACCESSIBILITY
-===================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-}
-
-
-/* =========================================================
-   SOCIAL MEDIA SECTION
-   3D FLOATING CARDS + COLOR TRANSITIONS
-========================================================= */
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
 
 .social-section {
-    position: relative;
-    width: 100%;
-    padding: 75px 5% 65px;
-    overflow: hidden;
-    text-align: center;
+    padding: 85px 5% 95px;
 
-    background: linear-gradient(
-        135deg,
-        #f4f7ff,
-        #e5edff,
-        #ffffff,
-        #eaf0ff
-    );
-
+    background: linear-gradient(135deg, #f4f7ff, #e5edff, #fff, #eaf0ff);
     background-size: 250% 250%;
-    animation: socialBackground 12s ease infinite;
+
+    animation: socialBackground 14s ease infinite;
+}
+
+.social-section .section-heading h2 {
+    color: var(--blue);
+}
+
+.social-section .section-heading p {
+    color: #53617e;
 }
 
 @keyframes socialBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
-
-/* JUDUL SOCIAL MEDIA */
-
-.social-heading {
-    max-width: 750px;
-    margin: 0 auto 45px;
-}
-
-.social-eyebrow {
-    display: inline-block;
-    margin-bottom: 13px;
-
-    color: #285bd0;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 3px;
-}
-
-.social-heading h2 {
-    margin-bottom: 15px;
-
-    color: #0e35a9;
-    font-size: clamp(28px, 4vw, 40px);
-
-    text-shadow: 0 4px 12px rgba(14, 53, 169, 0.12);
-}
-
-.social-heading p {
-    color: #53617e;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-
-/* CONTAINER KARTU */
-
-.social-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
+.social-grid {
+    width: min(100%, 1100px);
+    margin: auto;
 
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 23px;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 22px;
 
     perspective: 1200px;
 }
-
-
-/* KARTU SOSIAL MEDIA */
 
 .social-card {
     --social-color: #0e35a9;
@@ -964,419 +803,748 @@ footer {
 
     min-width: 0;
     min-height: 215px;
-    padding: 27px 12px 25px;
+    padding: 27px 12px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(14, 53, 169, 0.1);
-    border-radius: 23px;
+    text-align: center;
+    color: var(--social-color);
 
-    color: #ffffff;
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        var(--social-light)
-    );
+    border: 1px solid rgba(14,53,169,.1);
+    border-radius: 20px;
 
-    box-shadow:
-        0 12px 25px rgba(14, 53, 169, 0.12),
-        inset 0 1px 0 #ffffff;
+    background: linear-gradient(145deg, #fff, var(--social-light));
+    box-shadow: 0 12px 25px rgba(14,53,169,.12);
 
     transform-style: preserve-3d;
-
-    transition:
-        transform 0.5s ease,
-        background 0.5s ease,
-        box-shadow 0.5s ease,
-        border-color 0.5s ease;
+    transition: .45s ease;
 }
-
-
-/* EFEK CAHAYA */
-
-.social-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-
-    border-radius: inherit;
-
-    background: linear-gradient(
-        135deg,
-        var(--social-color),
-        var(--social-light)
-    );
-
-    opacity: 0;
-
-    transition: opacity 0.5s ease;
-}
-
-
-/* HOVER 3D */
 
 .social-card:hover {
-    transform:
-        perspective(1000px)
-        translateY(-13px)
-        rotateX(5deg)
-        rotateY(-5deg)
-        scale(1.04);
-
+    transform: translateY(-12px) rotateX(5deg) rotateY(-5deg);
     border-color: var(--social-color);
-
-    box-shadow:
-        0 24px 40px rgba(14, 53, 169, 0.2),
-        0 8px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 24px 40px rgba(14,53,169,.2);
 }
-
-.social-card:hover::before {
-    opacity: 0.13;
-}
-
-
-/* ICON CONTAINER */
 
 .social-icon {
-    width: 75px;
-    height: 75px;
-    margin-bottom: 18px;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 17px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
-    border-radius: 22px;
-
-    color: #ffffff;
+    color: white;
     background: var(--social-color);
+    border-radius: 20px;
 
-    box-shadow:
-        0 9px 18px rgba(0, 0, 0, 0.18),
-        inset 0 2px 3px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 9px 18px rgba(0,0,0,.15);
+    transform: translateZ(30px);
 
-    transform: translateZ(35px);
-
-    transition:
-        transform 0.5s ease,
-        background 0.5s ease,
-        border-radius 0.5s ease,
-        box-shadow 0.5s ease;
+    transition: .5s ease;
 }
 
 .social-icon svg {
-    display: block;
-    width: 39px;
-    height: 39px;
-    color: #ffffff;
+    width: 36px;
+    height: 36px;
 }
 
 .social-card:hover .social-icon {
-    transform: translateZ(65px) rotateY(360deg) scale(1.1);
+    transform: translateZ(55px) rotateY(360deg);
     border-radius: 50%;
-
-    box-shadow:
-        0 12px 25px rgba(0, 0, 0, 0.22),
-        0 0 20px var(--social-color);
 }
-
-
-/* NAMA DAN KETERANGAN */
 
 .social-card h3 {
     margin-bottom: 7px;
-
-    color: var(--social-color);
     font-size: 20px;
-    font-weight: bold;
-
-    transform: translateZ(25px);
-
-    transition: color 0.4s ease;
+    transform: translateZ(20px);
 }
 
-.social-card > span:not(.social-arrow) {
+.social-card p {
     color: #64708b;
     font-size: 13px;
     line-height: 1.5;
-
-    transform: translateZ(20px);
-
-    transition: color 0.4s ease;
+    overflow-wrap: anywhere;
 }
-
-.social-card:hover h3 {
-    color: var(--social-color);
-}
-
-.social-card:hover > span:not(.social-arrow) {
-    color: #263858;
-}
-
-
-/* PANAH */
 
 .social-arrow {
     position: absolute;
-    top: 15px;
-    right: 17px;
-
-    color: var(--social-color);
+    top: 13px;
+    right: 16px;
     font-size: 20px;
-    font-weight: bold;
-
-    opacity: 0.6;
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.35s ease;
+    transition: transform .3s ease;
 }
 
 .social-card:hover .social-arrow {
-    opacity: 1;
-    transform: translate(4px, -4px);
+    transform: translate(4px,-4px);
 }
 
-
-/* =========================================================
-   WARNA KHAS MASING-MASING MEDIA SOSIAL
-========================================================= */
-
-/* WHATSAPP */
-
-.whatsapp-card {
-    --social-color: #20bd5a;
-    --social-light: #e3ffed;
-}
-
-.whatsapp-icon {
-    background: linear-gradient(
-        145deg,
-        #25d366,
-        #128c4a
-    );
-}
-
-
-/* INSTAGRAM */
-
-.instagram-card {
+.instagram {
     --social-color: #d62976;
     --social-light: #fff0f6;
 }
 
-.instagram-icon {
-    background: linear-gradient(
-        135deg,
-        #833ab4,
-        #fd1d1d,
-        #fcb045
-    );
+.instagram .social-icon {
+    background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
 }
 
-
-/* X / TWITTER */
-
-.x-card {
-    --social-color: #111111;
-    --social-light: #eeeeee;
+.tiktok {
+    --social-color: #111;
+    --social-light: #eee;
 }
 
-.x-icon {
-    background: linear-gradient(
-        145deg,
-        #333333,
-        #000000
-    );
+.tiktok .social-icon {
+    background: linear-gradient(145deg,#333,#000);
 }
 
-
-/* EMAIL */
-
-.email-card {
+.email {
     --social-color: #1769d2;
     --social-light: #e8f2ff;
 }
 
-.email-icon {
-    background: linear-gradient(
-        145deg,
-        #4d9cff,
-        #0751b8
-    );
+.email .social-icon {
+    background: linear-gradient(145deg,#4d9cff,#0751b8);
+}
+
+.whatsapp {
+    --social-color: #159b4b;
+    --social-light: #e3ffed;
+}
+
+.whatsapp .social-icon {
+    background: linear-gradient(145deg,#25d366,#128c4a);
 }
 
 
-/* GARIS PENUTUP */
+/* =========================================
+   KEMBALI KE HOME
+========================================= */
 
-.social-bottom-line {
-    width: 90px;
-    height: 4px;
+.back-home-section {
+    padding: 75px 5%;
+    text-align: center;
+}
 
-    margin: 50px auto 0;
+.back-home-box {
+    width: min(100%, 850px);
+    margin: auto;
+    padding: 45px 25px;
 
-    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 22px;
 
-    background: linear-gradient(
-        90deg,
-        #0e35a9,
-        #6e91ff,
-        #0e35a9
-    );
+    background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
 
+    box-shadow: 0 20px 40px rgba(0,0,0,.16);
+    transform-style: preserve-3d;
+
+    transition: .4s ease;
+}
+
+.back-home-box:hover {
+    transform: translateY(-7px) rotateX(2deg);
+    border-color: rgba(19,207,182,.65);
+    box-shadow: 0 25px 45px rgba(0,0,0,.22);
+}
+
+.back-home-box h2 {
+    margin: 15px 0;
+    font-size: clamp(27px,4vw,40px);
+}
+
+.back-home-box h2 span {
+    color: var(--cyan);
+}
+
+.back-home-box p {
+    color: var(--light);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.back-home-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 25px;
+    padding: 14px 23px;
+
+    color: var(--blue-dark);
+    background: linear-gradient(110deg,#13cfb6,#a4fff1,#13cfb6);
     background-size: 200% 100%;
-    animation: socialLine 4s ease infinite;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: .4s ease;
 }
 
-@keyframes socialLine {
-    0% {
-        background-position: 0% 50%;
+.back-home-button:hover {
+    background-position: 100% 50%;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(19,207,182,.25);
+}
+
+.back-home-button span {
+    font-size: 20px;
+}
+
+
+/* =========================================
+   FOOTER TRI MEDAN
+========================================= */
+
+.site-footer {
+    padding: 35px 5% 20px;
+    background: rgba(3,17,65,.8);
+    border-top: 1px solid rgba(255,255,255,.13);
+}
+
+.footer-main,
+.footer-bottom {
+    width: min(100%,1250px);
+    margin: auto;
+}
+
+.footer-main {
+    padding-bottom: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-brand img {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+}
+
+.footer-brand h3 {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.footer-brand p {
+    margin-top: 5px;
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.footer-motto {
+    color: #dbe6ff;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.footer-bottom {
+    padding-top: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    border-top: 1px solid rgba(255,255,255,.12);
+
+    color: #cbd8f5;
+    font-size: 13px;
+}
+
+.footer-bottom a {
+    color: var(--cyan);
+    transition: color .3s ease;
+}
+
+.footer-bottom a:hover {
+    color: white;
+}
+
+
+/* =========================================
+   TABLET / IPAD / LAPTOP KECIL
+========================================= */
+
+@media screen and (max-width: 1100px) {
+
+    .header-container {
+        width: 95%;
+        gap: 14px;
     }
 
-    100% {
-        background-position: 200% 50%;
+    .brand {
+        font-size: 14px;
+    }
+
+    .brand img {
+        width: 47px;
+        height: 47px;
+    }
+
+    .main-nav {
+        gap: 10px;
+    }
+
+    .main-nav a {
+        font-size: 10px;
+    }
+
+    .main-nav .join-nav {
+        padding: 9px 11px;
+    }
+
+    .hero-section {
+        gap: 25px;
+    }
+
+    .member-layout {
+        gap: 30px;
     }
 }
 
 
-/* =========================================================
-   RESPONSIVE TABLET
-========================================================= */
+/* =========================================
+   TABLET / IPAD
+========================================= */
 
-@media screen and (max-width: 1024px) {
-    .social-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media screen and (max-width: 850px) {
+
+    .header-container {
+        min-height: 78px;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+        padding: 12px 5% 22px;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+
+        background: rgba(5,24,82,.99);
+        border-top: 1px solid rgba(255,255,255,.1);
+        box-shadow: 0 15px 25px rgba(0,0,0,.2);
+    }
+
+    .main-nav.open {
+        display: flex;
+        animation: menuEnter .3s ease both;
+    }
+
+    @keyframes menuEnter {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .main-nav a {
+        padding: 12px 5px;
+        font-size: 14px;
+    }
+
+    .main-nav a::after {
+        display: none;
+    }
+
+    .main-nav .join-nav {
+        width: fit-content;
+        margin-top: 7px;
+    }
+
+    .hero-section {
+        min-height: auto;
+        grid-template-columns: 1fr 1fr;
+        padding: 75px 0;
+    }
+
+    .hero-visual {
+        min-height: 300px;
+    }
+
+    .hero-logo {
+        width: 165px;
+        height: 165px;
+    }
+
+    .orbit-one {
+        width: 250px;
+        height: 155px;
+    }
+
+    .orbit-two {
+        width: 200px;
+        height: 275px;
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .member-layout {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .member-information {
+        text-align: center;
+    }
+
+    .info-list {
+        width: fit-content;
+        margin: 28px auto 0;
+        text-align: left;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
         max-width: 700px;
-        gap: 20px;
-    }
-
-    .social-card {
-        min-height: 205px;
     }
 }
 
 
-/* =========================================================
-   RESPONSIVE ANDROID DAN IPHONE
-========================================================= */
+/* =========================================
+   ANDROID / IPHONE
+========================================= */
 
 @media screen and (max-width: 600px) {
-    .social-section {
-        padding: 55px 18px 45px;
+
+    .header-container {
+        width: 92%;
+        min-height: 70px;
     }
 
-    .social-heading {
+    .brand {
+        gap: 9px;
+        font-size: 12px;
+        letter-spacing: .5px;
+    }
+
+    .brand img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand span {
+        max-width: 180px;
+    }
+
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-section {
+        width: 88%;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 65px 0 70px;
+        text-align: center;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(42px,12vw,60px);
+    }
+
+    .hero-content > p {
+        margin: auto;
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    .primary-button {
+        margin-top: 25px;
+        font-size: 12px;
+    }
+
+    .hero-caption {
+        justify-content: center;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .hero-visual {
+        min-height: 270px;
+    }
+
+    .hero-logo {
+        width: 145px;
+        height: 145px;
+    }
+
+    .orbit-one {
+        width: 220px;
+        height: 135px;
+    }
+
+    .orbit-two {
+        width: 180px;
+        height: 240px;
+    }
+
+    .benefit-section,
+    .member-section,
+    .social-section {
+        padding: 65px 6%;
+    }
+
+    .section-heading {
         margin-bottom: 30px;
     }
 
-    .social-heading h2 {
-        font-size: 28px;
+    .section-heading p {
+        font-size: 14px;
     }
 
-    .social-heading p {
+    .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .benefit-card {
+        min-height: 0;
+        padding: 25px 20px;
+    }
+
+    .member-layout {
+        gap: 35px;
+    }
+
+    .member-information h2 {
+        font-size: 32px;
+    }
+
+    .member-information > p {
         font-size: 15px;
     }
 
-    .social-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+    .info-list div {
+        font-size: 14px;
+    }
+
+    .form-card {
+        height: 590px;
+    }
+
+    .form-face {
+        padding: 30px 24px;
+        border-radius: 19px;
+    }
+
+    .form-face h2 {
+        font-size: 27px;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 13px;
     }
 
     .social-card {
         min-height: 180px;
         padding: 20px 8px;
-        border-radius: 18px;
+        border-radius: 16px;
     }
 
     .social-icon {
-        width: 62px;
-        height: 62px;
-        margin-bottom: 13px;
-        border-radius: 18px;
+        width: 57px;
+        height: 57px;
+        margin-bottom: 12px;
     }
 
     .social-icon svg {
-        width: 33px;
-        height: 33px;
+        width: 30px;
+        height: 30px;
     }
 
     .social-card h3 {
         font-size: 17px;
     }
 
-    .social-card > span:not(.social-arrow) {
+    .social-card p {
+        font-size: 10px;
+    }
+
+    .back-home-section {
+        padding: 55px 6%;
+    }
+
+    .back-home-box {
+        padding: 35px 18px;
+    }
+
+    .back-home-box p {
+        font-size: 14px;
+    }
+
+    .back-home-button {
+        font-size: 12px;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-brand h3 {
+        font-size: 15px;
+    }
+
+    .footer-motto {
+        font-size: 13px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
         font-size: 11px;
-    }
-
-    .social-arrow {
-        top: 10px;
-        right: 12px;
-        font-size: 17px;
-    }
-
-    .social-bottom-line {
-        margin-top: 35px;
     }
 }
 
 
-/* =========================================================
-   RESPONSIVE HP LAYAR KECIL
-========================================================= */
+/* =========================================
+   HP LAYAR KECIL
+========================================= */
 
-@media screen and (max-width: 360px) {
-    .social-section {
-        padding-left: 12px;
-        padding-right: 12px;
+@media screen and (max-width: 380px) {
+
+    .brand {
+        font-size: 10px;
     }
 
-    .social-container {
+    .brand img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .brand span {
+        max-width: 145px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-caption {
+        font-size: 7px;
+    }
+
+    .form-card {
+        height: 610px;
+    }
+
+    .form-face {
+        padding: 25px 18px;
+    }
+
+    .form-face h2 {
+        font-size: 25px;
+    }
+
+    .input-group input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .social-grid {
         gap: 10px;
     }
 
     .social-card {
         min-height: 165px;
-        padding: 16px 5px;
-    }
-
-    .social-icon {
-        width: 55px;
-        height: 55px;
-    }
-
-    .social-icon svg {
-        width: 29px;
-        height: 29px;
+        padding: 17px 5px;
     }
 
     .social-card h3 {
         font-size: 15px;
     }
 
-    .social-card > span:not(.social-arrow) {
-        font-size: 10px;
+    .social-card p {
+        font-size: 9px;
     }
 }
 
 
-/* =========================================================
-   AKSESIBILITAS
-========================================================= */
+/* =========================================
+   SHORT SCREEN
+========================================= */
+
+@media screen and (max-height: 650px) and (min-width: 851px) {
+
+    .hero-section {
+        min-height: 480px;
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .form-card {
+        height: 550px;
+    }
+
+}
+
+
+/* =========================================
+   TOUCH DEVICE
+========================================= */
+
+@media (hover: none) {
+
+    .benefit-card:hover,
+    .social-card:hover,
+    .back-home-box:hover {
+        transform: none;
+    }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-    .social-section,
-    .social-bottom-line {
-        animation: none !important;
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
 
-    .social-card,
-    .social-card::before,
-    .social-icon,
-    .social-arrow {
-        transition: none !important;
-    }
 }

@@ -1,4 +1,79 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+
+    // =====================================
+    // HEADER RESPONSIVE
+    // =====================================
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    function closeMenu() {
+
+        mainNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Buka menu navigasi");
+
+    }
+
+
+    menuToggle.addEventListener("click", function () {
+
+        const isOpen = mainNav.classList.toggle("open");
+
+        menuToggle.classList.toggle("active", isOpen);
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+        );
+
+    });
+
+
+    // Tutup menu setelah memilih navigasi
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", closeMenu);
+
+    });
+
+
+    // Tutup menu jika pengguna menekan area di luar menu
+
+    document.addEventListener("click", function (event) {
+
+        if (
+            !mainNav.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+
+            closeMenu();
+
+        }
+
+    });
+
+
+    // Tutup menu ketika ukuran layar berubah
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 850) {
+            closeMenu();
+        }
+
+    });
+
+
+    // =====================================
+    // LOGIN DAN SIGN UP
+    // =====================================
 
     const formCard = document.getElementById("formCard");
 
@@ -11,9 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const forgotPassword = document.getElementById("forgotPassword");
 
 
-    // =====================================
     // LOGIN KE SIGN UP
-    // =====================================
 
     showSignup.addEventListener("click", function (event) {
 
@@ -24,9 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // =====================================
     // SIGN UP KE LOGIN
-    // =====================================
 
     showLogin.addEventListener("click", function (event) {
 
@@ -46,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         alert(
-            "Fitur Login belum terhubung dengan database TRI."
+            "Fitur Login belum terhubung dengan database TRI Medan."
         );
 
     });
@@ -60,9 +131,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        const password = document.getElementById("signupPassword").value;
+        const password =
+            document.getElementById("signupPassword").value;
 
-        const confirmPassword = document.getElementById("confirmPassword").value;
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
 
         if (password !== confirmPassword) {
 
@@ -74,8 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+
         alert(
-            "Form pendaftaran berhasil diisi. Fitur Sign Up belum terhubung dengan database TRI."
+            "Form berhasil diisi. Fitur Sign Up belum terhubung dengan database TRI Medan."
         );
 
         signupForm.reset();
@@ -99,54 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =====================================
-    // 3D CARD MOUSE EFFECT
-    // KHUSUS PERANGKAT DENGAN POINTER
-    // =====================================
-
-    const formSection = document.querySelector(".form-section");
-
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
-
-    if (canHover.matches) {
-
-        formSection.addEventListener("mousemove", function (event) {
-
-            if (formCard.classList.contains("active")) {
-                return;
-            }
-
-            const rect = formSection.getBoundingClientRect();
-
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateY = ((x - centerX) / centerX) * 3;
-            const rotateX = ((centerY - y) / centerY) * 3;
-
-            formCard.style.transform =
-                `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-        });
-
-
-        formSection.addEventListener("mouseleave", function () {
-
-            if (!formCard.classList.contains("active")) {
-
-                formCard.style.transform = "";
-
-            }
-
-        });
-
-    }
-
-
-    // =====================================
-    // RESET 3D SAAT BERPINDAH FORM
+    // RESET FORM 3D
     // =====================================
 
     showSignup.addEventListener("click", function () {
@@ -154,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formCard.style.transform = "";
 
     });
+
 
     showLogin.addEventListener("click", function () {
 
