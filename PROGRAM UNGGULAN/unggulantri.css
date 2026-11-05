@@ -1,17 +1,21 @@
-/* =========================================
+/* ==========================================
    PROGRAM UNGGULAN TRI MEDAN
-   ========================================= */
+   ========================================== */
 
 .unggulan-page {
     margin: 0;
     padding: 0;
-    font-family: "Times New Roman", serif;
-    color: #17264d;
-    background: #f5f7fc;
+    width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
+    background: #f5f7fc;
+    color: #17264d;
+    font-family: "Times New Roman", serif;
 }
 
-.unggulan-page * {
+.unggulan-page *,
+.unggulan-page *::before,
+.unggulan-page *::after {
     box-sizing: border-box;
 }
 
@@ -19,10 +23,10 @@
 
 .unggulan-header {
     width: 100%;
-    background: #0e35a9;
     position: relative;
-    z-index: 1000;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    background: #0e35a9;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
 }
 
 .unggulan-header-inner {
@@ -42,9 +46,10 @@
     gap: 12px;
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .unggulan-brand img {
@@ -56,111 +61,179 @@
 .unggulan-nav {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
 }
 
 .unggulan-nav a {
+    position: relative;
     color: white;
     text-decoration: none;
     font-size: 13px;
     font-weight: bold;
-    transition: 0.3s ease;
+    transition: color .3s ease;
+}
+
+.unggulan-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: #c9d9ff;
+    transition: width .3s ease;
 }
 
 .unggulan-nav a:hover {
     color: #c9d9ff;
-    transform: translateY(-3px);
 }
 
-.unggulan-menu-toggle {
-    display: none;
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 27px;
-    cursor: pointer;
+.unggulan-nav a:hover::after {
+    width: 100%;
 }
 
 /* HERO */
 
 .unggulan-hero {
-    min-height: 390px;
-    padding: 90px 20px;
+    position: relative;
+    width: 100%;
+    min-height: 430px;
+    padding: 65px 7%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    overflow: hidden;
     color: white;
     background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,.13), transparent 30%),
-        linear-gradient(135deg, #071c65, #0e35a9, #2458cf);
-    position: relative;
-    overflow: hidden;
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,255,255,.13),
+            transparent 30%
+        ),
+        linear-gradient(
+            125deg,
+            #071c65,
+            #0e35a9,
+            #2458cf
+        );
 }
 
 .unggulan-hero::before,
 .unggulan-hero::after {
     content: "";
     position: absolute;
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.14);
     border-radius: 50%;
-    animation: unggulanFloat 8s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .unggulan-hero::before {
-    width: 280px;
-    height: 280px;
-    top: -100px;
-    left: -80px;
+    width: 330px;
+    height: 330px;
+    top: -170px;
+    left: -100px;
+    animation: unggulanFloat 8s ease-in-out infinite;
 }
 
 .unggulan-hero::after {
-    width: 350px;
-    height: 350px;
-    bottom: -190px;
-    right: -80px;
-    animation-delay: 2s;
+    width: 420px;
+    height: 420px;
+    right: -180px;
+    bottom: -240px;
+    animation: unggulanFloat 9s ease-in-out infinite reverse;
 }
 
 .unggulan-hero-content {
-    max-width: 850px;
     position: relative;
     z-index: 2;
-    animation: unggulanAppear 1s ease both;
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    animation: unggulanFadeUp .9s ease both;
 }
 
-.unggulan-label {
+.unggulan-hero-text {
+    flex: 1;
+    max-width: 690px;
+}
+
+.unggulan-eyebrow {
     display: inline-block;
-    padding: 8px 17px;
-    border: 1px solid rgba(255,255,255,.5);
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,.45);
     border-radius: 30px;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
 }
 
 .unggulan-hero h1 {
     margin: 22px 0 12px;
-    font-size: clamp(35px, 6vw, 64px);
-    letter-spacing: 3px;
+    font-size: clamp(37px, 5.5vw, 65px);
+    line-height: 1.1;
+    letter-spacing: 2px;
 }
 
 .unggulan-hero h1 span {
+    display: block;
     color: #c7d8ff;
 }
 
 .unggulan-line {
     width: 85px;
     height: 4px;
-    margin: 20px auto;
-    background: white;
+    margin: 20px 0;
     border-radius: 10px;
+    background: white;
 }
 
-.unggulan-hero p {
-    max-width: 680px;
-    margin: auto;
+.unggulan-hero-text p {
+    max-width: 650px;
+    margin: 0;
+    color: #edf2ff;
     font-size: 17px;
     line-height: 1.8;
+}
+
+/* LOGO TRI 3D */
+
+.art-center {
+    flex-shrink: 0;
+    width: 145px;
+    height: 145px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.65);
+    border-radius: 27px;
+    background: linear-gradient(145deg, #ffffff, #e8edfb);
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.2),
+        inset 0 2px 5px rgba(255,255,255,.9);
+    transform: perspective(700px) rotateY(-10deg) rotateX(5deg);
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+    animation: unggulanLogoFloat 4s ease-in-out infinite;
+}
+
+.art-center:hover {
+    transform: perspective(700px) rotateY(0deg) rotateX(0deg) scale(1.07);
+    box-shadow:
+        0 22px 40px rgba(0,0,0,.28),
+        inset 0 2px 5px rgba(255,255,255,.9);
+}
+
+.art-center img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 18px;
 }
 
 /* INTRODUCTION */
@@ -181,7 +254,8 @@
 
 .unggulan-intro h2 {
     margin: 15px 0;
-    font-size: clamp(25px, 4vw, 36px);
+    color: #102b70;
+    font-size: clamp(27px, 4vw, 38px);
 }
 
 .unggulan-intro h2 span {
@@ -189,149 +263,222 @@
 }
 
 .unggulan-intro p {
-    color: #66718a;
+    max-width: 750px;
+    margin: auto;
+    color: #68748d;
     font-size: 16px;
     line-height: 1.8;
 }
 
-/* PROGRAM CARDS */
+/* FOCUS SECTION */
 
-.unggulan-program-section {
+.focus-section {
+    width: 100%;
     max-width: 1150px;
     margin: auto;
     padding: 35px 25px 90px;
 }
 
-.unggulan-grid {
+.focus-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
+    perspective: 1200px;
 }
 
-.unggulan-card {
+/* PROGRAM CARD */
+
+.focus-card {
     position: relative;
     min-width: 0;
-    min-height: 225px;
-    padding: 25px;
-    border-radius: 17px;
-    background: white;
-    border: 1px solid #e3e9f5;
-    box-shadow: 0 8px 25px rgba(14, 53, 169, .08);
+    min-height: 245px;
+    padding: 27px;
     overflow: hidden;
+    border: 1px solid #e1e8f7;
+    border-radius: 19px;
+    background: linear-gradient(145deg, #ffffff, #f8faff);
+    box-shadow: 0 9px 25px rgba(14,53,169,.09);
+    transform-style: preserve-3d;
     transition:
-        transform .4s ease,
-        box-shadow .4s ease,
-        border-color .4s ease;
-    animation: unggulanAppear .8s ease both;
+        transform .45s ease,
+        background .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+    animation: unggulanFadeUp .8s ease both;
 }
 
-.unggulan-card:hover {
-    transform: translateY(-10px) rotateX(3deg) rotateY(-3deg);
+.focus-card:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.focus-card:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.focus-card::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    right: -85px;
+    bottom: -85px;
+    border-radius: 50%;
+    background: rgba(36,88,207,.055);
+    transition:
+        transform .5s ease,
+        background .5s ease;
+}
+
+.focus-card:hover {
+    transform:
+        translateY(-12px)
+        rotateX(4deg)
+        rotateY(-3deg);
     border-color: #2458cf;
-    box-shadow: 0 20px 35px rgba(14, 53, 169, .17);
+    background: linear-gradient(145deg, #ffffff, #edf3ff);
+    box-shadow: 0 22px 38px rgba(14,53,169,.18);
 }
 
-.unggulan-card-top {
+.focus-card:hover::before {
+    transform: scale(2.1);
+    background: rgba(36,88,207,.1);
+}
+
+/* ICON AND NUMBER */
+
+.focus-card-top {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
-.unggulan-icon {
-    width: 48px;
-    height: 48px;
+.focus-icon {
+    width: 53px;
+    height: 53px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 13px;
+    border-radius: 15px;
     background: #eaf0ff;
-    font-size: 24px;
-    transition: transform .4s ease;
+    font-size: 26px;
+    transition:
+        transform .45s ease,
+        background .45s ease;
 }
 
-.unggulan-card:hover .unggulan-icon {
-    transform: rotateY(180deg) scale(1.08);
+.focus-card:hover .focus-icon {
+    transform: rotateY(180deg) scale(1.1);
+    background: #dce7ff;
 }
 
-.unggulan-number {
+.focus-number {
     color: #2458cf;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     letter-spacing: 2px;
+    transition: color .35s ease;
 }
 
-.unggulan-card h3 {
-    margin: 0 0 12px;
+/* CARD TEXT */
+
+.focus-card h3 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 13px;
     color: #102b70;
-    font-size: 21px;
-    line-height: 1.35;
+    font-size: 23px;
+    transition: color .35s ease;
 }
 
-.unggulan-card p {
+.focus-card p {
+    position: relative;
+    z-index: 1;
     margin: 0;
-    color: #6c7588;
+    color: #68748d;
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.8;
+    transition: color .35s ease;
 }
 
-.unggulan-card-line {
+.focus-card-line {
+    position: relative;
+    z-index: 1;
     width: 45px;
     height: 3px;
-    margin-top: 20px;
-    background: #2458cf;
+    margin-top: 22px;
     border-radius: 10px;
-    transition: width .4s ease;
+    background: #2458cf;
+    transition:
+        width .4s ease,
+        background .4s ease;
 }
 
-.unggulan-card:hover .unggulan-card-line {
-    width: 90px;
+.focus-card:hover .focus-card-line {
+    width: 85px;
+    background: #0e35a9;
 }
 
 /* CLOSING */
 
 .unggulan-closing {
-    padding: 70px 20px;
+    padding: 75px 22px;
     text-align: center;
     color: white;
-    background: linear-gradient(135deg, #071c65, #0e35a9, #2458cf);
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(255,255,255,.12),
+            transparent 30%
+        ),
+        linear-gradient(130deg, #071c65, #0e35a9, #2458cf);
 }
 
-.unggulan-closing > span {
-    font-size: 12px;
-    letter-spacing: 3px;
+.unggulan-closing .unggulan-subtitle {
     color: #c7d8ff;
 }
 
 .unggulan-closing h2 {
-    margin: 18px 0 12px;
-    font-size: clamp(25px, 4vw, 38px);
+    margin: 18px 0 13px;
+    font-size: clamp(27px, 4vw, 40px);
+}
+
+.unggulan-closing h2 span {
+    color: #c7d8ff;
 }
 
 .unggulan-closing p {
-    max-width: 600px;
+    max-width: 650px;
     margin: auto;
-    line-height: 1.8;
+    color: #edf2ff;
     font-size: 16px;
+    line-height: 1.8;
 }
 
 .unggulan-button {
     display: inline-block;
     margin-top: 28px;
-    padding: 13px 32px;
+    padding: 13px 34px;
     border: 2px solid white;
     border-radius: 30px;
     color: white;
     text-decoration: none;
     font-weight: bold;
     letter-spacing: 1px;
-    transition: .3s ease;
+    transition:
+        background .35s ease,
+        color .35s ease,
+        transform .35s ease,
+        box-shadow .35s ease;
 }
 
 .unggulan-button:hover {
-    background: white;
     color: #0e35a9;
-    transform: translateY(-4px);
+    background: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,.2);
 }
 
 /* FOOTER */
@@ -381,14 +528,16 @@
     gap: 20px;
 }
 
-.unggulan-footer-links a {
+.unggulan-footer-links a,
+.unggulan-footer-bottom a {
     color: white;
     text-decoration: none;
     font-size: 13px;
-    transition: .3s;
+    transition: color .3s ease;
 }
 
-.unggulan-footer-links a:hover {
+.unggulan-footer-links a:hover,
+.unggulan-footer-bottom a:hover {
     color: #9dbaff;
 }
 
@@ -399,6 +548,7 @@
     border-top: 1px solid rgba(255,255,255,.18);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 15px;
     flex-wrap: wrap;
 }
@@ -411,10 +561,10 @@
 
 /* ANIMATIONS */
 
-@keyframes unggulanAppear {
+@keyframes unggulanFadeUp {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(28px);
     }
 
     to {
@@ -433,12 +583,28 @@
     }
 }
 
+@keyframes unggulanLogoFloat {
+    0%, 100% {
+        transform: perspective(700px) rotateY(-10deg) rotateX(5deg) translateY(0);
+    }
+
+    50% {
+        transform: perspective(700px) rotateY(-5deg) rotateX(2deg) translateY(-9px);
+    }
+}
+
 /* TABLET */
 
-@media (max-width: 950px) {
+@media (max-width: 850px) {
+
     .unggulan-header-inner {
         padding-left: 4%;
         padding-right: 4%;
+        gap: 15px;
+    }
+
+    .unggulan-brand {
+        font-size: 13px;
     }
 
     .unggulan-nav {
@@ -446,87 +612,122 @@
     }
 
     .unggulan-nav a {
-        font-size: 11px;
+        font-size: 10px;
     }
 
-    .unggulan-brand {
-        font-size: 15px;
+    .unggulan-hero {
+        padding: 60px 5%;
     }
 
-    .unggulan-grid {
+    .unggulan-hero-content {
+        gap: 25px;
+    }
+
+    .art-center {
+        width: 115px;
+        height: 115px;
+    }
+
+    .focus-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
 }
 
 /* MOBILE */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+
     .unggulan-header-inner {
         min-height: 68px;
+        flex-wrap: wrap;
     }
 
     .unggulan-brand {
-        font-size: 13px;
-        letter-spacing: .5px;
+        font-size: 12px;
     }
 
     .unggulan-brand img {
-        width: 37px;
-        height: 37px;
-    }
-
-    .unggulan-menu-toggle {
-        display: block;
+        width: 38px;
+        height: 38px;
     }
 
     .unggulan-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
         width: 100%;
-        padding: 18px 25px;
-        background: #0e35a9;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        box-shadow: 0 10px 15px rgba(0,0,0,.15);
-    }
-
-    .unggulan-nav.active {
-        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 8px 0;
+        gap: 12px 17px;
     }
 
     .unggulan-nav a {
-        font-size: 14px;
-        width: 100%;
+        font-size: 11px;
     }
 
     .unggulan-hero {
-        min-height: 340px;
-        padding: 70px 22px;
+        padding: 55px 22px;
     }
 
-    .unggulan-hero p {
-        font-size: 15px;
+    .unggulan-hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .unggulan-hero-text {
+        width: 100%;
+    }
+
+    .unggulan-eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+    }
+
+    .unggulan-hero h1 {
+        font-size: 39px;
+    }
+
+    .unggulan-line {
+        margin: 18px auto;
+    }
+
+    .unggulan-hero-text p {
+        font-size: 14px;
+    }
+
+    .art-center {
+        width: 115px;
+        height: 115px;
     }
 
     .unggulan-intro {
-        padding-top: 55px;
+        padding: 55px 22px 25px;
     }
 
-    .unggulan-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+    .unggulan-intro p {
+        font-size: 14px;
     }
 
-    .unggulan-card {
-        min-height: 0;
-        padding: 23px;
-    }
-
-    .unggulan-program-section {
+    .focus-section {
         padding: 25px 20px 65px;
+    }
+
+    .focus-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .focus-card {
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .focus-card h3 {
+        font-size: 21px;
+    }
+
+    .focus-card p {
+        font-size: 14px;
     }
 
     .unggulan-footer-content,
@@ -534,31 +735,45 @@
         flex-direction: column;
         align-items: flex-start;
     }
+
 }
 
 /* SMALL MOBILE */
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
+
     .unggulan-brand {
-        font-size: 11px;
+        font-size: 10px;
+    }
+
+    .unggulan-brand img {
+        width: 34px;
+        height: 34px;
     }
 
     .unggulan-hero h1 {
-        font-size: 33px;
+        font-size: 32px;
     }
 
-    .unggulan-card h3 {
+    .art-center {
+        width: 105px;
+        height: 105px;
+    }
+
+    .focus-card {
+        padding: 20px;
+    }
+
+    .focus-card h3 {
         font-size: 19px;
     }
 
-    .unggulan-card p {
-        font-size: 14px;
-    }
 }
 
-/* REDUCE MOTION */
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
+
     .unggulan-page *,
     .unggulan-page *::before,
     .unggulan-page *::after {
@@ -566,4 +781,5 @@
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
     }
+
 }
