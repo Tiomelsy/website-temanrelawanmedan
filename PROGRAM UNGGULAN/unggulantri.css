@@ -1,416 +1,420 @@
 /* =========================================
    PROGRAM UNGGULAN TRI MEDAN
-========================================= */
+   ========================================= */
 
-.tri-program-page {
+.unggulan-page {
     margin: 0;
-    background: #f4f6fc;
-    color: #10245b;
+    padding: 0;
     font-family: "Times New Roman", serif;
+    color: #17264d;
+    background: #f5f7fc;
     overflow-x: hidden;
 }
 
-.tri-program-page *,
-.tri-program-page *::before,
-.tri-program-page *::after {
+.unggulan-page * {
     box-sizing: border-box;
 }
 
-.tri-program-page .header {
+/* HEADER */
+
+.unggulan-header {
+    width: 100%;
+    background: #0e35a9;
     position: relative;
-    z-index: 20;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* HERO SECTION */
-
-.program-hero {
-    min-height: 540px;
-    padding: 75px 7%;
-
+.unggulan-header-inner {
+    max-width: 1250px;
+    min-height: 78px;
+    margin: auto;
+    padding: 12px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 35px;
-
-    position: relative;
-    overflow: hidden;
-
-    color: #fff;
-
-    background:
-        radial-gradient(
-            circle at 78% 42%,
-            #315bd0,
-            #183d9e 42%,
-            #0b205f 100%
-        );
+    gap: 25px;
 }
 
-.hero-copy {
-    max-width: 610px;
-    position: relative;
-    z-index: 2;
-
-    animation: rise 0.9s ease both;
-}
-
-.eyebrow {
-    font: 700 11px/1.6 Arial, sans-serif;
-    letter-spacing: 3px;
-    color: #a9c1ff;
-}
-
-.hero-copy h2 {
-    font-size: clamp(48px, 7vw, 84px);
-    line-height: 0.98;
-    margin: 20px 0;
-}
-
-.hero-copy h2 em {
-    font-style: normal;
-    color: #a9c4ff;
-}
-
-.hero-copy p {
-    font-size: 19px;
-    line-height: 1.65;
-    max-width: 570px;
-    color: #e1e9ff;
-}
-
-.hero-cta {
-    display: inline-flex;
+.unggulan-brand {
+    display: flex;
     align-items: center;
-    gap: 22px;
-
-    margin-top: 18px;
-    padding: 13px 20px;
-
-    border: 1px solid #a9c4ff;
-
+    gap: 12px;
     color: white;
     text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-    font: 600 13px Arial, sans-serif;
+.unggulan-brand img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
 
+.unggulan-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.unggulan-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
     transition: 0.3s ease;
 }
 
-.hero-cta:hover {
-    background: white;
-    color: #153786;
-
-    transform: translateY(-4px);
-
-    box-shadow: 0 12px 25px #06174666;
+.unggulan-nav a:hover {
+    color: #c9d9ff;
+    transform: translateY(-3px);
 }
 
-
-/* 3D ANIMATION */
-
-.hero-art {
-    width: 320px;
-    height: 320px;
-    flex: 0 0 320px;
-
-    position: relative;
-
-    display: grid;
-    place-items: center;
-
-    animation: float 5s ease-in-out infinite;
-}
-
-.ring {
-    position: absolute;
-
-    border: 1px solid #a9c4ff88;
-    border-radius: 50%;
-
-    box-shadow: 0 0 25px #8baaff22;
-}
-
-.ring-a {
-    width: 300px;
-    height: 210px;
-
-    transform: rotateX(65deg) rotateZ(-25deg);
-
-    animation: spin 16s linear infinite;
-}
-
-.ring-b {
-    width: 240px;
-    height: 310px;
-
-    transform: rotateY(65deg) rotateZ(25deg);
-
-    animation: spin 20s linear infinite reverse;
-}
-
-.art-center {
-    width: 145px;
-    height: 145px;
-
-    border-radius: 32px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    background: linear-gradient(145deg, #6f91ef, #183b9c);
-
-    border: 1px solid #c1d2ff;
-
-    box-shadow:
-        14px 17px 0 #07194e66,
-        0 25px 55px #06174699;
-
-    transform: rotateX(12deg) rotateY(-15deg);
-}
-
-/* / LOGO TRI MEDAN / */
-
-/* LOGO ASLI TRI MEDAN */
-
-.art-center {
-    width: 145px;
-    height: 145px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
+.unggulan-menu-toggle {
+    display: none;
     border: none;
-    box-shadow: none;
-    padding: 0;
-
-    transform: rotateX(12deg) rotateY(-15deg);
+    background: transparent;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
 }
 
-.art-center img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-}
+/* HERO */
 
-.spark {
-    position: absolute;
-    color: #c4d5ff;
-    font-style: normal;
-    font-size: 30px;
-}
-
-.spark-a {
-    top: 25px;
-    right: 25px;
-}
-
-.spark-b {
-    bottom: 25px;
-    left: 20px;
-}
-
-.hero-index {
-    position: absolute;
-    right: 6%;
-    bottom: 25px;
-
-    font: 11px Arial, sans-serif;
-    letter-spacing: 3px;
-    color: #a9c4ff;
-}
-
-
-/* FOCUS SECTION */
-
-.focus-section {
-    max-width: 1160px;
-    margin: auto;
-    padding: 90px 28px 100px;
-}
-
-.section-intro {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 45px;
-}
-
-.section-intro .eyebrow,
-.program-message .eyebrow {
-    color: #4265bd;
-}
-
-.section-intro h2 {
-    font-size: clamp(34px, 4vw, 48px);
-    margin: 12px 0;
-    color: #10245b;
-}
-
-.section-intro p {
-    font-size: 17px;
-    line-height: 1.6;
-    color: #63708d;
-}
-
-
-/* PROGRAM CARDS */
-
-.focus-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-.focus-card {
-    min-height: 285px;
-    padding: 27px;
-
-    background: #fff;
-
-    border: 1px solid #e1e7f5;
-    border-radius: 12px;
-
-    box-shadow: 0 12px 30px #142e6810;
-
-    overflow: hidden;
-
-    transform-style: preserve-3d;
-
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
-}
-
-.focus-card:hover {
-    transform: translateY(-9px) rotateX(2deg) rotateY(-2deg);
-
-    box-shadow: 0 24px 45px #142e6824;
-}
-
-.focus-top {
+.unggulan-hero {
+    min-height: 390px;
+    padding: 90px 20px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.13), transparent 30%),
+        linear-gradient(135deg, #071c65, #0e35a9, #2458cf);
+    position: relative;
+    overflow: hidden;
+}
 
-    color: #8192b6;
+.unggulan-hero::before,
+.unggulan-hero::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+    animation: unggulanFloat 8s ease-in-out infinite;
+}
 
-    font: 12px Arial, sans-serif;
+.unggulan-hero::before {
+    width: 280px;
+    height: 280px;
+    top: -100px;
+    left: -80px;
+}
+
+.unggulan-hero::after {
+    width: 350px;
+    height: 350px;
+    bottom: -190px;
+    right: -80px;
+    animation-delay: 2s;
+}
+
+.unggulan-hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+    animation: unggulanAppear 1s ease both;
+}
+
+.unggulan-label {
+    display: inline-block;
+    padding: 8px 17px;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 30px;
+    font-size: 12px;
     letter-spacing: 2px;
 }
 
-.focus-symbol {
-    font-size: 22px;
-    color: #4265bd;
+.unggulan-hero h1 {
+    margin: 22px 0 12px;
+    font-size: clamp(35px, 6vw, 64px);
+    letter-spacing: 3px;
 }
 
-.focus-icon {
-    font-size: 38px;
-    margin: 24px 0 12px;
-
-    filter: drop-shadow(5px 7px 4px #122b6030);
+.unggulan-hero h1 span {
+    color: #c7d8ff;
 }
 
-.focus-card h3 {
-    font-size: 27px;
-    margin: 0 0 12px;
-    color: #173778;
+.unggulan-line {
+    width: 85px;
+    height: 4px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
 }
 
-.focus-card p {
-    font-size: 16px;
-    line-height: 1.65;
-    color: #65718b;
-    margin: 0;
-}
-
-.card-line {
-    display: block;
-
-    width: 42px;
-    height: 3px;
-
-    background: #4265bd;
-
-    margin-top: 22px;
-
-    transition: width 0.35s ease;
-}
-
-.focus-card:hover .card-line {
-    width: 100%;
-}
-
-
-/* BOTTOM SECTION */
-
-.program-message {
-    padding: 75px 24px;
-    text-align: center;
-    background: #e8edfb;
-}
-
-.program-message h2 {
-    max-width: 700px;
-    margin: 12px auto;
-
-    font-size: clamp(32px, 4vw, 48px);
-}
-
-.program-message p {
-    max-width: 650px;
-    margin: 0 auto 25px;
-
-    color: #63708d;
-
+.unggulan-hero p {
+    max-width: 680px;
+    margin: auto;
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
-.program-message a {
+/* INTRODUCTION */
+
+.unggulan-intro {
+    max-width: 850px;
+    margin: auto;
+    padding: 75px 22px 35px;
+    text-align: center;
+}
+
+.unggulan-subtitle {
+    color: #2458cf;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.unggulan-intro h2 {
+    margin: 15px 0;
+    font-size: clamp(25px, 4vw, 36px);
+}
+
+.unggulan-intro h2 span {
+    color: #2458cf;
+}
+
+.unggulan-intro p {
+    color: #66718a;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* PROGRAM CARDS */
+
+.unggulan-program-section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 25px 90px;
+}
+
+.unggulan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.unggulan-card {
+    position: relative;
+    min-width: 0;
+    min-height: 225px;
+    padding: 25px;
+    border-radius: 17px;
+    background: white;
+    border: 1px solid #e3e9f5;
+    box-shadow: 0 8px 25px rgba(14, 53, 169, .08);
+    overflow: hidden;
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease,
+        border-color .4s ease;
+    animation: unggulanAppear .8s ease both;
+}
+
+.unggulan-card:hover {
+    transform: translateY(-10px) rotateX(3deg) rotateY(-3deg);
+    border-color: #2458cf;
+    box-shadow: 0 20px 35px rgba(14, 53, 169, .17);
+}
+
+.unggulan-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.unggulan-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: #eaf0ff;
+    font-size: 24px;
+    transition: transform .4s ease;
+}
+
+.unggulan-card:hover .unggulan-icon {
+    transform: rotateY(180deg) scale(1.08);
+}
+
+.unggulan-number {
+    color: #2458cf;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.unggulan-card h3 {
+    margin: 0 0 12px;
+    color: #102b70;
+    font-size: 21px;
+    line-height: 1.35;
+}
+
+.unggulan-card p {
+    margin: 0;
+    color: #6c7588;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.unggulan-card-line {
+    width: 45px;
+    height: 3px;
+    margin-top: 20px;
+    background: #2458cf;
+    border-radius: 10px;
+    transition: width .4s ease;
+}
+
+.unggulan-card:hover .unggulan-card-line {
+    width: 90px;
+}
+
+/* CLOSING */
+
+.unggulan-closing {
+    padding: 70px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #071c65, #0e35a9, #2458cf);
+}
+
+.unggulan-closing > span {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #c7d8ff;
+}
+
+.unggulan-closing h2 {
+    margin: 18px 0 12px;
+    font-size: clamp(25px, 4vw, 38px);
+}
+
+.unggulan-closing p {
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.unggulan-button {
     display: inline-block;
-
-    color: #244ba8;
+    margin-top: 28px;
+    padding: 13px 32px;
+    border: 2px solid white;
+    border-radius: 30px;
+    color: white;
     text-decoration: none;
-
-    border-bottom: 1px solid #244ba8;
-
-    padding: 8px 0;
-
-    font: 600 13px Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .3s ease;
 }
 
+.unggulan-button:hover {
+    background: white;
+    color: #0e35a9;
+    transform: translateY(-4px);
+}
 
 /* FOOTER */
 
-.program-footer {
+.unggulan-footer {
+    padding: 35px 7% 15px;
+    color: white;
+    background: #071747;
+}
+
+.unggulan-footer-content {
+    max-width: 1150px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.unggulan-footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.unggulan-footer-brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.unggulan-footer-brand h3 {
+    margin: 0 0 5px;
+    font-size: 15px;
+}
+
+.unggulan-footer-brand p {
+    margin: 0;
+    color: #bdc9e5;
+    font-size: 13px;
+}
+
+.unggulan-footer-links {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-
-    padding: 22px 7%;
-
-    background: #0b205f;
-    color: #dce6ff;
-
-    font: 12px Arial, sans-serif;
 }
 
-.program-footer a {
-    color: #dce6ff;
+.unggulan-footer-links a {
+    color: white;
     text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
 }
 
+.unggulan-footer-links a:hover {
+    color: #9dbaff;
+}
+
+.unggulan-footer-bottom {
+    max-width: 1150px;
+    margin: 25px auto 0;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,.18);
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.unggulan-footer-bottom p {
+    margin: 0;
+    color: #bdc9e5;
+    font-size: 12px;
+}
 
 /* ANIMATIONS */
 
-@keyframes rise {
+@keyframes unggulanAppear {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
 
     to {
@@ -419,641 +423,147 @@
     }
 }
 
-@keyframes float {
+@keyframes unggulanFloat {
     0%, 100% {
-        transform: translateY(0) rotateY(-4deg);
+        transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-13px) rotateY(4deg);
+        transform: translateY(20px);
     }
 }
-
-@keyframes spin {
-    to {
-        rotate: 360deg;
-    }
-}
-
 
 /* TABLET */
 
-@media (max-width: 850px) {
-    .program-hero {
-        padding: 65px 6%;
+@media (max-width: 950px) {
+    .unggulan-header-inner {
+        padding-left: 4%;
+        padding-right: 4%;
     }
 
-    .hero-art {
-        width: 250px;
-        height: 250px;
-        flex-basis: 250px;
+    .unggulan-nav {
+        gap: 12px;
     }
 
-    .ring-a {
-        width: 235px;
-        height: 170px;
-    }
-
-    .ring-b {
-        width: 190px;
-        height: 245px;
-    }
-
-    .art-center {
-        width: 115px;
-        height: 115px;
-    }
-
-    .focus-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/* IPHONE & ANDROID */
-
-@media (max-width: 600px) {
-    .program-hero {
-        padding: 58px 23px 75px;
-        display: block;
-    }
-
-    .hero-copy h2 {
-        font-size: clamp(42px, 12vw, 52px);
-    }
-
-    .hero-copy p {
-        font-size: 16px;
-    }
-
-    .hero-art {
-        margin: 30px auto 0;
-        width: 250px;
-        height: 250px;
-    }
-
-    .focus-section {
-        padding: 65px 20px;
-    }
-
-    .focus-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .focus-card {
-        min-height: 0;
-    }
-
-    .program-footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-}
-
-
-/* LAYAR KECIL */
-
-@media (max-width: 360px) {
-    .hero-copy h2 {
-        font-size: 39px;
-    }
-
-    .hero-art {
-        transform: scale(0.88);
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .focus-card {
-        padding: 22px;
-    }
-}
-
-
-/* AKSESIBILITAS */
-
-@media (prefers-reduced-motion: reduce) {
-    .tri-program-page *,
-    .tri-program-page *::before,
-    .tri-program-page *::after {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
-
-/* =========================================================
-   SOCIAL MEDIA SECTION
-   3D FLOATING CARDS + COLOR TRANSITIONS
-========================================================= */
-
-.social-section {
-    position: relative;
-    width: 100%;
-    padding: 75px 5% 65px;
-    overflow: hidden;
-    text-align: center;
-
-    background: linear-gradient(
-        135deg,
-        #f4f7ff,
-        #e5edff,
-        #ffffff,
-        #eaf0ff
-    );
-
-    background-size: 250% 250%;
-    animation: socialBackground 12s ease infinite;
-}
-
-@keyframes socialBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-/* JUDUL SOCIAL MEDIA */
-
-.social-heading {
-    max-width: 750px;
-    margin: 0 auto 45px;
-}
-
-.social-eyebrow {
-    display: inline-block;
-    margin-bottom: 13px;
-
-    color: #285bd0;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 3px;
-}
-
-.social-heading h2 {
-    margin-bottom: 15px;
-
-    color: #0e35a9;
-    font-size: clamp(28px, 4vw, 40px);
-
-    text-shadow: 0 4px 12px rgba(14, 53, 169, 0.12);
-}
-
-.social-heading p {
-    color: #53617e;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-
-/* CONTAINER KARTU */
-
-.social-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 23px;
-
-    perspective: 1200px;
-}
-
-
-/* KARTU SOSIAL MEDIA */
-
-.social-card {
-    --social-color: #0e35a9;
-    --social-light: #eaf0ff;
-
-    position: relative;
-    isolation: isolate;
-
-    min-width: 0;
-    min-height: 215px;
-    padding: 27px 12px 25px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(14, 53, 169, 0.1);
-    border-radius: 23px;
-
-    color: #ffffff;
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        var(--social-light)
-    );
-
-    box-shadow:
-        0 12px 25px rgba(14, 53, 169, 0.12),
-        inset 0 1px 0 #ffffff;
-
-    transform-style: preserve-3d;
-
-    transition:
-        transform 0.5s ease,
-        background 0.5s ease,
-        box-shadow 0.5s ease,
-        border-color 0.5s ease;
-}
-
-
-/* EFEK CAHAYA */
-
-.social-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-
-    border-radius: inherit;
-
-    background: linear-gradient(
-        135deg,
-        var(--social-color),
-        var(--social-light)
-    );
-
-    opacity: 0;
-
-    transition: opacity 0.5s ease;
-}
-
-
-/* HOVER 3D */
-
-.social-card:hover {
-    transform:
-        perspective(1000px)
-        translateY(-13px)
-        rotateX(5deg)
-        rotateY(-5deg)
-        scale(1.04);
-
-    border-color: var(--social-color);
-
-    box-shadow:
-        0 24px 40px rgba(14, 53, 169, 0.2),
-        0 8px 15px rgba(0, 0, 0, 0.08);
-}
-
-.social-card:hover::before {
-    opacity: 0.13;
-}
-
-
-/* ICON CONTAINER */
-
-.social-icon {
-    width: 75px;
-    height: 75px;
-    margin-bottom: 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 22px;
-
-    color: #ffffff;
-    background: var(--social-color);
-
-    box-shadow:
-        0 9px 18px rgba(0, 0, 0, 0.18),
-        inset 0 2px 3px rgba(255, 255, 255, 0.3);
-
-    transform: translateZ(35px);
-
-    transition:
-        transform 0.5s ease,
-        background 0.5s ease,
-        border-radius 0.5s ease,
-        box-shadow 0.5s ease;
-}
-
-.social-icon svg {
-    display: block;
-    width: 39px;
-    height: 39px;
-    color: #ffffff;
-}
-
-.social-card:hover .social-icon {
-    transform: translateZ(65px) rotateY(360deg) scale(1.1);
-    border-radius: 50%;
-
-    box-shadow:
-        0 12px 25px rgba(0, 0, 0, 0.22),
-        0 0 20px var(--social-color);
-}
-
-
-/* NAMA DAN KETERANGAN */
-
-.social-card h3 {
-    margin-bottom: 7px;
-
-    color: var(--social-color);
-    font-size: 20px;
-    font-weight: bold;
-
-    transform: translateZ(25px);
-
-    transition: color 0.4s ease;
-}
-
-.social-card > span:not(.social-arrow) {
-    color: #64708b;
-    font-size: 13px;
-    line-height: 1.5;
-
-    transform: translateZ(20px);
-
-    transition: color 0.4s ease;
-}
-
-.social-card:hover h3 {
-    color: var(--social-color);
-}
-
-.social-card:hover > span:not(.social-arrow) {
-    color: #263858;
-}
-
-
-/* PANAH */
-
-.social-arrow {
-    position: absolute;
-    top: 15px;
-    right: 17px;
-
-    color: var(--social-color);
-    font-size: 20px;
-    font-weight: bold;
-
-    opacity: 0.6;
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.35s ease;
-}
-
-.social-card:hover .social-arrow {
-    opacity: 1;
-    transform: translate(4px, -4px);
-}
-
-
-/* =========================================================
-   WARNA KHAS MASING-MASING MEDIA SOSIAL
-========================================================= */
-
-/* WHATSAPP */
-
-.whatsapp-card {
-    --social-color: #20bd5a;
-    --social-light: #e3ffed;
-}
-
-.whatsapp-icon {
-    background: linear-gradient(
-        145deg,
-        #25d366,
-        #128c4a
-    );
-}
-
-
-/* INSTAGRAM */
-
-.instagram-card {
-    --social-color: #d62976;
-    --social-light: #fff0f6;
-}
-
-.instagram-icon {
-    background: linear-gradient(
-        135deg,
-        #833ab4,
-        #fd1d1d,
-        #fcb045
-    );
-}
-
-
-/* X / TWITTER */
-
-.x-card {
-    --social-color: #111111;
-    --social-light: #eeeeee;
-}
-
-.x-icon {
-    background: linear-gradient(
-        145deg,
-        #333333,
-        #000000
-    );
-}
-
-
-/* EMAIL */
-
-.email-card {
-    --social-color: #1769d2;
-    --social-light: #e8f2ff;
-}
-
-.email-icon {
-    background: linear-gradient(
-        145deg,
-        #4d9cff,
-        #0751b8
-    );
-}
-
-
-/* GARIS PENUTUP */
-
-.social-bottom-line {
-    width: 90px;
-    height: 4px;
-
-    margin: 50px auto 0;
-
-    border-radius: 10px;
-
-    background: linear-gradient(
-        90deg,
-        #0e35a9,
-        #6e91ff,
-        #0e35a9
-    );
-
-    background-size: 200% 100%;
-    animation: socialLine 4s ease infinite;
-}
-
-@keyframes socialLine {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    100% {
-        background-position: 200% 50%;
-    }
-}
-
-
-/* =========================================================
-   RESPONSIVE TABLET
-========================================================= */
-
-@media screen and (max-width: 1024px) {
-    .social-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 700px;
-        gap: 20px;
-    }
-
-    .social-card {
-        min-height: 205px;
-    }
-}
-
-
-/* =========================================================
-   RESPONSIVE ANDROID DAN IPHONE
-========================================================= */
-
-@media screen and (max-width: 600px) {
-    .social-section {
-        padding: 55px 18px 45px;
-    }
-
-    .social-heading {
-        margin-bottom: 30px;
-    }
-
-    .social-heading h2 {
-        font-size: 28px;
-    }
-
-    .social-heading p {
-        font-size: 15px;
-    }
-
-    .social-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-    }
-
-    .social-card {
-        min-height: 180px;
-        padding: 20px 8px;
-        border-radius: 18px;
-    }
-
-    .social-icon {
-        width: 62px;
-        height: 62px;
-        margin-bottom: 13px;
-        border-radius: 18px;
-    }
-
-    .social-icon svg {
-        width: 33px;
-        height: 33px;
-    }
-
-    .social-card h3 {
-        font-size: 17px;
-    }
-
-    .social-card > span:not(.social-arrow) {
+    .unggulan-nav a {
         font-size: 11px;
     }
 
-    .social-arrow {
-        top: 10px;
-        right: 12px;
-        font-size: 17px;
-    }
-
-    .social-bottom-line {
-        margin-top: 35px;
-    }
-}
-
-
-/* =========================================================
-   RESPONSIVE HP LAYAR KECIL
-========================================================= */
-
-@media screen and (max-width: 360px) {
-    .social-section {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    .social-container {
-        gap: 10px;
-    }
-
-    .social-card {
-        min-height: 165px;
-        padding: 16px 5px;
-    }
-
-    .social-icon {
-        width: 55px;
-        height: 55px;
-    }
-
-    .social-icon svg {
-        width: 29px;
-        height: 29px;
-    }
-
-    .social-card h3 {
+    .unggulan-brand {
         font-size: 15px;
     }
 
-    .social-card > span:not(.social-arrow) {
-        font-size: 10px;
+    .unggulan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
+/* MOBILE */
 
-/* =========================================================
-   AKSESIBILITAS
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-    .social-section,
-    .social-bottom-line {
-        animation: none !important;
+@media (max-width: 700px) {
+    .unggulan-header-inner {
+        min-height: 68px;
     }
 
-    .social-card,
-    .social-card::before,
-    .social-icon,
-    .social-arrow {
-        transition: none !important;
+    .unggulan-brand {
+        font-size: 13px;
+        letter-spacing: .5px;
+    }
+
+    .unggulan-brand img {
+        width: 37px;
+        height: 37px;
+    }
+
+    .unggulan-menu-toggle {
+        display: block;
+    }
+
+    .unggulan-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 18px 25px;
+        background: #0e35a9;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 10px 15px rgba(0,0,0,.15);
+    }
+
+    .unggulan-nav.active {
+        display: flex;
+    }
+
+    .unggulan-nav a {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .unggulan-hero {
+        min-height: 340px;
+        padding: 70px 22px;
+    }
+
+    .unggulan-hero p {
+        font-size: 15px;
+    }
+
+    .unggulan-intro {
+        padding-top: 55px;
+    }
+
+    .unggulan-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .unggulan-card {
+        min-height: 0;
+        padding: 23px;
+    }
+
+    .unggulan-program-section {
+        padding: 25px 20px 65px;
+    }
+
+    .unggulan-footer-content,
+    .unggulan-footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+    .unggulan-brand {
+        font-size: 11px;
+    }
+
+    .unggulan-hero h1 {
+        font-size: 33px;
+    }
+
+    .unggulan-card h3 {
+        font-size: 19px;
+    }
+
+    .unggulan-card p {
+        font-size: 14px;
+    }
+}
+
+/* REDUCE MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    .unggulan-page *,
+    .unggulan-page *::before,
+    .unggulan-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
 }
