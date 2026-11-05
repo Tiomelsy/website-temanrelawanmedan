@@ -1,183 +1,92 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ==============================
-    // MOBILE NAVIGATION
-    // ==============================
-
     const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
+    const navigation = document.getElementById("navigation");
 
-    if (menuToggle && mainNav) {
+    // BUKA / TUTUP MENU MOBILE
+    if (menuToggle && navigation) {
 
         menuToggle.addEventListener("click", function () {
 
-            const isOpen = mainNav.classList.toggle("active");
+            const isOpen = navigation.classList.toggle("show");
 
+            menuToggle.classList.toggle("active", isOpen);
             menuToggle.setAttribute("aria-expanded", isOpen);
-
-            menuToggle.innerHTML = isOpen
-                ? '<i class="fa-solid fa-xmark"></i>'
-                : '<i class="fa-solid fa-bars"></i>';
 
         });
 
-        // Tutup menu setelah link ditekan
-        mainNav.querySelectorAll("a").forEach(function (link) {
+        // Tutup menu setelah link navigasi ditekan
+        navigation.querySelectorAll("a").forEach(function (link) {
 
             link.addEventListener("click", function () {
-                mainNav.classList.remove("active");
 
+                navigation.classList.remove("show");
+                menuToggle.classList.remove("active");
                 menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.innerHTML =
-                    '<i class="fa-solid fa-bars"></i>';
+
             });
 
         });
 
-    }
+        // Tutup menu jika pengguna menekan area di luar menu
+        document.addEventListener("click", function (event) {
 
+            const clickedInsideMenu = navigation.contains(event.target);
+            const clickedToggle = menuToggle.contains(event.target);
 
-    // ==============================
-    // LOGIN & REGISTER SWITCH
-    // ==============================
-
-    const loginForm = document.getElementById("loginForm");
-    const registerForm = document.getElementById("registerForm");
-
-    const showRegister = document.getElementById("showRegister");
-    const showLogin = document.getElementById("showLogin");
-
-    const formTitle = document.getElementById("formTitle");
-    const formSubtitle = document.getElementById("formSubtitle");
-
-    if (
-        loginForm &&
-        registerForm &&
-        showRegister &&
-        showLogin
-    ) {
-
-        showRegister.addEventListener("click", function () {
-
-            loginForm.classList.add("hidden");
-            registerForm.classList.remove("hidden");
-
-            formTitle.textContent = "Create Account";
-            formSubtitle.textContent =
-                "Mulai perjalananmu bersama TRI Medan.";
-
-        });
-
-
-        showLogin.addEventListener("click", function () {
-
-            registerForm.classList.add("hidden");
-            loginForm.classList.remove("hidden");
-
-            formTitle.textContent = "Welcome Back!";
-            formSubtitle.textContent =
-                "Masuk untuk melanjutkan.";
-
-        });
-
-    }
-
-
-    // ==============================
-    // SHOW / HIDE PASSWORD
-    // ==============================
-
-    document.querySelectorAll(".password-toggle").forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const targetId = button.dataset.target;
-            const input = document.getElementById(targetId);
-
-            if (!input) return;
-
-            const showPassword = input.type === "password";
-
-            input.type = showPassword ? "text" : "password";
-
-            button.innerHTML = showPassword
-                ? '<i class="fa-regular fa-eye-slash"></i>'
-                : '<i class="fa-regular fa-eye"></i>';
-
-        });
-
-    });
-
-
-    // ==============================
-    // LOGIN DEMO
-    // ==============================
-
-    if (loginForm) {
-
-        loginForm.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            alert(
-                "Fitur login belum terhubung ke database. " +
-                "Silakan hubungkan halaman ini dengan sistem backend."
-            );
-
-        });
-
-    }
-
-
-    // ==============================
-    // REGISTER DEMO
-    // ==============================
-
-    if (registerForm) {
-
-        registerForm.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            const password =
-                document.getElementById("registerPassword").value;
-
-            const confirmPassword =
-                document.getElementById("confirmPassword").value;
-
-            if (password !== confirmPassword) {
-
-                alert("Konfirmasi password tidak sesuai!");
-                return;
-
+            if (!clickedInsideMenu && !clickedToggle) {
+                navigation.classList.remove("show");
+                menuToggle.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
             }
 
-            alert(
-                "Formulir berhasil diperiksa, tetapi pendaftaran " +
-                "belum tersimpan karena belum terhubung ke database."
-            );
+        });
+
+        // Tutup menu jika layar berubah menjadi desktop
+        window.addEventListener("resize", function () {
+
+            if (window.innerWidth > 760) {
+                navigation.classList.remove("show");
+                menuToggle.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+            }
 
         });
 
     }
 
 
-    // ==============================
-    // FORGOT PASSWORD DEMO
-    // ==============================
+    // ANIMASI CARD SAAT MUNCUL DI LAYAR
+    const animatedCards = document.querySelectorAll(
+        ".registration-card, .benefit-card, .social-card"
+    );
 
-    const forgotPassword = document.getElementById("forgotPassword");
+    if ("IntersectionObserver" in window) {
 
-    if (forgotPassword) {
+        const observer = new IntersectionObserver(function (entries) {
 
-        forgotPassword.addEventListener("click", function () {
+            entries.forEach(function (entry) {
 
-            alert(
-                "Fitur lupa password belum tersedia. " +
-                "Silakan hubungi admin TRI Medan."
-            );
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
 
+            });
+
+        }, {
+            threshold: 0.12
+        });
+
+        animatedCards.forEach(function (card) {
+            observer.observe(card);
+        });
+
+    } else {
+
+        animatedCards.forEach(function (card) {
+            card.classList.add("visible");
         });
 
     }
