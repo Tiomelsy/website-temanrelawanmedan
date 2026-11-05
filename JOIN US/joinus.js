@@ -1,193 +1,185 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // =====================================
-    // HEADER RESPONSIVE
-    // =====================================
+    // ==============================
+    // MOBILE NAVIGATION
+    // ==============================
 
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
-    function closeMenu() {
+    if (menuToggle && mainNav) {
 
-        mainNav.classList.remove("open");
-        menuToggle.classList.remove("active");
+        menuToggle.addEventListener("click", function () {
 
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Buka menu navigasi");
+            const isOpen = mainNav.classList.toggle("active");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+
+            menuToggle.innerHTML = isOpen
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+
+        });
+
+        // Tutup menu setelah link ditekan
+        mainNav.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+                mainNav.classList.remove("active");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.innerHTML =
+                    '<i class="fa-solid fa-bars"></i>';
+            });
+
+        });
 
     }
 
 
-    menuToggle.addEventListener("click", function () {
-
-        const isOpen = mainNav.classList.toggle("open");
-
-        menuToggle.classList.toggle("active", isOpen);
-
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
-        );
-
-    });
-
-
-    // Tutup menu setelah memilih navigasi
-
-    mainNav.querySelectorAll("a").forEach(function (link) {
-
-        link.addEventListener("click", closeMenu);
-
-    });
-
-
-    // Tutup menu jika pengguna menekan area di luar menu
-
-    document.addEventListener("click", function (event) {
-
-        if (
-            !mainNav.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-
-            closeMenu();
-
-        }
-
-    });
-
-
-    // Tutup menu ketika ukuran layar berubah
-
-    window.addEventListener("resize", function () {
-
-        if (window.innerWidth > 850) {
-            closeMenu();
-        }
-
-    });
-
-
-    // =====================================
-    // LOGIN DAN SIGN UP
-    // =====================================
-
-    const formCard = document.getElementById("formCard");
-
-    const showSignup = document.getElementById("showSignup");
-    const showLogin = document.getElementById("showLogin");
+    // ==============================
+    // LOGIN & REGISTER SWITCH
+    // ==============================
 
     const loginForm = document.getElementById("loginForm");
-    const signupForm = document.getElementById("signupForm");
+    const registerForm = document.getElementById("registerForm");
+
+    const showRegister = document.getElementById("showRegister");
+    const showLogin = document.getElementById("showLogin");
+
+    const formTitle = document.getElementById("formTitle");
+    const formSubtitle = document.getElementById("formSubtitle");
+
+    if (
+        loginForm &&
+        registerForm &&
+        showRegister &&
+        showLogin
+    ) {
+
+        showRegister.addEventListener("click", function () {
+
+            loginForm.classList.add("hidden");
+            registerForm.classList.remove("hidden");
+
+            formTitle.textContent = "Create Account";
+            formSubtitle.textContent =
+                "Mulai perjalananmu bersama TRI Medan.";
+
+        });
+
+
+        showLogin.addEventListener("click", function () {
+
+            registerForm.classList.add("hidden");
+            loginForm.classList.remove("hidden");
+
+            formTitle.textContent = "Welcome Back!";
+            formSubtitle.textContent =
+                "Masuk untuk melanjutkan.";
+
+        });
+
+    }
+
+
+    // ==============================
+    // SHOW / HIDE PASSWORD
+    // ==============================
+
+    document.querySelectorAll(".password-toggle").forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const targetId = button.dataset.target;
+            const input = document.getElementById(targetId);
+
+            if (!input) return;
+
+            const showPassword = input.type === "password";
+
+            input.type = showPassword ? "text" : "password";
+
+            button.innerHTML = showPassword
+                ? '<i class="fa-regular fa-eye-slash"></i>'
+                : '<i class="fa-regular fa-eye"></i>';
+
+        });
+
+    });
+
+
+    // ==============================
+    // LOGIN DEMO
+    // ==============================
+
+    if (loginForm) {
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            alert(
+                "Fitur login belum terhubung ke database. " +
+                "Silakan hubungkan halaman ini dengan sistem backend."
+            );
+
+        });
+
+    }
+
+
+    // ==============================
+    // REGISTER DEMO
+    // ==============================
+
+    if (registerForm) {
+
+        registerForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const password =
+                document.getElementById("registerPassword").value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+
+                alert("Konfirmasi password tidak sesuai!");
+                return;
+
+            }
+
+            alert(
+                "Formulir berhasil diperiksa, tetapi pendaftaran " +
+                "belum tersimpan karena belum terhubung ke database."
+            );
+
+        });
+
+    }
+
+
+    // ==============================
+    // FORGOT PASSWORD DEMO
+    // ==============================
 
     const forgotPassword = document.getElementById("forgotPassword");
 
+    if (forgotPassword) {
 
-    // LOGIN KE SIGN UP
+        forgotPassword.addEventListener("click", function () {
 
-    showSignup.addEventListener("click", function (event) {
+            alert(
+                "Fitur lupa password belum tersedia. " +
+                "Silakan hubungi admin TRI Medan."
+            );
 
-        event.preventDefault();
+        });
 
-        formCard.classList.add("active");
-
-    });
-
-
-    // SIGN UP KE LOGIN
-
-    showLogin.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        formCard.classList.remove("active");
-
-    });
-
-
-    // =====================================
-    // LOGIN FORM
-    // =====================================
-
-    loginForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        alert(
-            "Fitur Login belum terhubung dengan database TRI Medan."
-        );
-
-    });
-
-
-    // =====================================
-    // SIGN UP FORM
-    // =====================================
-
-    signupForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const password =
-            document.getElementById("signupPassword").value;
-
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
-
-
-        if (password !== confirmPassword) {
-
-            alert("Password dan konfirmasi password tidak sama!");
-
-            document.getElementById("confirmPassword").focus();
-
-            return;
-
-        }
-
-
-        alert(
-            "Form berhasil diisi. Fitur Sign Up belum terhubung dengan database TRI Medan."
-        );
-
-        signupForm.reset();
-
-    });
-
-
-    // =====================================
-    // FORGOT PASSWORD
-    // =====================================
-
-    forgotPassword.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        alert(
-            "Fitur lupa password belum tersedia."
-        );
-
-    });
-
-
-    // =====================================
-    // RESET FORM 3D
-    // =====================================
-
-    showSignup.addEventListener("click", function () {
-
-        formCard.style.transform = "";
-
-    });
-
-
-    showLogin.addEventListener("click", function () {
-
-        formCard.style.transform = "";
-
-    });
+    }
 
 });
