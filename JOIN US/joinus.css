@@ -864,3 +864,519 @@ footer {
     }
 
 }
+
+
+/* =========================================================
+   SOCIAL MEDIA SECTION
+   3D FLOATING CARDS + COLOR TRANSITIONS
+========================================================= */
+
+.social-section {
+    position: relative;
+    width: 100%;
+    padding: 75px 5% 65px;
+    overflow: hidden;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #f4f7ff,
+        #e5edff,
+        #ffffff,
+        #eaf0ff
+    );
+
+    background-size: 250% 250%;
+    animation: socialBackground 12s ease infinite;
+}
+
+@keyframes socialBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* JUDUL SOCIAL MEDIA */
+
+.social-heading {
+    max-width: 750px;
+    margin: 0 auto 45px;
+}
+
+.social-eyebrow {
+    display: inline-block;
+    margin-bottom: 13px;
+
+    color: #285bd0;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.social-heading h2 {
+    margin-bottom: 15px;
+
+    color: #0e35a9;
+    font-size: clamp(28px, 4vw, 40px);
+
+    text-shadow: 0 4px 12px rgba(14, 53, 169, 0.12);
+}
+
+.social-heading p {
+    color: #53617e;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* CONTAINER KARTU */
+
+.social-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 23px;
+
+    perspective: 1200px;
+}
+
+
+/* KARTU SOSIAL MEDIA */
+
+.social-card {
+    --social-color: #0e35a9;
+    --social-light: #eaf0ff;
+
+    position: relative;
+    isolation: isolate;
+
+    min-width: 0;
+    min-height: 215px;
+    padding: 27px 12px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(14, 53, 169, 0.1);
+    border-radius: 23px;
+
+    color: #ffffff;
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        var(--social-light)
+    );
+
+    box-shadow:
+        0 12px 25px rgba(14, 53, 169, 0.12),
+        inset 0 1px 0 #ffffff;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.5s ease,
+        background 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+
+/* EFEK CAHAYA */
+
+.social-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        135deg,
+        var(--social-color),
+        var(--social-light)
+    );
+
+    opacity: 0;
+
+    transition: opacity 0.5s ease;
+}
+
+
+/* HOVER 3D */
+
+.social-card:hover {
+    transform:
+        perspective(1000px)
+        translateY(-13px)
+        rotateX(5deg)
+        rotateY(-5deg)
+        scale(1.04);
+
+    border-color: var(--social-color);
+
+    box-shadow:
+        0 24px 40px rgba(14, 53, 169, 0.2),
+        0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.social-card:hover::before {
+    opacity: 0.13;
+}
+
+
+/* ICON CONTAINER */
+
+.social-icon {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    color: #ffffff;
+    background: var(--social-color);
+
+    box-shadow:
+        0 9px 18px rgba(0, 0, 0, 0.18),
+        inset 0 2px 3px rgba(255, 255, 255, 0.3);
+
+    transform: translateZ(35px);
+
+    transition:
+        transform 0.5s ease,
+        background 0.5s ease,
+        border-radius 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.social-icon svg {
+    display: block;
+    width: 39px;
+    height: 39px;
+    color: #ffffff;
+}
+
+.social-card:hover .social-icon {
+    transform: translateZ(65px) rotateY(360deg) scale(1.1);
+    border-radius: 50%;
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.22),
+        0 0 20px var(--social-color);
+}
+
+
+/* NAMA DAN KETERANGAN */
+
+.social-card h3 {
+    margin-bottom: 7px;
+
+    color: var(--social-color);
+    font-size: 20px;
+    font-weight: bold;
+
+    transform: translateZ(25px);
+
+    transition: color 0.4s ease;
+}
+
+.social-card > span:not(.social-arrow) {
+    color: #64708b;
+    font-size: 13px;
+    line-height: 1.5;
+
+    transform: translateZ(20px);
+
+    transition: color 0.4s ease;
+}
+
+.social-card:hover h3 {
+    color: var(--social-color);
+}
+
+.social-card:hover > span:not(.social-arrow) {
+    color: #263858;
+}
+
+
+/* PANAH */
+
+.social-arrow {
+    position: absolute;
+    top: 15px;
+    right: 17px;
+
+    color: var(--social-color);
+    font-size: 20px;
+    font-weight: bold;
+
+    opacity: 0.6;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+.social-card:hover .social-arrow {
+    opacity: 1;
+    transform: translate(4px, -4px);
+}
+
+
+/* =========================================================
+   WARNA KHAS MASING-MASING MEDIA SOSIAL
+========================================================= */
+
+/* WHATSAPP */
+
+.whatsapp-card {
+    --social-color: #20bd5a;
+    --social-light: #e3ffed;
+}
+
+.whatsapp-icon {
+    background: linear-gradient(
+        145deg,
+        #25d366,
+        #128c4a
+    );
+}
+
+
+/* INSTAGRAM */
+
+.instagram-card {
+    --social-color: #d62976;
+    --social-light: #fff0f6;
+}
+
+.instagram-icon {
+    background: linear-gradient(
+        135deg,
+        #833ab4,
+        #fd1d1d,
+        #fcb045
+    );
+}
+
+
+/* X / TWITTER */
+
+.x-card {
+    --social-color: #111111;
+    --social-light: #eeeeee;
+}
+
+.x-icon {
+    background: linear-gradient(
+        145deg,
+        #333333,
+        #000000
+    );
+}
+
+
+/* EMAIL */
+
+.email-card {
+    --social-color: #1769d2;
+    --social-light: #e8f2ff;
+}
+
+.email-icon {
+    background: linear-gradient(
+        145deg,
+        #4d9cff,
+        #0751b8
+    );
+}
+
+
+/* GARIS PENUTUP */
+
+.social-bottom-line {
+    width: 90px;
+    height: 4px;
+
+    margin: 50px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #0e35a9,
+        #6e91ff,
+        #0e35a9
+    );
+
+    background-size: 200% 100%;
+    animation: socialLine 4s ease infinite;
+}
+
+@keyframes socialLine {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media screen and (max-width: 1024px) {
+    .social-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 700px;
+        gap: 20px;
+    }
+
+    .social-card {
+        min-height: 205px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE ANDROID DAN IPHONE
+========================================================= */
+
+@media screen and (max-width: 600px) {
+    .social-section {
+        padding: 55px 18px 45px;
+    }
+
+    .social-heading {
+        margin-bottom: 30px;
+    }
+
+    .social-heading h2 {
+        font-size: 28px;
+    }
+
+    .social-heading p {
+        font-size: 15px;
+    }
+
+    .social-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .social-card {
+        min-height: 180px;
+        padding: 20px 8px;
+        border-radius: 18px;
+    }
+
+    .social-icon {
+        width: 62px;
+        height: 62px;
+        margin-bottom: 13px;
+        border-radius: 18px;
+    }
+
+    .social-icon svg {
+        width: 33px;
+        height: 33px;
+    }
+
+    .social-card h3 {
+        font-size: 17px;
+    }
+
+    .social-card > span:not(.social-arrow) {
+        font-size: 11px;
+    }
+
+    .social-arrow {
+        top: 10px;
+        right: 12px;
+        font-size: 17px;
+    }
+
+    .social-bottom-line {
+        margin-top: 35px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE HP LAYAR KECIL
+========================================================= */
+
+@media screen and (max-width: 360px) {
+    .social-section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .social-container {
+        gap: 10px;
+    }
+
+    .social-card {
+        min-height: 165px;
+        padding: 16px 5px;
+    }
+
+    .social-icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .social-icon svg {
+        width: 29px;
+        height: 29px;
+    }
+
+    .social-card h3 {
+        font-size: 15px;
+    }
+
+    .social-card > span:not(.social-arrow) {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   AKSESIBILITAS
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .social-section,
+    .social-bottom-line {
+        animation: none !important;
+    }
+
+    .social-card,
+    .social-card::before,
+    .social-icon,
+    .social-arrow {
+        transition: none !important;
+    }
+}
