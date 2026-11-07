@@ -848,142 +848,316 @@ html {
 }
 
 
-/* ==================================================
-   SOCIAL MEDIA
-   ================================================== */
+/* =========================================
+   IKON MEDIA SOSIAL TRI MEDAN
+   Laptop, MacBook, Tablet/iPad, iPhone, Android
+========================================= */
 
-.joinus-body .social-section {
-    background: #f8faff;
+/* WADAH IKON */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     width: 100%;
-    padding-left: 6%;
-    padding-right: 6%;
+    gap: 18px;
+    margin: 26px auto 38px;
+    padding: 0 12px;
+    box-sizing: border-box;
 }
 
-.joinus-body .social-grid {
-    width: min(1050px, 100%);
-    margin: auto;
+/* KOTAK IKON (KACA) */
+.social-icons .social-icon {
+    position: relative;
 
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-}
-
-.joinus-body .social-card {
-    min-width: 0;
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
 
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 19px;
 
-    padding: 25px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 
-    border: 1px solid rgba(14, 53, 169, 0.11);
-    border-radius: 16px;
+    border-radius: 18px;
+    color: #ffffff;
+    text-decoration: none;
 
-    background: #ffffff;
-    box-shadow: 0 9px 28px rgba(8, 35, 111, 0.06);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.18),
+        inset 0 0 14px rgba(255, 255, 255, 0.10);
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+
+    /* muncul bergantian saat halaman dibuka */
+    animation: sosmedMuncul 0.7s ease backwards;
 
     transition:
         transform 0.4s ease,
-        box-shadow 0.4s ease,
-        border-color 0.4s ease;
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
-.joinus-body .social-card:hover {
-    transform: translateY(-8px) scale(1.015);
+.social-icons .social-icon:nth-child(1) { animation-delay: 0.10s; }
+.social-icons .social-icon:nth-child(2) { animation-delay: 0.20s; }
+.social-icons .social-icon:nth-child(3) { animation-delay: 0.30s; }
+.social-icons .social-icon:nth-child(4) { animation-delay: 0.40s; }
 
-    border-color: rgba(14, 53, 169, 0.35);
+/* LOGO DI DALAM KOTAK */
+.social-icons .social-icon img {
+    width: 27px;
+    height: 27px;
+    display: block;
+    object-fit: contain;
 
-    box-shadow: 0 18px 38px rgba(8, 35, 111, 0.12);
-}
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 
-.joinus-body .social-icon {
-    width: 62px;
-    height: 62px;
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 17px;
-
-    font-size: 34px;
-    font-weight: bold;
-
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
     transition: transform 0.4s ease;
 }
 
-.joinus-body .social-card:hover .social-icon {
-    transform: rotateY(180deg);
+/* WARNA ASLI PLATFORM (aktif saat disorot atau disentuh) */
+.social-icons .instagram {
+    --warna: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    --cahaya: rgba(214, 41, 118, 0.60);
 }
 
-.joinus-body .instagram-icon {
-    color: #ffffff;
-    background: linear-gradient(135deg, #7437b5, #e73576, #ff9b42);
+.social-icons .tiktok {
+    --warna: #050505;
+    --cahaya: rgba(37, 244, 238, 0.50);
 }
 
-.joinus-body .tiktok-icon {
-    color: #ffffff;
-    background: #101010;
+.social-icons .gmail {
+    --warna: #ea4335;
+    --cahaya: rgba(234, 67, 53, 0.60);
 }
 
-.joinus-body .email-icon {
-    color: #ffffff;
-    background: linear-gradient(135deg, #0e35a9, #5378e3);
+.social-icons .whatsapp {
+    --warna: #20c96b;
+    --cahaya: rgba(32, 201, 107, 0.60);
 }
 
-.joinus-body .whatsapp-icon {
-    color: #ffffff;
-    background: linear-gradient(135deg, #138b56, #26c879);
+/* KEYBOARD (laptop dan MacBook) */
+.social-icons .social-icon:focus-visible {
+    outline: 3px solid #c8dcff;
+    outline-offset: 4px;
+    background: var(--warna);
+    border-color: rgba(255, 255, 255, 0.85);
 }
 
-.joinus-body .social-info {
-    flex: 1;
-    min-width: 0;
-}
+/* LABEL (tooltip), hanya muncul di perangkat dengan mouse atau trackpad */
+.social-icons .social-icon::after {
+    content: attr(aria-label);
 
-.joinus-body .social-category {
-    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
 
-    margin-bottom: 7px;
+    padding: 7px 13px;
+    border-radius: 10px;
 
-    color: #8192b8;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+
+    color: #071b65;
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, 6px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
 }
 
-.joinus-body .social-info h3 {
-    overflow-wrap: anywhere;
+/* =========================================
+   LAPTOP DAN MACBOOK (mouse / trackpad)
+========================================= */
+@media (hover: hover) and (pointer: fine) {
 
-    color: var(--tri-dark);
-    font-size: 18px;
-    line-height: 1.4;
+    .social-icons .social-icon:hover {
+        background: var(--warna);
+        border-color: rgba(255, 255, 255, 0.85);
+
+        transform:
+            perspective(700px)
+            translateY(-9px)
+            rotateX(10deg)
+            rotateY(-8deg)
+            scale(1.09);
+
+        box-shadow:
+            0 16px 32px rgba(0, 0, 0, 0.30),
+            0 0 26px var(--cahaya);
+    }
+
+    .social-icons .social-icon:hover img {
+        transform: scale(1.12);
+    }
+
+    .social-icons .social-icon:hover::after,
+    .social-icons .social-icon:focus-visible::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+    }
 }
 
-.joinus-body .social-info p {
-    margin-top: 7px;
+/* =========================================
+   TABLET, iPAD, iPHONE, ANDROID (layar sentuh)
+========================================= */
+@media (hover: none) and (pointer: coarse) {
 
-    color: var(--tri-muted);
-    font-size: 14px;
-    line-height: 1.6;
+    .social-icons .social-icon:active {
+        background: var(--warna);
+        border-color: rgba(255, 255, 255, 0.85);
+        transform: scale(0.93);
+        box-shadow: 0 0 22px var(--cahaya);
+    }
 }
 
-.joinus-body .social-arrow {
-    align-self: flex-start;
+/* =========================================
+   TABLET (sampai 900px)
+========================================= */
+@media screen and (max-width: 900px) {
 
-    color: #8da3dc;
-    font-size: 24px;
+    .social-icons {
+        gap: 16px;
+        margin: 22px auto 34px;
+    }
 
-    transition: transform 0.3s ease;
+    .social-icons .social-icon {
+        width: 54px;
+        height: 54px;
+        flex-basis: 54px;
+        border-radius: 17px;
+    }
+
+    .social-icons .social-icon img {
+        width: 26px;
+        height: 26px;
+    }
 }
 
-.joinus-body .social-card:hover .social-arrow {
-    transform: translate(4px, -4px);
-    color: var(--tri-blue);
+/* =========================================
+   iPHONE DAN ANDROID (sampai 600px)
+========================================= */
+@media screen and (max-width: 600px) {
+
+    .social-icons {
+        gap: 14px;
+        margin: 20px auto 30px;
+        padding: 0 12px;
+    }
+
+    .social-icons .social-icon {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+        border-radius: 15px;
+    }
+
+    .social-icons .social-icon img {
+        width: 24px;
+        height: 24px;
+    }
 }
 
+/* =========================================
+   HP LAYAR KECIL (sampai 380px)
+   Minimal 44px agar mudah ditekan di iPhone dan Android
+========================================= */
+@media screen and (max-width: 380px) {
+
+    .social-icons {
+        gap: 11px;
+        padding: 0 8px;
+    }
+
+    .social-icons .social-icon {
+        width: 45px;
+        height: 45px;
+        flex-basis: 45px;
+        border-radius: 13px;
+    }
+
+    .social-icons .social-icon img {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* =========================================
+   iPHONE DENGAN NOTCH / LANDSCAPE
+========================================= */
+@supports (padding: max(0px)) {
+    .social-icons {
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+    }
+}
+
+/* =========================================
+   JIKA backdrop-filter TIDAK DIDUKUNG
+========================================= */
+@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+    .social-icons .social-icon {
+        background: rgba(255, 255, 255, 0.22);
+    }
+}
+
+/* =========================================
+   ANIMASI MUNCUL
+========================================= */
+@keyframes sosmedMuncul {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================
+   AKSESIBILITAS
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+
+    .social-icons .social-icon,
+    .social-icons .social-icon img,
+    .social-icons .social-icon::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .social-icons .social-icon:hover,
+    .social-icons .social-icon:active {
+        transform: none !important;
+    }
+}
 
 /* ==================================================
    KEMBALI KE HOME

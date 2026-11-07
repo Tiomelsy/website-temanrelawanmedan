@@ -1,0 +1,1040 @@
+/* =====================================
+   MEDINFO - TEMAN RELAWAN INDONESIA
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.medinfo-body {
+    font-family: "Times New Roman", serif;
+    background: #f5f7fc;
+    color: #172344;
+    overflow-x: hidden;
+}
+
+.medinfo-body .container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.medinfo-body .header {
+    width: 100%;
+    min-height: 92px;
+    padding: 12px 5%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+}
+
+.medinfo-body .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: rgb(14, 53, 169);
+    flex-shrink: 0;
+}
+
+.medinfo-body .brand h1 {
+    font-size: 21px;
+    letter-spacing: 1px;
+}
+
+.medinfo-body .logo-wrapper {
+    width: 65px;
+    height: 65px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 700px;
+}
+
+.medinfo-body .logo-orbit {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border: 2px solid rgba(14, 53, 169, 0.35);
+    border-radius: 50%;
+    animation: medinfoOrbit 7s linear infinite;
+}
+
+.medinfo-body .logo-3d {
+    width: 53px;
+    height: 53px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: medinfoLogoFloat 4s ease-in-out infinite;
+}
+
+.medinfo-body .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.22));
+    transition: transform 0.5s ease;
+}
+
+.medinfo-body .brand:hover .logo {
+    transform: rotateY(25deg) rotateX(10deg) scale(1.08);
+}
+
+@keyframes medinfoOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes medinfoLogoFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotateY(12deg);
+    }
+}
+
+
+/* NAVIGATION */
+
+.medinfo-body #menuNav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.medinfo-body #menuNav a {
+    text-decoration: none;
+    color: #172344;
+    font-size: 15px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.medinfo-body #menuNav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: rgb(14, 53, 169);
+    transition: width 0.3s ease;
+}
+
+.medinfo-body #menuNav a:hover,
+.medinfo-body #menuNav a.active {
+    color: rgb(14, 53, 169);
+}
+
+.medinfo-body #menuNav a:hover::after,
+.medinfo-body #menuNav a.active::after {
+    width: 100%;
+}
+
+
+/* JOIN US */
+
+.medinfo-body .btn-join {
+    text-decoration: none;
+    color: white;
+    background: rgb(14, 53, 169);
+    padding: 12px 23px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: 0.35s ease;
+}
+
+.medinfo-body .btn-join:hover {
+    background: #092a8b;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(14, 53, 169, 0.25);
+}
+
+
+/* HAMBURGER */
+
+.medinfo-body .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+}
+
+.medinfo-body .menu-toggle span {
+    display: block;
+    width: 27px;
+    height: 3px;
+    background: rgb(14, 53, 169);
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.medinfo-body .medinfo-hero {
+    min-height: 510px;
+    padding: 85px 9%;
+    background: linear-gradient(125deg, #0e35a9, #071d64);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.medinfo-body .hero-content {
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+    animation: medinfoFadeUp 1s ease both;
+}
+
+.medinfo-body .hero-label,
+.medinfo-body .section-label {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.medinfo-body .hero-label {
+    color: #c6d7ff;
+    margin-bottom: 18px;
+}
+
+.medinfo-body .hero-content h2 {
+    font-size: clamp(42px, 6vw, 75px);
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+.medinfo-body .hero-content p {
+    max-width: 570px;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #e4eaff;
+}
+
+.medinfo-body .hero-button {
+    display: inline-flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 13px 23px;
+    background: white;
+    color: #0e35a9;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.35s ease;
+}
+
+.medinfo-body .hero-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.medinfo-body .hero-button span {
+    font-size: 20px;
+}
+
+.medinfo-body .hero-decoration {
+    width: 330px;
+    height: 330px;
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 5%;
+    perspective: 700px;
+}
+
+.medinfo-body .hero-circle {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: medinfoCircle 8s linear infinite;
+}
+
+.medinfo-body .circle-one {
+    width: 280px;
+    height: 280px;
+    top: 25px;
+    left: 25px;
+}
+
+.medinfo-body .circle-two {
+    width: 220px;
+    height: 220px;
+    top: 55px;
+    left: 55px;
+    border-style: dashed;
+    animation-direction: reverse;
+    animation-duration: 12s;
+}
+
+.medinfo-body .circle-three {
+    width: 160px;
+    height: 160px;
+    top: 85px;
+    left: 85px;
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.medinfo-body .hero-symbol {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 110px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 8px 12px 15px rgba(0, 0, 0, 0.3);
+    animation: medinfoSymbol 4s ease-in-out infinite;
+}
+
+@keyframes medinfoCircle {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes medinfoSymbol {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotateY(15deg);
+    }
+}
+
+@keyframes medinfoFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================
+   SECTION HEADING
+===================================== */
+
+.medinfo-body .section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.medinfo-body .section-label {
+    color: #5270bd;
+    margin-bottom: 12px;
+}
+
+.medinfo-body .section-heading h2,
+.medinfo-body .member-heading h2,
+.medinfo-body .medinfo-quote h2 {
+    color: #0e35a9;
+    font-size: clamp(27px, 4vw, 39px);
+    margin-bottom: 15px;
+}
+
+.medinfo-body .heading-line {
+    width: 75px;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #0e35a9;
+}
+
+.medinfo-body .section-description {
+    color: #64708c;
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+
+/* =====================================
+   ABOUT MEDINFO
+===================================== */
+
+.medinfo-body .medinfo-about {
+    padding: 85px 9%;
+}
+
+.medinfo-body .about-card {
+    max-width: 1050px;
+    margin: auto;
+    background: white;
+    padding: 45px;
+    border-radius: 18px;
+    display: flex;
+    gap: 35px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(18, 43, 103, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.medinfo-body .about-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 40px rgba(18, 43, 103, 0.14);
+}
+
+.medinfo-body .about-number {
+    font-size: 65px;
+    font-weight: bold;
+    color: rgba(14, 53, 169, 0.15);
+    line-height: 1;
+}
+
+.medinfo-body .about-text h3 {
+    font-size: 27px;
+    color: #0e35a9;
+    margin-bottom: 20px;
+}
+
+.medinfo-body .about-text p {
+    color: #56627b;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.medinfo-body .about-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =====================================
+   ROLE CARDS
+===================================== */
+
+.medinfo-body .medinfo-role {
+    padding: 75px 9%;
+    background: #eaf0ff;
+}
+
+.medinfo-body .role-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.medinfo-body .role-card {
+    background: white;
+    padding: 28px 23px;
+    border-radius: 15px;
+    min-height: 230px;
+    border-bottom: 4px solid #0e35a9;
+    transition: 0.4s ease;
+}
+
+.medinfo-body .role-card:hover {
+    transform: translateY(-10px) rotateX(3deg);
+    box-shadow: 0 15px 30px rgba(14, 53, 169, 0.13);
+}
+
+.medinfo-body .role-icon {
+    width: 45px;
+    height: 45px;
+    background: #e5edff;
+    color: #0e35a9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.medinfo-body .role-card h3 {
+    font-size: 20px;
+    color: #0e35a9;
+    margin-bottom: 12px;
+}
+
+.medinfo-body .role-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64708c;
+}
+
+
+/* =====================================
+   STRUCTURE
+===================================== */
+
+.medinfo-body .medinfo-structure {
+    padding: 85px 8%;
+}
+
+.medinfo-body .leader-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 75px;
+}
+
+.medinfo-body .leader-card {
+    width: 100%;
+    max-width: 780px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0 12px 35px rgba(18, 43, 103, 0.1);
+    transition: 0.4s ease;
+}
+
+.medinfo-body .leader-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(18, 43, 103, 0.17);
+}
+
+.medinfo-body .leader-photo {
+    height: 310px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #e5edff;
+}
+
+.medinfo-body .leader-photo img,
+.medinfo-body .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.medinfo-body .leader-card:hover .leader-photo img,
+.medinfo-body .member-card:hover .member-photo img {
+    transform: scale(1.07);
+}
+
+.medinfo-body .photo-tag {
+    position: absolute;
+    bottom: 13px;
+    left: 13px;
+    background: rgba(14, 53, 169, 0.9);
+    color: white;
+    padding: 8px 13px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border-radius: 20px;
+}
+
+.medinfo-body .position-label {
+    display: inline-block;
+    color: #0e35a9;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.medinfo-body .leader-info h3,
+.medinfo-body .member-info h3 {
+    color: #172344;
+    font-size: 26px;
+    margin-bottom: 13px;
+}
+
+.medinfo-body .leader-info p,
+.medinfo-body .member-info p {
+    color: #64708c;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+
+/* =====================================
+   INSTAGRAM
+===================================== */
+
+.medinfo-body .instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #0e35a9;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+.medinfo-body .instagram-link img {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+
+.medinfo-body .instagram-link:hover {
+    color: #e4405f;
+    transform: translateX(4px);
+}
+
+
+/* =====================================
+   MEMBER CARDS
+===================================== */
+
+.medinfo-body .member-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.medinfo-body .member-heading p {
+    color: #64708c;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.medinfo-body .member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 27px;
+}
+
+.medinfo-body .member-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(18, 43, 103, 0.08);
+    transition: 0.4s ease;
+}
+
+.medinfo-body .member-card:hover {
+    transform: translateY(-9px);
+    box-shadow: 0 18px 38px rgba(18, 43, 103, 0.16);
+}
+
+.medinfo-body .member-photo {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: #e5edff;
+}
+
+.medinfo-body .member-info {
+    padding: 23px 21px;
+}
+
+.medinfo-body .member-info h3 {
+    font-size: 22px;
+}
+
+.medinfo-body .member-info p {
+    min-height: 85px;
+    font-size: 15px;
+}
+
+
+/* =====================================
+   QUOTE
+===================================== */
+
+.medinfo-body .medinfo-quote {
+    padding: 85px 12%;
+    background: linear-gradient(130deg, #0e35a9, #071d64);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.medinfo-body .medinfo-quote .section-label {
+    color: #c6d7ff;
+    margin-bottom: 15px;
+}
+
+.medinfo-body .medinfo-quote h2 {
+    color: white;
+}
+
+.medinfo-body .quote-decoration {
+    position: absolute;
+    top: -55px;
+    left: 5%;
+    font-size: 240px;
+    color: rgba(255, 255, 255, 0.08);
+    font-weight: bold;
+}
+
+.medinfo-body .medinfo-quote blockquote {
+    max-width: 850px;
+    margin: 25px auto;
+    font-size: 21px;
+    line-height: 1.8;
+    font-style: italic;
+    color: #edf2ff;
+    position: relative;
+    z-index: 1;
+}
+
+.medinfo-body .quote-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #d1ddff;
+    font-size: 16px;
+}
+
+.medinfo-body .quote-author span {
+    width: 35px;
+    height: 2px;
+    background: white;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.medinfo-body .about-footer {
+    background: #071d64;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.medinfo-body .about-footer p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .medinfo-body .header {
+        flex-wrap: wrap;
+    }
+
+    .medinfo-body #menuNav {
+        gap: 14px;
+    }
+
+    .medinfo-body #menuNav a {
+        font-size: 13px;
+    }
+
+    .medinfo-body .brand h1 {
+        font-size: 17px;
+    }
+
+    .medinfo-body .role-grid,
+    .medinfo-body .member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .medinfo-body .hero-decoration {
+        transform: scale(0.8);
+        margin-right: 0;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .medinfo-body .header {
+        min-height: 78px;
+        padding: 10px 5%;
+    }
+
+    .medinfo-body .brand h1 {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .medinfo-body .logo-wrapper {
+        width: 48px;
+        height: 48px;
+    }
+
+    .medinfo-body .logo-orbit {
+        width: 48px;
+        height: 48px;
+    }
+
+    .medinfo-body .logo-3d {
+        width: 40px;
+        height: 40px;
+    }
+
+    .medinfo-body .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .medinfo-body #menuNav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 20px 6%;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .medinfo-body #menuNav.active {
+        display: flex;
+    }
+
+    .medinfo-body #menuNav a {
+        font-size: 15px;
+    }
+
+    .medinfo-body .btn-join {
+        display: none;
+    }
+
+    .medinfo-body .medinfo-hero {
+        min-height: auto;
+        padding: 75px 8%;
+    }
+
+    .medinfo-body .hero-content {
+        text-align: center;
+    }
+
+    .medinfo-body .hero-content p {
+        font-size: 17px;
+    }
+
+    .medinfo-body .hero-decoration {
+        display: none;
+    }
+
+    .medinfo-body .medinfo-about,
+    .medinfo-body .medinfo-structure {
+        padding: 65px 6%;
+    }
+
+    .medinfo-body .about-card {
+        padding: 28px;
+        gap: 15px;
+    }
+
+    .medinfo-body .about-number {
+        font-size: 42px;
+    }
+
+    .medinfo-body .about-text h3 {
+        font-size: 23px;
+    }
+
+    .medinfo-body .about-text p {
+        font-size: 16px;
+    }
+
+    .medinfo-body .medinfo-role {
+        padding: 65px 6%;
+    }
+
+    .medinfo-body .role-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .medinfo-body .leader-card {
+        grid-template-columns: 1fr;
+        max-width: 430px;
+    }
+
+    .medinfo-body .leader-photo {
+        height: 350px;
+    }
+
+    .medinfo-body .member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .medinfo-body .member-photo {
+        height: 240px;
+    }
+
+    .medinfo-body .member-info p {
+        min-height: 105px;
+    }
+
+    .medinfo-body .medinfo-quote {
+        padding: 70px 7%;
+    }
+
+    .medinfo-body .medinfo-quote blockquote {
+        font-size: 18px;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+
+    .medinfo-body .brand h1 {
+        font-size: 11px;
+    }
+
+    .medinfo-body .logo-wrapper {
+        width: 42px;
+        height: 42px;
+    }
+
+    .medinfo-body .logo-orbit {
+        width: 42px;
+        height: 42px;
+    }
+
+    .medinfo-body .logo-3d {
+        width: 35px;
+        height: 35px;
+    }
+
+    .medinfo-body .medinfo-hero {
+        padding: 65px 7%;
+    }
+
+    .medinfo-body .hero-content h2 {
+        font-size: 39px;
+    }
+
+    .medinfo-body .hero-content p {
+        font-size: 16px;
+    }
+
+    .medinfo-body .section-heading h2,
+    .medinfo-body .member-heading h2 {
+        font-size: 27px;
+    }
+
+    .medinfo-body .about-card {
+        display: block;
+        padding: 25px 20px;
+    }
+
+    .medinfo-body .about-number {
+        margin-bottom: 15px;
+    }
+
+    .medinfo-body .role-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .medinfo-body .role-card {
+        min-height: auto;
+    }
+
+    .medinfo-body .leader-card {
+        padding: 17px;
+    }
+
+    .medinfo-body .leader-photo {
+        height: 290px;
+    }
+
+    .medinfo-body .member-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: auto;
+    }
+
+    .medinfo-body .member-photo {
+        height: 280px;
+    }
+
+    .medinfo-body .member-info p {
+        min-height: auto;
+    }
+
+    .medinfo-body .medinfo-quote blockquote {
+        font-size: 17px;
+    }
+
+    .medinfo-body .quote-author {
+        font-size: 14px;
+    }
+
+    .medinfo-body .about-footer p {
+        font-size: 13px;
+    }
+
+}
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .medinfo-body *,
+    .medinfo-body *::before,
+    .medinfo-body *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
